@@ -1,0 +1,56 @@
+'use client';
+
+import React, { useState } from 'react';
+import CalculatorCard from './CalculatorCard';
+import { calculateOrbitalVelocity, calculateOrbitalPeriod } from '../utils/spaceflight';
+
+const OrbitCalculator = () => {
+  const [altitude, setAltitude] = useState<number>(400);
+  const [velocity, setVelocity] = useState<number | null>(null);
+  const [period, setPeriod] = useState<number | null>(null);
+
+  const handleCalculate = () => {
+    try {
+      const v = calculateOrbitalVelocity(altitude);
+      const p = calculateOrbitalPeriod(altitude);
+      setVelocity(v);
+      setPeriod(p);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  return (
+    <CalculatorCard title="Orbital Mechanics" description="Determine orbital velocity and period for a given altitude (e.g., LEO, GEO). Key for mission planning.">
+      <div className="space-y-3">
+        <div>
+          <label className="block text-sm mb-1 text-gray-300">Altitude (km)</label>
+          <input
+            type="number"
+            value={altitude}
+            onChange={(e) => setAltitude(parseFloat(e.target.value))}
+            className="w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-purple-500 transition"
+          />
+        </div>
+        <button
+          onClick={handleCalculate}
+          className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold py-2 px-4 rounded transition shadow-lg transform active:scale-95"
+        >
+          Calculate Orbit
+        </button>
+        {velocity !== null && period !== null && (
+          <div className="mt-4 p-4 bg-purple-900/30 rounded border border-purple-500/30 backdrop-blur-sm space-y-2">
+            <p className="font-mono text-lg">
+              Velocity: <span className="text-purple-300 font-bold">{velocity.toFixed(3)}</span> km/s
+            </p>
+            <p className="font-mono text-lg">
+              Period: <span className="text-purple-300 font-bold">{period.toFixed(1)}</span> min
+            </p>
+          </div>
+        )}
+      </div>
+    </CalculatorCard>
+  );
+};
+
+export default OrbitCalculator;
