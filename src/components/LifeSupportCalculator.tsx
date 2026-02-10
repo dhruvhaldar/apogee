@@ -7,7 +7,7 @@ import { calculateConsumables } from '../utils/spaceflight';
 const LifeSupportCalculator = () => {
   const [crew, setCrew] = useState<number>(3);
   const [days, setDays] = useState<number>(10);
-  const [consumables, setConsumables] = useState<any | null>(null);
+  const [consumables, setConsumables] = useState<{ oxygen: number; water: number; food: number; total: number } | null>(null);
 
   const handleCalculate = () => {
     try {
