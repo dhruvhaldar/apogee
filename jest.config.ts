@@ -6,6 +6,7 @@ const config: Config = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
+  roots: ['<rootDir>/src'],
 };
 
 export default config;
