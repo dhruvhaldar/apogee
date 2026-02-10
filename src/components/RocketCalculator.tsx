@@ -9,17 +9,20 @@ const RocketCalculator = () => {
   const [m0, setM0] = useState<number>(1000);
   const [mf, setMf] = useState<number>(100);
   const [result, setResult] = useState<number | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
     try {
       if (m0 <= mf) {
-        alert('Initial mass must be greater than final mass');
+        setError('Initial mass must be greater than final mass');
         return;
       }
       const dv = calculateDeltaV(isp, m0, mf);
       setResult(dv);
     } catch (e) {
       console.error(e);
+      setError('An error occurred during calculation');
       setResult(null);
     }
   };
@@ -27,31 +30,42 @@ const RocketCalculator = () => {
   return (
     <CalculatorCard title="Rocket Equation" description="Calculate Delta-V (velocity change) based on mass ratio and engine efficiency. Essential for determining if a vehicle can reach orbit.">
       <div className="space-y-3">
+        {error && (
+          <div role="alert" className="p-3 bg-red-900/50 border border-red-500/50 rounded text-red-200 text-sm">
+            {error}
+          </div>
+        )}
         <div>
-          <label className="block text-sm mb-1 text-gray-300">Specific Impulse (Isp, s)</label>
+          <label htmlFor="rocket-isp" className="block text-sm mb-1 text-gray-300">Specific Impulse (Isp, s)</label>
           <input
+            id="rocket-isp"
             type="number"
             value={isp}
             onChange={(e) => setIsp(parseFloat(e.target.value))}
             className="w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-cyan-500 transition"
+            aria-label="Specific Impulse in seconds"
           />
         </div>
         <div>
-          <label className="block text-sm mb-1 text-gray-300">Initial Mass (m0, kg)</label>
+          <label htmlFor="rocket-m0" className="block text-sm mb-1 text-gray-300">Initial Mass (m0, kg)</label>
           <input
+            id="rocket-m0"
             type="number"
             value={m0}
             onChange={(e) => setM0(parseFloat(e.target.value))}
             className="w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-cyan-500 transition"
+            aria-label="Initial Mass in kilograms"
           />
         </div>
         <div>
-          <label className="block text-sm mb-1 text-gray-300">Final Mass (mf, kg)</label>
+          <label htmlFor="rocket-mf" className="block text-sm mb-1 text-gray-300">Final Mass (mf, kg)</label>
           <input
+            id="rocket-mf"
             type="number"
             value={mf}
             onChange={(e) => setMf(parseFloat(e.target.value))}
             className="w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-cyan-500 transition"
+            aria-label="Final Mass in kilograms"
           />
         </div>
         <button
