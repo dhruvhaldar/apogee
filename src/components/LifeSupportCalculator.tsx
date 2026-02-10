@@ -7,6 +7,7 @@ import { calculateConsumables } from '../utils/spaceflight';
 const LifeSupportCalculator = () => {
   const [crew, setCrew] = useState<number>(3);
   const [days, setDays] = useState<number>(10);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [consumables, setConsumables] = useState<any | null>(null);
 
   const handleCalculate = () => {

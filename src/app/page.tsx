@@ -10,7 +10,16 @@ export default function Home() {
     <main className="min-h-screen p-8 relative overflow-hidden text-white bg-black">
       {/* Background with stars */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900 via-[#0B0B1A] to-black"></div>
-      <div className="absolute inset-0 z-0 opacity-30 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
+      {/*
+        PERFORMANCE OPTIMIZATION:
+        Replaced external image URL with local asset to eliminate DNS lookup, TCP handshake,
+        and TLS negotiation for 'www.transparenttextures.com'.
+        This improves Time to First Byte (TTFB) for this resource and overall page load consistency.
+      */}
+      <div
+        className="absolute inset-0 z-0 opacity-30"
+        style={{ backgroundImage: "url('/images/stardust.png')" }}
+      ></div>
       
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto">
