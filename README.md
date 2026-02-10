@@ -1,6 +1,6 @@
 # Apogee
 
-**Apogee** is a comprehensive Human Spaceflight Mission Planning & Analysis Tool, developed for the KTH SD2905 Human Spaceflight course. It provides a suite of calculators to analyze various aspects of space missions, from launch vehicle performance to life support systems and mission economics.
+**Apogee** is a comprehensive Human Spaceflight Mission Planning & Analysis Tool, developed for the [SD2905 Human Spaceflight](https://kth.se/utbildning/program/teknik/utbildningar/human-spaceflight) course at KTH Royal Institute of Technology. It provides a suite of calculators to analyze various aspects of space missions, from launch vehicle performance to life support systems and mission economics.
 
 ## Features
 
@@ -31,7 +31,7 @@ The application includes the following analytical tools:
 
 1.  Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/apogee.git
+    git clone https://github.com/dhruvhaldar/apogee.git
     cd apogee
     ```
 
