@@ -28,6 +28,9 @@ export function calculateDeltaV(isp: number, massInitial: number, massFinal: num
  * @returns Orbital velocity in km/s
  */
 export function calculateOrbitalVelocity(altitude: number): number {
+  if (altitude < 0) {
+    throw new Error("Altitude must be non-negative");
+  }
   const r = EARTH_RADIUS + (altitude * 1000); // Convert km to m
   const v = Math.sqrt((G * EARTH_MASS) / r);
   return v / 1000; // Convert m/s to km/s
@@ -39,6 +42,9 @@ export function calculateOrbitalVelocity(altitude: number): number {
  * @returns Orbital period in minutes
  */
 export function calculateOrbitalPeriod(altitude: number): number {
+  if (altitude < 0) {
+    throw new Error("Altitude must be non-negative");
+  }
   const r = EARTH_RADIUS + (altitude * 1000); // Convert km to m
   // T = 2 * pi * sqrt(r^3 / GM)
   const periodSeconds = 2 * Math.PI * Math.sqrt(Math.pow(r, 3) / (G * EARTH_MASS));
