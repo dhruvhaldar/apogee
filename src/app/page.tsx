@@ -10,7 +10,14 @@ export default function Home() {
     <main className="min-h-screen p-8 relative overflow-hidden text-white bg-black">
       {/* Background with stars */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900 via-[#0B0B1A] to-black"></div>
-      <div className="absolute inset-0 z-0 opacity-30 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
+      {/*
+        Performance Optimization: Hosting static assets locally improves load time and reliability.
+        Using inline style for background image to avoid Turbopack module resolution issues with Tailwind arbitrary values.
+      */}
+      <div
+        className="absolute inset-0 z-0 opacity-30"
+        style={{ backgroundImage: "url('/patterns/stardust.png')" }}
+      ></div>
       
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto">
