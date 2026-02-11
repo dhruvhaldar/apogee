@@ -8,8 +8,10 @@ const OrbitCalculator = () => {
   const [altitude, setAltitude] = useState<number>(400);
   const [velocity, setVelocity] = useState<number | null>(null);
   const [period, setPeriod] = useState<number | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
     try {
       const v = calculateOrbitalVelocity(altitude);
       const p = calculateOrbitalPeriod(altitude);
@@ -17,12 +19,24 @@ const OrbitCalculator = () => {
       setPeriod(p);
     } catch (e) {
       console.error(e);
+      if (e instanceof Error) {
+        setError(e.message);
+      } else {
+        setError('An error occurred during calculation');
+      }
+      setVelocity(null);
+      setPeriod(null);
     }
   };
 
   return (
     <CalculatorCard title="Orbital Mechanics" description="Determine orbital velocity and period for a given altitude (e.g., LEO, GEO). Key for mission planning.">
       <div className="space-y-3">
+        {error && (
+          <div role="alert" className="p-3 bg-red-900/50 border border-red-500/50 rounded text-red-200 text-sm">
+            {error}
+          </div>
+        )}
         <div>
           <label className="block text-sm mb-1 text-gray-300">Altitude (km)</label>
           <input

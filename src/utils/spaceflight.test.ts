@@ -29,6 +29,10 @@ describe('Spaceflight Physics Calculations', () => {
       // v = sqrt(3.986e14 / 6771000) ~= 7672 m/s = 7.672 km/s
       expect(v).toBeCloseTo(7.67, 1);
     });
+
+    test('Throws error for negative altitude', () => {
+      expect(() => calculateOrbitalVelocity(-100)).toThrow('Altitude must be non-negative');
+    });
   });
 
   describe('calculateOrbitalPeriod', () => {
@@ -38,6 +42,10 @@ describe('Spaceflight Physics Calculations', () => {
       // r = 6771000 m
       // T ~= 5545 s ~= 92.4 min
       expect(p).toBeCloseTo(92.4, 1);
+    });
+
+    test('Throws error for negative altitude', () => {
+      expect(() => calculateOrbitalPeriod(-100)).toThrow('Altitude must be non-negative');
     });
   });
 
