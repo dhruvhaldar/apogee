@@ -22,8 +22,9 @@ const LifeSupportCalculator = () => {
     <CalculatorCard title="Life Support" description="Estimate consumables (Oxygen, Water, Food) required for a mission. Critical for medical and logistical planning.">
       <div className="space-y-3">
         <div>
-          <label className="block text-sm mb-1 text-gray-300">Crew Size</label>
+          <label htmlFor="ls-crew" className="block text-sm mb-1 text-gray-300">Crew Size</label>
           <input
+            id="ls-crew"
             type="number"
             value={crew}
             onChange={(e) => setCrew(parseInt(e.target.value))}
@@ -31,8 +32,9 @@ const LifeSupportCalculator = () => {
           />
         </div>
         <div>
-          <label className="block text-sm mb-1 text-gray-300">Duration (days)</label>
+          <label htmlFor="ls-days" className="block text-sm mb-1 text-gray-300">Duration (days)</label>
           <input
+            id="ls-days"
             type="number"
             value={days}
             onChange={(e) => setDays(parseInt(e.target.value))}

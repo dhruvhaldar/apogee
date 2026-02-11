@@ -22,8 +22,9 @@ const CostCalculator = () => {
     <CalculatorCard title="Mission Cost" description="Estimate launch cost based on payload mass and vehicle rates. Covers economic and political perspectives.">
       <div className="space-y-3">
         <div>
-          <label className="block text-sm mb-1 text-gray-300">Payload Mass (kg)</label>
+          <label htmlFor="cost-payload" className="block text-sm mb-1 text-gray-300">Payload Mass (kg)</label>
           <input
+            id="cost-payload"
             type="number"
             value={payload}
             onChange={(e) => setPayload(parseFloat(e.target.value))}
@@ -31,8 +32,9 @@ const CostCalculator = () => {
           />
         </div>
         <div>
-          <label className="block text-sm mb-1 text-gray-300">Cost per kg ($)</label>
+          <label htmlFor="cost-rate" className="block text-sm mb-1 text-gray-300">Cost per kg ($)</label>
           <input
+            id="cost-rate"
             type="number"
             value={costPerKg}
             onChange={(e) => setCostPerKg(parseFloat(e.target.value))}

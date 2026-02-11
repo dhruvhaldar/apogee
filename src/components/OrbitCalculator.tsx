@@ -24,8 +24,9 @@ const OrbitCalculator = () => {
     <CalculatorCard title="Orbital Mechanics" description="Determine orbital velocity and period for a given altitude (e.g., LEO, GEO). Key for mission planning.">
       <div className="space-y-3">
         <div>
-          <label className="block text-sm mb-1 text-gray-300">Altitude (km)</label>
+          <label htmlFor="orbit-altitude" className="block text-sm mb-1 text-gray-300">Altitude (km)</label>
           <input
+            id="orbit-altitude"
             type="number"
             value={altitude}
             onChange={(e) => setAltitude(parseFloat(e.target.value))}
