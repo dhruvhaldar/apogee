@@ -22,8 +22,9 @@ const SolarPanelCalculator = () => {
     <CalculatorCard title="Power Systems" description="Determine solar panel area based on power requirements and efficiency. Crucial for space stations.">
       <div className="space-y-3">
         <div>
-          <label className="block text-sm mb-1 text-gray-300">Required Power (Watts)</label>
+          <label htmlFor="solar-power" className="block text-sm mb-1 text-gray-300">Required Power (Watts)</label>
           <input
+            id="solar-power"
             type="number"
             value={power}
             onChange={(e) => setPower(parseFloat(e.target.value))}
@@ -31,8 +32,9 @@ const SolarPanelCalculator = () => {
           />
         </div>
         <div>
-          <label className="block text-sm mb-1 text-gray-300">Efficiency (0.0 - 1.0)</label>
+          <label htmlFor="solar-efficiency" className="block text-sm mb-1 text-gray-300">Efficiency (0.0 - 1.0)</label>
           <input
+            id="solar-efficiency"
             type="number"
             step="0.01"
             value={efficiency}
