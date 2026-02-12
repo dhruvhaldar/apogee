@@ -40,17 +40,20 @@ const RocketCalculator = () => {
           <input
             id="rocket-isp"
             type="number"
+            min="0"
             value={isp}
             onChange={(e) => setIsp(parseFloat(e.target.value))}
             className="w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-cyan-500 transition"
             aria-label="Specific Impulse in seconds"
           />
+          <p className="text-xs text-gray-400 mt-1">Solid: ~250s, Liquid: ~450s, Nuclear: ~900s</p>
         </div>
         <div>
           <label htmlFor="rocket-m0" className="block text-sm mb-1 text-gray-300">Initial Mass (m0, kg)</label>
           <input
             id="rocket-m0"
             type="number"
+            min="0"
             value={m0}
             onChange={(e) => setM0(parseFloat(e.target.value))}
             className="w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-cyan-500 transition"
@@ -62,6 +65,7 @@ const RocketCalculator = () => {
           <input
             id="rocket-mf"
             type="number"
+            min="0"
             value={mf}
             onChange={(e) => setMf(parseFloat(e.target.value))}
             className="w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-cyan-500 transition"
