@@ -69,6 +69,10 @@ interface Consumables {
  * @returns Consumables breakdown in kg
  */
 export function calculateConsumables(crewSize: number, durationDays: number): Consumables {
+  if (crewSize < 0 || durationDays < 0) {
+    throw new Error("Crew size and duration must be non-negative");
+  }
+
   const OXYGEN_PER_PERSON_DAY = 0.84;
   const WATER_PER_PERSON_DAY = 3.5;
   const FOOD_PER_PERSON_DAY = 1.8;
@@ -93,6 +97,9 @@ export function calculateConsumables(crewSize: number, durationDays: number): Co
  * @returns Total estimated cost in USD
  */
 export function calculateMissionCost(payloadMass: number, costPerKg: number): number {
+  if (payloadMass < 0 || costPerKg < 0) {
+    throw new Error("Payload mass and cost must be non-negative");
+  }
   return payloadMass * costPerKg;
 }
 
@@ -105,6 +112,9 @@ export function calculateMissionCost(payloadMass: number, costPerKg: number): nu
 export function calculateSolarPanelArea(powerWatts: number, efficiency: number): number {
   if (efficiency <= 0 || efficiency > 1) {
     throw new Error("Efficiency must be between 0 and 1");
+  }
+  if (powerWatts < 0) {
+    throw new Error("Power requirements must be non-negative");
   }
   // Power = Area * Efficiency * SolarConstant
   // Area = Power / (Efficiency * SolarConstant)

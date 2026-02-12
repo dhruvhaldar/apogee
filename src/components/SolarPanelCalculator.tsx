@@ -8,19 +8,32 @@ const SolarPanelCalculator = () => {
   const [power, setPower] = useState<number>(10000);
   const [efficiency, setEfficiency] = useState<number>(0.25);
   const [area, setArea] = useState<number | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
     try {
       const result = calculateSolarPanelArea(power, efficiency);
       setArea(result);
     } catch (e) {
       console.error(e);
+      if (e instanceof Error) {
+        setError(e.message);
+      } else {
+        setError('An error occurred during calculation');
+      }
+      setArea(null);
     }
   };
 
   return (
     <CalculatorCard title="Power Systems" description="Determine solar panel area based on power requirements and efficiency. Crucial for space stations.">
       <div className="space-y-3">
+        {error && (
+          <div role="alert" className="p-3 bg-red-900/50 border border-red-500/50 rounded text-red-200 text-sm">
+            {error}
+          </div>
+        )}
         <div>
           <label htmlFor="solar-power" className="block text-sm mb-1 text-gray-300">Required Power (Watts)</label>
           <input

@@ -60,12 +60,22 @@ describe('Spaceflight Physics Calculations', () => {
       expect(consumables.food).toBeCloseTo(54);
       expect(consumables.total).toBeCloseTo(184.2);
     });
+
+    test('Throws error for negative crew size or duration', () => {
+      expect(() => calculateConsumables(-1, 10)).toThrow('Crew size and duration must be non-negative');
+      expect(() => calculateConsumables(3, -5)).toThrow('Crew size and duration must be non-negative');
+    });
   });
 
   describe('calculateMissionCost', () => {
     test('Calculates cost for Falcon 9 launch', () => {
       const cost = calculateMissionCost(1000, 2700);
       expect(cost).toBe(2700000);
+    });
+
+    test('Throws error for negative payload or cost', () => {
+      expect(() => calculateMissionCost(-100, 2700)).toThrow('Payload mass and cost must be non-negative');
+      expect(() => calculateMissionCost(1000, -100)).toThrow('Payload mass and cost must be non-negative');
     });
   });
 
@@ -74,6 +84,10 @@ describe('Spaceflight Physics Calculations', () => {
       // 10000 W / (0.2 * 1361) = 36.73 m^2
       const area = calculateSolarPanelArea(10000, 0.2);
       expect(area).toBeCloseTo(36.73, 1);
+    });
+
+    test('Throws error for negative power', () => {
+      expect(() => calculateSolarPanelArea(-100, 0.2)).toThrow('Power requirements must be non-negative');
     });
   });
 });
