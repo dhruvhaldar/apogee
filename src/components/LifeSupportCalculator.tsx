@@ -8,19 +8,32 @@ const LifeSupportCalculator = () => {
   const [crew, setCrew] = useState<number>(3);
   const [days, setDays] = useState<number>(10);
   const [consumables, setConsumables] = useState<{ oxygen: number; water: number; food: number; total: number } | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
     try {
       const result = calculateConsumables(crew, days);
       setConsumables(result);
     } catch (e) {
       console.error(e);
+      if (e instanceof Error) {
+        setError(e.message);
+      } else {
+        setError('An error occurred during calculation');
+      }
+      setConsumables(null);
     }
   };
 
   return (
     <CalculatorCard title="Life Support" description="Estimate consumables (Oxygen, Water, Food) required for a mission. Critical for medical and logistical planning.">
       <div className="space-y-3">
+        {error && (
+          <div role="alert" className="p-3 bg-red-900/50 border border-red-500/50 rounded text-red-200 text-sm">
+            {error}
+          </div>
+        )}
         <div>
           <label htmlFor="ls-crew" className="block text-sm mb-1 text-gray-300">Crew Size</label>
           <input

@@ -8,19 +8,32 @@ const CostCalculator = () => {
   const [payload, setPayload] = useState<number>(1000);
   const [costPerKg, setCostPerKg] = useState<number>(2700);
   const [totalCost, setTotalCost] = useState<number | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleCalculate = () => {
+    setError(null);
     try {
       const result = calculateMissionCost(payload, costPerKg);
       setTotalCost(result);
     } catch (e) {
       console.error(e);
+      if (e instanceof Error) {
+        setError(e.message);
+      } else {
+        setError('An error occurred during calculation');
+      }
+      setTotalCost(null);
     }
   };
 
   return (
     <CalculatorCard title="Mission Cost" description="Estimate launch cost based on payload mass and vehicle rates. Covers economic and political perspectives.">
       <div className="space-y-3">
+        {error && (
+          <div role="alert" className="p-3 bg-red-900/50 border border-red-500/50 rounded text-red-200 text-sm">
+            {error}
+          </div>
+        )}
         <div>
           <label htmlFor="cost-payload" className="block text-sm mb-1 text-gray-300">Payload Mass (kg)</label>
           <input
