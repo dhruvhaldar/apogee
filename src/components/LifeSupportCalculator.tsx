@@ -26,16 +26,19 @@ const LifeSupportCalculator = () => {
           <input
             id="ls-crew"
             type="number"
+            min="1"
             value={crew}
             onChange={(e) => setCrew(parseInt(e.target.value))}
             className="w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-green-500 transition"
           />
+          <p className="text-xs text-gray-400 mt-1">ISS Typical: 7</p>
         </div>
         <div>
           <label htmlFor="ls-days" className="block text-sm mb-1 text-gray-300">Duration (days)</label>
           <input
             id="ls-days"
             type="number"
+            min="1"
             value={days}
             onChange={(e) => setDays(parseInt(e.target.value))}
             className="w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-green-500 transition"
