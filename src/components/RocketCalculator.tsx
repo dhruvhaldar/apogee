@@ -43,10 +43,11 @@ const RocketCalculator = () => {
             min="0"
             value={isp}
             onChange={(e) => setIsp(parseFloat(e.target.value))}
-            className="w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-cyan-500 transition"
+            className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-cyan-500 transition"
             aria-label="Specific Impulse in seconds"
+            aria-describedby="rocket-isp-hint"
           />
-          <p className="text-xs text-gray-400 mt-1">Solid: ~250s, Liquid: ~450s, Nuclear: ~900s</p>
+          <p id="rocket-isp-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-cyan-400 transition-colors">Solid: ~250s, Liquid: ~450s, Nuclear: ~900s</p>
         </div>
         <div>
           <label htmlFor="rocket-m0" className="block text-sm mb-1 text-gray-300">Initial Mass (m0, kg)</label>

@@ -52,9 +52,10 @@ const SolarPanelCalculator = () => {
             step="0.01"
             value={efficiency}
             onChange={(e) => setEfficiency(parseFloat(e.target.value))}
-            className="w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-red-500 transition"
+            className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-red-500 transition"
+            aria-describedby="solar-efficiency-hint"
           />
-          <p className="text-xs text-gray-400 mt-1">Typical: 0.2 - 0.3</p>
+          <p id="solar-efficiency-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-red-400 transition-colors">Typical: 0.2 - 0.3</p>
         </div>
         <button
           onClick={handleCalculate}

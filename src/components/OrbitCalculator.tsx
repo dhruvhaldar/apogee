@@ -45,9 +45,10 @@ const OrbitCalculator = () => {
             min="0"
             value={altitude}
             onChange={(e) => setAltitude(parseFloat(e.target.value))}
-            className="w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-purple-500 transition"
+            className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-purple-500 transition"
+            aria-describedby="orbit-altitude-hint"
           />
-          <p className="text-xs text-gray-400 mt-1">LEO: ~400km, GPS: ~20200km, GEO: 35786km</p>
+          <p id="orbit-altitude-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-purple-400 transition-colors">LEO: ~400km, GPS: ~20200km, GEO: 35786km</p>
         </div>
         <button
           onClick={handleCalculate}
