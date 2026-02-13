@@ -8,6 +8,17 @@ export const STANDARD_GRAVITY = 9.80665; // m/s^2
 export const SOLAR_CONSTANT = 1361; // W/m^2 (at 1 AU)
 
 /**
+ * Validates that a value is a finite, non-negative number.
+ * @param value The value to check.
+ * @param name The name of the parameter for error reporting.
+ */
+function validateFinite(value: number, name: string): void {
+  if (!Number.isFinite(value) || value < 0) {
+    throw new Error(`${name} must be a valid non-negative number`);
+  }
+}
+
+/**
  * Calculates Delta-V using the Tsiolkovsky rocket equation.
  * @param isp Specific Impulse in seconds (s)
  * @param massInitial Initial mass of the rocket (kg)
@@ -15,7 +26,11 @@ export const SOLAR_CONSTANT = 1361; // W/m^2 (at 1 AU)
  * @returns Delta-V in m/s
  */
 export function calculateDeltaV(isp: number, massInitial: number, massFinal: number): number {
-  if (massFinal <= 0 || massInitial <= 0 || massFinal > massInitial) {
+  validateFinite(isp, "Specific Impulse");
+  validateFinite(massInitial, "Initial Mass");
+  validateFinite(massFinal, "Final Mass");
+
+  if (massInitial === 0 || massFinal === 0 || massFinal > massInitial) {
     throw new Error("Invalid mass parameters");
   }
   // deltaV = Isp * g0 * ln(m0 / mf)
@@ -28,9 +43,7 @@ export function calculateDeltaV(isp: number, massInitial: number, massFinal: num
  * @returns Orbital velocity in km/s
  */
 export function calculateOrbitalVelocity(altitude: number): number {
-  if (altitude < 0) {
-    throw new Error("Altitude must be non-negative");
-  }
+  validateFinite(altitude, "Altitude");
   const r = EARTH_RADIUS + (altitude * 1000); // Convert km to m
   const v = Math.sqrt((G * EARTH_MASS) / r);
   return v / 1000; // Convert m/s to km/s
@@ -42,9 +55,7 @@ export function calculateOrbitalVelocity(altitude: number): number {
  * @returns Orbital period in minutes
  */
 export function calculateOrbitalPeriod(altitude: number): number {
-  if (altitude < 0) {
-    throw new Error("Altitude must be non-negative");
-  }
+  validateFinite(altitude, "Altitude");
   const r = EARTH_RADIUS + (altitude * 1000); // Convert km to m
   // T = 2 * pi * sqrt(r^3 / GM)
   const periodSeconds = 2 * Math.PI * Math.sqrt(Math.pow(r, 3) / (G * EARTH_MASS));
@@ -69,9 +80,8 @@ interface Consumables {
  * @returns Consumables breakdown in kg
  */
 export function calculateConsumables(crewSize: number, durationDays: number): Consumables {
-  if (crewSize < 0 || durationDays < 0) {
-    throw new Error("Crew size and duration must be non-negative");
-  }
+  validateFinite(crewSize, "Crew size");
+  validateFinite(durationDays, "Duration");
 
   const OXYGEN_PER_PERSON_DAY = 0.84;
   const WATER_PER_PERSON_DAY = 3.5;
@@ -97,9 +107,8 @@ export function calculateConsumables(crewSize: number, durationDays: number): Co
  * @returns Total estimated cost in USD
  */
 export function calculateMissionCost(payloadMass: number, costPerKg: number): number {
-  if (payloadMass < 0 || costPerKg < 0) {
-    throw new Error("Payload mass and cost must be non-negative");
-  }
+  validateFinite(payloadMass, "Payload mass");
+  validateFinite(costPerKg, "Cost per kg");
   return payloadMass * costPerKg;
 }
 
@@ -110,11 +119,11 @@ export function calculateMissionCost(payloadMass: number, costPerKg: number): nu
  * @returns Area in square meters
  */
 export function calculateSolarPanelArea(powerWatts: number, efficiency: number): number {
-  if (efficiency <= 0 || efficiency > 1) {
+  validateFinite(powerWatts, "Power requirements");
+  validateFinite(efficiency, "Efficiency");
+
+  if (efficiency === 0 || efficiency > 1) {
     throw new Error("Efficiency must be between 0 and 1");
-  }
-  if (powerWatts < 0) {
-    throw new Error("Power requirements must be non-negative");
   }
   // Power = Area * Efficiency * SolarConstant
   // Area = Power / (Efficiency * SolarConstant)
