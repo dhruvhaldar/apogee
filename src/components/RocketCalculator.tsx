@@ -22,7 +22,11 @@ const RocketCalculator = () => {
       setResult(dv);
     } catch (e) {
       console.error(e);
-      setError('An error occurred during calculation');
+      if (e instanceof Error) {
+        setError(e.message);
+      } else {
+        setError('An error occurred during calculation');
+      }
       setResult(null);
     }
   };
