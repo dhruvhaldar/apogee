@@ -5,3 +5,7 @@
 ## 2025-02-11 - Tailwind Arbitrary Values & Turbopack
 **Learning:** Tailwind arbitrary values with URLs (e.g., `bg-[url('/...')]`) can cause module resolution errors with Turbopack.
 **Action:** Use inline styles for background images when using Turbopack or if you encounter build errors.
+
+## 2025-02-12 - Form State Isolation
+**Learning:** Calculators wrapped in components with expensive CSS (e.g., `backdrop-blur`) re-render unnecessarily on every keystroke if state is not isolated.
+**Action:** Extract form state into a child component to prevent parent/wrapper re-renders.
