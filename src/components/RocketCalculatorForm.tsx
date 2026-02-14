@@ -20,7 +20,7 @@ const RocketCalculatorForm = () => {
       const dv = calculateDeltaV(isp, m0, mf);
       setResult(dv);
     } catch (e) {
-      console.error(e);
+      // Security: Avoid leaking stack traces to the console
       if (e instanceof Error) {
         setError(e.message);
       } else {

@@ -16,7 +16,7 @@ const LifeSupportCalculator = () => {
       const result = calculateConsumables(crew, days);
       setConsumables(result);
     } catch (e) {
-      console.error(e);
+      // Security: Avoid leaking stack traces to the console
       if (e instanceof Error) {
         setError(e.message);
       } else {

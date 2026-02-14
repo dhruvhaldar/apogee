@@ -7,3 +7,8 @@
 **Vulnerability:** Input validation logic was duplicated and inconsistent across utility functions, and failed to handle `NaN` or `Infinity`, leading to fragile calculations.
 **Learning:** Checking only for `< 0` is insufficient for robust numeric input handling; non-finite numbers must be explicitly rejected to prevent `NaN` propagation.
 **Prevention:** Use a centralized helper function (e.g., `validateFinite`) to enforce consistent, strict validation rules (finite, non-negative) across all calculation utilities.
+
+## 2026-02-23 - Stack Trace Leakage in Error Handling
+**Vulnerability:** Catch blocks in calculator components were logging full error objects to the console using `console.error(e)`, exposing stack traces in production builds.
+**Learning:** While debugging is important, exposing internal implementation details via stack traces in the browser console can aid attackers in reconnaissance.
+**Prevention:** Remove `console.error(e)` calls in production code or wrap them in environment checks. Rely on user-friendly error messages in the UI instead of console logs.

@@ -16,7 +16,7 @@ const CostCalculator = () => {
       const result = calculateMissionCost(payload, costPerKg);
       setTotalCost(result);
     } catch (e) {
-      console.error(e);
+      // Security: Avoid leaking stack traces to the console
       if (e instanceof Error) {
         setError(e.message);
       } else {
