@@ -42,9 +42,10 @@ const LifeSupportCalculator = () => {
             min="1"
             value={crew}
             onChange={(e) => setCrew(parseInt(e.target.value))}
-            className="w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-green-500 transition"
+            className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-green-500 transition"
+            aria-describedby="ls-crew-hint"
           />
-          <p className="text-xs text-gray-400 mt-1">ISS Typical: 7</p>
+          <p id="ls-crew-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-green-400 transition-colors">ISS Typical: 7</p>
         </div>
         <div>
           <label htmlFor="ls-days" className="block text-sm mb-1 text-gray-300">Duration (days)</label>
@@ -54,8 +55,10 @@ const LifeSupportCalculator = () => {
             min="1"
             value={days}
             onChange={(e) => setDays(parseInt(e.target.value))}
-            className="w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-green-500 transition"
+            className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-green-500 transition"
+            aria-describedby="ls-days-hint"
           />
+          <p id="ls-days-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-green-400 transition-colors">Short: ~7d, ISS: ~180d, Mars: ~500d</p>
         </div>
         <button
           onClick={handleCalculate}
