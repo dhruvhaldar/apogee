@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { calculateDeltaV } from '../utils/spaceflight';
+import { logError, getErrorMessage } from '../utils/logger';
 
 const RocketCalculatorForm = () => {
   const [isp, setIsp] = useState<number>(300);
@@ -20,12 +21,8 @@ const RocketCalculatorForm = () => {
       const dv = calculateDeltaV(isp, m0, mf);
       setResult(dv);
     } catch (e) {
-      console.error(e);
-      if (e instanceof Error) {
-        setError(e.message);
-      } else {
-        setError('An error occurred during calculation');
-      }
+      logError(e, 'RocketCalculatorForm');
+      setError(getErrorMessage(e));
       setResult(null);
     }
   };
