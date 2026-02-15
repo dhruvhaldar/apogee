@@ -9,3 +9,7 @@
 ## 2025-02-12 - Form State Isolation
 **Learning:** Calculators wrapped in components with expensive CSS (e.g., `backdrop-blur`) re-render unnecessarily on every keystroke if state is not isolated.
 **Action:** Extract form state into a child component to prevent parent/wrapper re-renders.
+
+## 2025-02-12 - Optimized Background Images with Next/Image
+**Learning:** Using `next/image` with `fill`, `priority`, and absolute positioning is superior to CSS background images for LCP assets. It provides automatic format optimization (WebP/AVIF) and resizing, while avoiding Turbopack issues with Tailwind arbitrary values.
+**Action:** Replace large CSS background images with `<Image fill priority />` components where semantic HTML permits.
