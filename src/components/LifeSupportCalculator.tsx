@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import CalculatorCard from './CalculatorCard';
 import { calculateConsumables } from '../utils/spaceflight';
+import { logError, getErrorMessage } from '../utils/logger';
 
 const LifeSupportCalculator = () => {
   const [crew, setCrew] = useState<number>(3);
@@ -16,12 +17,8 @@ const LifeSupportCalculator = () => {
       const result = calculateConsumables(crew, days);
       setConsumables(result);
     } catch (e) {
-      console.error(e);
-      if (e instanceof Error) {
-        setError(e.message);
-      } else {
-        setError('An error occurred during calculation');
-      }
+      logError(e, 'LifeSupportCalculator');
+      setError(getErrorMessage(e));
       setConsumables(null);
     }
   };

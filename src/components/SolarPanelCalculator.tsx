@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import CalculatorCard from './CalculatorCard';
 import { calculateSolarPanelArea } from '../utils/spaceflight';
+import { logError, getErrorMessage } from '../utils/logger';
 
 const SolarPanelCalculator = () => {
   const [power, setPower] = useState<number>(10000);
@@ -16,12 +17,8 @@ const SolarPanelCalculator = () => {
       const result = calculateSolarPanelArea(power, efficiency);
       setArea(result);
     } catch (e) {
-      console.error(e);
-      if (e instanceof Error) {
-        setError(e.message);
-      } else {
-        setError('An error occurred during calculation');
-      }
+      logError(e, 'SolarPanelCalculator');
+      setError(getErrorMessage(e));
       setArea(null);
     }
   };

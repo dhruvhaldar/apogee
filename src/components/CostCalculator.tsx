@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import CalculatorCard from './CalculatorCard';
 import { calculateMissionCost } from '../utils/spaceflight';
+import { logError, getErrorMessage } from '../utils/logger';
 
 const CostCalculator = () => {
   const [payload, setPayload] = useState<number>(1000);
@@ -16,12 +17,8 @@ const CostCalculator = () => {
       const result = calculateMissionCost(payload, costPerKg);
       setTotalCost(result);
     } catch (e) {
-      console.error(e);
-      if (e instanceof Error) {
-        setError(e.message);
-      } else {
-        setError('An error occurred during calculation');
-      }
+      logError(e, 'CostCalculator');
+      setError(getErrorMessage(e));
       setTotalCost(null);
     }
   };

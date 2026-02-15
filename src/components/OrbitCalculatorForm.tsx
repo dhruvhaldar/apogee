@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { calculateOrbitalVelocity, calculateOrbitalPeriod } from '../utils/spaceflight';
+import { logError, getErrorMessage } from '../utils/logger';
 
 const OrbitCalculatorForm = () => {
   const [altitude, setAltitude] = useState<number>(400);
@@ -17,12 +18,8 @@ const OrbitCalculatorForm = () => {
       setVelocity(v);
       setPeriod(p);
     } catch (e) {
-      console.error(e);
-      if (e instanceof Error) {
-        setError(e.message);
-      } else {
-        setError('An error occurred during calculation');
-      }
+      logError(e, 'OrbitCalculatorForm');
+      setError(getErrorMessage(e));
       setVelocity(null);
       setPeriod(null);
     }
