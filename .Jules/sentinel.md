@@ -12,3 +12,8 @@
 **Vulnerability:** Calculator components were catching exceptions and logging raw error objects using `console.error(e)`. This can expose stack traces and internal implementation details in the browser console.
 **Learning:** Error handling logic was duplicated across components, making it hard to enforce security best practices. Relying on default console logging in production is a security bad practice (Information Exposure).
 **Prevention:** Created a centralized `logError` utility in `src/utils/logger.ts` that suppresses raw error objects in production environments, logging only the error message. Refactored all components to use this utility.
+
+## 2026-03-05 - DoS Prevention via Strict Input Validation
+**Vulnerability:** Calculator inputs lacked length limits and proper state handling for decimals, exposing the application to potential Denial of Service (DoS) via massive string processing and causing UX issues.
+**Learning:** Using `number` type for React state in controlled inputs makes it impossible to represent intermediate valid states (like "12.") and complicates length validation. Defense-in-depth requires validating input *before* state updates.
+**Prevention:** Implemented a centralized `validateNumericInput` utility with strict length limits (15 chars) and regex pattern matching. Refactored components to use `string` state for precise control and validation.
