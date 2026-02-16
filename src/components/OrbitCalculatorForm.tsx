@@ -3,9 +3,11 @@
 import React, { useState } from 'react';
 import { calculateOrbitalVelocity, calculateOrbitalPeriod } from '../utils/spaceflight';
 import { logError, getErrorMessage } from '../utils/logger';
+import { validateNumericInput } from '../utils/validation';
 
 const OrbitCalculatorForm = () => {
-  const [altitude, setAltitude] = useState<number>(400);
+  // Use string state to allow proper decimal input handling and strict validation
+  const [altitude, setAltitude] = useState<string>("400");
   const [velocity, setVelocity] = useState<number | null>(null);
   const [period, setPeriod] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -13,8 +15,12 @@ const OrbitCalculatorForm = () => {
   const handleCalculate = () => {
     setError(null);
     try {
-      const v = calculateOrbitalVelocity(altitude);
-      const p = calculateOrbitalPeriod(altitude);
+      const altNum = parseFloat(altitude);
+      if (isNaN(altNum)) {
+        throw new Error("Please enter a valid altitude");
+      }
+      const v = calculateOrbitalVelocity(altNum);
+      const p = calculateOrbitalPeriod(altNum);
       setVelocity(v);
       setPeriod(p);
     } catch (e) {
@@ -22,6 +28,14 @@ const OrbitCalculatorForm = () => {
       setError(getErrorMessage(e));
       setVelocity(null);
       setPeriod(null);
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    // Validate length and pattern (prevent DoS and invalid chars)
+    if (validateNumericInput(val)) {
+      setAltitude(val);
     }
   };
 
@@ -39,7 +53,7 @@ const OrbitCalculatorForm = () => {
           type="number"
           min="0"
           value={altitude}
-          onChange={(e) => setAltitude(parseFloat(e.target.value))}
+          onChange={handleInputChange}
           className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-purple-500 transition"
           aria-describedby="orbit-altitude-hint"
         />
