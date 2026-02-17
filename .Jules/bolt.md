@@ -9,3 +9,7 @@
 ## 2025-02-12 - Form State Isolation
 **Learning:** Calculators wrapped in components with expensive CSS (e.g., `backdrop-blur`) re-render unnecessarily on every keystroke if state is not isolated.
 **Action:** Extract form state into a child component to prevent parent/wrapper re-renders.
+
+## 2025-02-12 - Form State Isolation (Solar Panel Calculator)
+**Learning:** Extracting form state from `SolarPanelCalculator` to `SolarPanelCalculatorForm` successfully isolated re-renders, preventing the expensive `backdrop-blur` container from repainting on every keystroke.
+**Action:** Always check for stateful inputs inside expensive UI wrappers and extract them to dedicated client components.
