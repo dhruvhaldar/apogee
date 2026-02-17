@@ -47,4 +47,17 @@ test.describe('Apogee Calculator App', () => {
     // Expect total ~184.2 kg
     await expect(page.locator('text=184.2')).toBeVisible();
   });
+
+  test('Solar Panel Calculator works', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByRole('heading', { name: 'Power Systems' })).toBeVisible();
+
+    // Default (10000 Watts, 0.25 Efficiency)
+    // Click Calculate Area
+    const button = page.getByRole('button', { name: 'Calculate Area' });
+    await button.click();
+
+    // Expect area ~29.39 m²
+    await expect(page.locator('text=29.39')).toBeVisible();
+  });
 });
