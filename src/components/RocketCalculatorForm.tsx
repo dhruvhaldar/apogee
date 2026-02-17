@@ -3,27 +3,43 @@
 import React, { useState } from 'react';
 import { calculateDeltaV } from '../utils/spaceflight';
 import { logError, getErrorMessage } from '../utils/logger';
+import { validateNumericInput } from '../utils/validation';
 
 const RocketCalculatorForm = () => {
-  const [isp, setIsp] = useState<number>(300);
-  const [m0, setM0] = useState<number>(1000);
-  const [mf, setMf] = useState<number>(100);
+  const [isp, setIsp] = useState<string>('300');
+  const [m0, setM0] = useState<string>('1000');
+  const [mf, setMf] = useState<string>('100');
   const [result, setResult] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const handleCalculate = () => {
     setError(null);
     try {
-      if (m0 <= mf) {
+      const ispNum = parseFloat(isp);
+      const m0Num = parseFloat(m0);
+      const mfNum = parseFloat(mf);
+
+      if (isNaN(ispNum) || isNaN(m0Num) || isNaN(mfNum)) {
+        throw new Error('Please enter valid numeric values');
+      }
+
+      if (m0Num <= mfNum) {
         setError('Initial mass must be greater than final mass');
         return;
       }
-      const dv = calculateDeltaV(isp, m0, mf);
+      const dv = calculateDeltaV(ispNum, m0Num, mfNum);
       setResult(dv);
     } catch (e) {
       logError(e, 'RocketCalculatorForm');
       setError(getErrorMessage(e));
       setResult(null);
+    }
+  };
+
+  const handleInputChange = (setter: React.Dispatch<React.SetStateAction<string>>) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    if (validateNumericInput(val)) {
+      setter(val);
     }
   };
 
@@ -41,7 +57,7 @@ const RocketCalculatorForm = () => {
           type="number"
           min="0"
           value={isp}
-          onChange={(e) => setIsp(parseFloat(e.target.value))}
+          onChange={handleInputChange(setIsp)}
           className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-cyan-500 transition"
           aria-label="Specific Impulse in seconds"
           aria-describedby="rocket-isp-hint"
@@ -55,7 +71,7 @@ const RocketCalculatorForm = () => {
           type="number"
           min="0"
           value={m0}
-          onChange={(e) => setM0(parseFloat(e.target.value))}
+          onChange={handleInputChange(setM0)}
           className="w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-cyan-500 transition"
           aria-label="Initial Mass in kilograms"
         />
@@ -67,7 +83,7 @@ const RocketCalculatorForm = () => {
           type="number"
           min="0"
           value={mf}
-          onChange={(e) => setMf(parseFloat(e.target.value))}
+          onChange={handleInputChange(setMf)}
           className="w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-cyan-500 transition"
           aria-label="Final Mass in kilograms"
         />
