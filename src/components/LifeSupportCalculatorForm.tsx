@@ -3,24 +3,39 @@
 import React, { useState } from 'react';
 import { calculateConsumables } from '../utils/spaceflight';
 import { logError, getErrorMessage } from '../utils/logger';
+import { validateNumericInput } from '../utils/validation';
 
 // Client Component to handle form state and calculations
 // Isolated to prevent re-renders of the parent CalculatorCard
 const LifeSupportCalculatorForm = () => {
-  const [crew, setCrew] = useState<number>(3);
-  const [days, setDays] = useState<number>(10);
+  const [crew, setCrew] = useState<string>('3');
+  const [days, setDays] = useState<string>('10');
   const [consumables, setConsumables] = useState<{ oxygen: number; water: number; food: number; total: number } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const handleCalculate = () => {
     setError(null);
     try {
-      const result = calculateConsumables(crew, days);
+      const crewNum = parseInt(crew);
+      const daysNum = parseInt(days);
+
+      if (isNaN(crewNum) || isNaN(daysNum)) {
+        throw new Error('Please enter valid numeric values');
+      }
+
+      const result = calculateConsumables(crewNum, daysNum);
       setConsumables(result);
     } catch (e) {
       logError(e, 'LifeSupportCalculator');
       setError(getErrorMessage(e));
       setConsumables(null);
+    }
+  };
+
+  const handleInputChange = (setter: React.Dispatch<React.SetStateAction<string>>) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    if (validateNumericInput(val)) {
+      setter(val);
     }
   };
 
@@ -38,7 +53,7 @@ const LifeSupportCalculatorForm = () => {
           type="number"
           min="1"
           value={crew}
-          onChange={(e) => setCrew(parseInt(e.target.value))}
+          onChange={handleInputChange(setCrew)}
           className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-green-500 transition"
           aria-describedby="ls-crew-hint"
         />
@@ -51,7 +66,7 @@ const LifeSupportCalculatorForm = () => {
           type="number"
           min="1"
           value={days}
-          onChange={(e) => setDays(parseInt(e.target.value))}
+          onChange={handleInputChange(setDays)}
           className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-green-500 transition"
           aria-describedby="ls-days-hint"
         />
