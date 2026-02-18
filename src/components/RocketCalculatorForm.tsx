@@ -36,6 +36,11 @@ const RocketCalculatorForm = () => {
     }
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleCalculate();
+  };
+
   const handleInputChange = (setter: React.Dispatch<React.SetStateAction<string>>) => (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
     if (validateNumericInput(val)) {
@@ -44,7 +49,7 @@ const RocketCalculatorForm = () => {
   };
 
   return (
-    <div className="space-y-3">
+    <form onSubmit={handleSubmit} className="space-y-3">
       {error && (
         <div role="alert" className="p-3 bg-red-900/50 border border-red-500/50 rounded text-red-200 text-sm">
           {error}
@@ -72,9 +77,11 @@ const RocketCalculatorForm = () => {
           min="0"
           value={m0}
           onChange={handleInputChange(setM0)}
-          className="w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-cyan-500 transition"
+          className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-cyan-500 transition"
           aria-label="Initial Mass in kilograms"
+          aria-describedby="rocket-m0-hint"
         />
+        <p id="rocket-m0-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-cyan-400 transition-colors">Total mass at liftoff (e.g. 1000kg)</p>
       </div>
       <div>
         <label htmlFor="rocket-mf" className="block text-sm mb-1 text-gray-300">Final Mass (mf, kg)</label>
@@ -84,12 +91,14 @@ const RocketCalculatorForm = () => {
           min="0"
           value={mf}
           onChange={handleInputChange(setMf)}
-          className="w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-cyan-500 transition"
+          className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-cyan-500 transition"
           aria-label="Final Mass in kilograms"
+          aria-describedby="rocket-mf-hint"
         />
+        <p id="rocket-mf-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-cyan-400 transition-colors">Mass after fuel burn (e.g. 100kg)</p>
       </div>
       <button
-        onClick={handleCalculate}
+        type="submit"
         className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-2 px-4 rounded transition shadow-lg transform active:scale-95"
       >
         Calculate Delta-V
@@ -101,7 +110,7 @@ const RocketCalculatorForm = () => {
           </p>
         </div>
       )}
-    </div>
+    </form>
   );
 };
 

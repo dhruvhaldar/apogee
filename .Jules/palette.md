@@ -9,3 +9,7 @@
 ## 2025-05-24 - [A11y] Helper Text Association
 **Learning:** Technical inputs often have helper text (ranges, examples) that is visually close but programmatically disconnected. Screen reader users miss this crucial context.
 **Action:** Use `aria-describedby` to link inputs to their helper text, and use `peer-focus` to visually highlight the help text when the user is focused on the input.
+
+## 2026-02-18 - [UX/A11y] Native Form Behavior
+**Learning:** Calculator components implemented as `div` wrappers miss out on native browser behaviors like "Enter to submit". This forces users to switch from keyboard to mouse unnecessarily.
+**Action:** Always wrap input groups in a semantic `<form>` element with an `onSubmit` handler, even for client-side calculations, to enable natural keyboard workflows.
