@@ -13,3 +13,7 @@
 ## 2025-02-12 - Form State Isolation (Solar Panel Calculator)
 **Learning:** Extracting form state from `SolarPanelCalculator` to `SolarPanelCalculatorForm` successfully isolated re-renders, preventing the expensive `backdrop-blur` container from repainting on every keystroke.
 **Action:** Always check for stateful inputs inside expensive UI wrappers and extract them to dedicated client components.
+
+## 2025-02-12 - Jest Node Environment Limitation
+**Learning:** Jest is configured with `testEnvironment: 'node'`, preventing unit testing of React components (DOM access).
+**Action:** Use Playwright for component testing or update Jest config to use `jsdom` if unit tests are required.
