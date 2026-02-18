@@ -22,3 +22,8 @@
 **Vulnerability:** Several calculator forms (`RocketCalculatorForm`, `LifeSupportCalculatorForm`) bypassed the centralized input validation logic, leaving them vulnerable to DoS and invalid state issues despite the existence of security controls.
 **Learning:** The existence of a security utility (`validateNumericInput`) does not guarantee its usage. Legacy or inconsistent code can leave security gaps.
 **Prevention:** Audited and refactored all calculator components to enforce the strict `validateNumericInput` pattern, ensuring consistent protection across the application.
+
+## 2026-03-08 - Consistent Input Validation in CostCalculator
+**Vulnerability:** The `CostCalculator` component used `number` state directly and lacked length limits, bypassing the established security pattern and exposing it to DoS via long inputs and poor UX for decimals.
+**Learning:** Inconsistent application of security patterns across components leaves gaps. Even simple components like `CostCalculator` must adhere to strict validation rules (string state, length limits) to prevent edge cases and potential abuse.
+**Prevention:** Refactored `CostCalculator` to use `CostCalculatorForm` with `validateNumericInput` and string state, aligning it with the rest of the application's security posture.
