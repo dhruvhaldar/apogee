@@ -60,4 +60,17 @@ test.describe('Apogee Calculator App', () => {
     // Expect area ~29.39 m²
     await expect(page.locator('text=29.39')).toBeVisible();
   });
+
+  test('Mission Cost Calculator works', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByRole('heading', { name: 'Mission Cost' })).toBeVisible();
+
+    // Default (1000 kg, 2700 $/kg)
+    // Click Calculate Cost
+    const button = page.getByRole('button', { name: 'Calculate Cost' });
+    await button.click();
+
+    // Expect cost to be displayed: 2,700,000
+    await expect(page.locator('text=2,700,000')).toBeVisible();
+  });
 });
