@@ -12,7 +12,8 @@ const RocketCalculatorForm = () => {
   const [result, setResult] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const handleCalculate = () => {
+  const handleCalculate = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     setError(null);
     try {
       const ispNum = parseFloat(isp);
@@ -44,7 +45,7 @@ const RocketCalculatorForm = () => {
   };
 
   return (
-    <div className="space-y-3">
+    <form onSubmit={handleCalculate} className="space-y-3">
       {error && (
         <div role="alert" className="p-3 bg-red-900/50 border border-red-500/50 rounded text-red-200 text-sm">
           {error}
@@ -89,7 +90,7 @@ const RocketCalculatorForm = () => {
         />
       </div>
       <button
-        onClick={handleCalculate}
+        type="submit"
         className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold py-2 px-4 rounded transition shadow-lg transform active:scale-95"
       >
         Calculate Delta-V
@@ -101,7 +102,7 @@ const RocketCalculatorForm = () => {
           </p>
         </div>
       )}
-    </div>
+    </form>
   );
 };
 

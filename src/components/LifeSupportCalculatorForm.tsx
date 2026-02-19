@@ -13,7 +13,8 @@ const LifeSupportCalculatorForm = () => {
   const [consumables, setConsumables] = useState<{ oxygen: number; water: number; food: number; total: number } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const handleCalculate = () => {
+  const handleCalculate = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     setError(null);
     try {
       const crewNum = parseInt(crew);
@@ -40,7 +41,7 @@ const LifeSupportCalculatorForm = () => {
   };
 
   return (
-    <div className="space-y-3">
+    <form onSubmit={handleCalculate} className="space-y-3">
       {error && (
         <div role="alert" className="p-3 bg-red-900/50 border border-red-500/50 rounded text-red-200 text-sm">
           {error}
@@ -73,7 +74,7 @@ const LifeSupportCalculatorForm = () => {
         <p id="ls-days-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-green-400 transition-colors">Short: ~7d, ISS: ~180d, Mars: ~500d</p>
       </div>
       <button
-        onClick={handleCalculate}
+        type="submit"
         className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white font-bold py-2 px-4 rounded transition shadow-lg transform active:scale-95"
       >
         Calculate Needs
@@ -88,7 +89,7 @@ const LifeSupportCalculatorForm = () => {
           </div>
         </div>
       )}
-    </div>
+    </form>
   );
 };
 
