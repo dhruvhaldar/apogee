@@ -3,6 +3,7 @@
 
 export const G = 6.67430e-11; // m^3 kg^-1 s^-2
 export const EARTH_MASS = 5.972e24; // kg
+export const EARTH_GM = G * EARTH_MASS; // m^3 s^-2 (Standard Gravitational Parameter)
 export const EARTH_RADIUS = 6371000; // m
 export const STANDARD_GRAVITY = 9.80665; // m/s^2
 export const SOLAR_CONSTANT = 1361; // W/m^2 (at 1 AU)
@@ -45,7 +46,8 @@ export function calculateDeltaV(isp: number, massInitial: number, massFinal: num
 export function calculateOrbitalVelocity(altitude: number): number {
   validateFinite(altitude, "Altitude");
   const r = EARTH_RADIUS + (altitude * 1000); // Convert km to m
-  const v = Math.sqrt((G * EARTH_MASS) / r);
+  // v = sqrt(GM / r)
+  const v = Math.sqrt(EARTH_GM / r);
   return v / 1000; // Convert m/s to km/s
 }
 
@@ -58,7 +60,7 @@ export function calculateOrbitalPeriod(altitude: number): number {
   validateFinite(altitude, "Altitude");
   const r = EARTH_RADIUS + (altitude * 1000); // Convert km to m
   // T = 2 * pi * sqrt(r^3 / GM)
-  const periodSeconds = 2 * Math.PI * Math.sqrt(Math.pow(r, 3) / (G * EARTH_MASS));
+  const periodSeconds = 2 * Math.PI * Math.sqrt(Math.pow(r, 3) / EARTH_GM);
   return periodSeconds / 60; // Convert seconds to minutes
 }
 
@@ -87,9 +89,10 @@ export function calculateConsumables(crewSize: number, durationDays: number): Co
   const WATER_PER_PERSON_DAY = 3.5;
   const FOOD_PER_PERSON_DAY = 1.8;
 
-  const oxygen = crewSize * durationDays * OXYGEN_PER_PERSON_DAY;
-  const water = crewSize * durationDays * WATER_PER_PERSON_DAY;
-  const food = crewSize * durationDays * FOOD_PER_PERSON_DAY;
+  const personDays = crewSize * durationDays;
+  const oxygen = personDays * OXYGEN_PER_PERSON_DAY;
+  const water = personDays * WATER_PER_PERSON_DAY;
+  const food = personDays * FOOD_PER_PERSON_DAY;
 
   return {
     oxygen,
