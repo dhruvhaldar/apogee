@@ -7,6 +7,22 @@ test.describe('Apogee Calculator App', () => {
     await expect(page.locator('h1')).toContainText('APOGEE');
   });
 
+  test('Rocket Calculator inputs have helper text', async ({ page }) => {
+    await page.goto('/');
+
+    // Verify Initial Mass (m0)
+    const m0Input = page.locator('#rocket-m0');
+    await expect(m0Input).toBeVisible();
+    await expect(m0Input).toHaveAttribute('aria-describedby', 'rocket-m0-hint');
+    await expect(page.locator('#rocket-m0-hint')).toHaveText('e.g., Falcon 9: ~549,000kg, Saturn V: ~2,970,000kg');
+
+    // Verify Final Mass (mf)
+    const mfInput = page.locator('#rocket-mf');
+    await expect(mfInput).toBeVisible();
+    await expect(mfInput).toHaveAttribute('aria-describedby', 'rocket-mf-hint');
+    await expect(page.locator('#rocket-mf-hint')).toHaveText('Dry mass + payload (e.g., ~25,000kg)');
+  });
+
   test('Rocket Calculator works', async ({ page }) => {
     await page.goto('/');
     // Check if component is visible by heading
