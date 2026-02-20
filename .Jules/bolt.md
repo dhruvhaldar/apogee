@@ -17,3 +17,7 @@
 ## 2025-02-12 - Jest Node Environment Limitation
 **Learning:** Jest is configured with `testEnvironment: 'node'`, preventing unit testing of React components (DOM access).
 **Action:** Use Playwright for component testing or update Jest config to use `jsdom` if unit tests are required.
+
+## 2025-02-20 - Server Components for Wrappers
+**Learning:** Wrapper components (like `RocketCalculator`) that only render structure and static text should not be Client Components (`'use client'`). Converting them to Server Components reduces the JS bundle size and hydration cost, as their static content is sent as HTML.
+**Action:** Audit component tree to remove unnecessary `'use client'` directives from parents that don't use hooks or event handlers.
