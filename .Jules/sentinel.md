@@ -22,3 +22,8 @@
 **Vulnerability:** Several calculator forms (`RocketCalculatorForm`, `LifeSupportCalculatorForm`) bypassed the centralized input validation logic, leaving them vulnerable to DoS and invalid state issues despite the existence of security controls.
 **Learning:** The existence of a security utility (`validateNumericInput`) does not guarantee its usage. Legacy or inconsistent code can leave security gaps.
 **Prevention:** Audited and refactored all calculator components to enforce the strict `validateNumericInput` pattern, ensuring consistent protection across the application.
+
+## 2026-03-07 - Solar Panel Calculator Input Validation Gap
+**Vulnerability:** `SolarPanelCalculatorForm` was using `number` state directly and bypassing the `validateNumericInput` utility, creating a gap in DoS protection and input validation consistency compared to other calculators.
+**Learning:** Inconsistent application of security patterns (like input validation) creates weak points. All similar components must adhere to the established security posture.
+**Prevention:** Refactored `SolarPanelCalculatorForm` to use `string` state and the centralized `validateNumericInput` utility, ensuring length limits and pattern matching are enforced. Added `step="any"` for better floating-point support.

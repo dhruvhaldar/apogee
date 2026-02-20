@@ -3,22 +3,37 @@
 import React, { useState } from 'react';
 import { calculateSolarPanelArea } from '../utils/spaceflight';
 import { logError, getErrorMessage } from '../utils/logger';
+import { validateNumericInput } from '../utils/validation';
 
 const SolarPanelCalculatorForm = () => {
-  const [power, setPower] = useState<number>(10000);
-  const [efficiency, setEfficiency] = useState<number>(0.25);
+  const [power, setPower] = useState<string>("10000");
+  const [efficiency, setEfficiency] = useState<string>("0.25");
   const [area, setArea] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const handleCalculate = () => {
     setError(null);
     try {
-      const result = calculateSolarPanelArea(power, efficiency);
+      const powerNum = parseFloat(power);
+      const efficiencyNum = parseFloat(efficiency);
+
+      if (isNaN(powerNum) || isNaN(efficiencyNum)) {
+        throw new Error('Please enter valid numeric values');
+      }
+
+      const result = calculateSolarPanelArea(powerNum, efficiencyNum);
       setArea(result);
     } catch (e) {
       logError(e, 'SolarPanelCalculator');
       setError(getErrorMessage(e));
       setArea(null);
+    }
+  };
+
+  const handleInputChange = (setter: React.Dispatch<React.SetStateAction<string>>) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    if (validateNumericInput(val)) {
+      setter(val);
     }
   };
 
@@ -34,9 +49,10 @@ const SolarPanelCalculatorForm = () => {
         <input
           id="solar-power"
           type="number"
+          min="0"
           value={power}
-          onChange={(e) => setPower(parseFloat(e.target.value))}
-          className="w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-red-500 transition"
+          onChange={handleInputChange(setPower)}
+          className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-red-500 transition"
         />
       </div>
       <div>
@@ -44,9 +60,11 @@ const SolarPanelCalculatorForm = () => {
         <input
           id="solar-efficiency"
           type="number"
-          step="0.01"
+          min="0"
+          max="1"
+          step="any"
           value={efficiency}
-          onChange={(e) => setEfficiency(parseFloat(e.target.value))}
+          onChange={handleInputChange(setEfficiency)}
           className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-red-500 transition"
           aria-describedby="solar-efficiency-hint"
         />
