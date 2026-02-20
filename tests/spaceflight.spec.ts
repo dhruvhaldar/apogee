@@ -21,6 +21,17 @@ test.describe('Apogee Calculator App', () => {
     await expect(page.locator('text=6774.19')).toBeVisible();
   });
 
+  test('Rocket Calculator submits on Enter', async ({ page }) => {
+    await page.goto('/');
+
+    // Use default values (300, 1000, 100)
+    // Press Enter in one of the fields
+    await page.getByLabel(/Final Mass/i).press('Enter');
+
+    // Expect result ~6774.19 (same as the button click test)
+    await expect(page.locator('text=6774.19')).toBeVisible();
+  });
+
   test('Orbit Calculator works', async ({ page }) => {
     await page.goto('/');
     await expect(page.getByRole('heading', { name: 'Orbital Mechanics' })).toBeVisible();

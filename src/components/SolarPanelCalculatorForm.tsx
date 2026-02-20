@@ -11,7 +11,8 @@ const SolarPanelCalculatorForm = () => {
   const [area, setArea] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const handleCalculate = () => {
+  const handleCalculate = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     setError(null);
     try {
       const powerNum = parseFloat(power);
@@ -38,7 +39,7 @@ const SolarPanelCalculatorForm = () => {
   };
 
   return (
-    <div className="space-y-3">
+    <form onSubmit={handleCalculate} className="space-y-3">
       {error && (
         <div role="alert" className="p-3 bg-red-900/50 border border-red-500/50 rounded text-red-200 text-sm">
           {error}
@@ -71,7 +72,7 @@ const SolarPanelCalculatorForm = () => {
         <p id="solar-efficiency-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-red-400 transition-colors">Typical: 0.2 - 0.3</p>
       </div>
       <button
-        onClick={handleCalculate}
+        type="submit"
         className="w-full bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold py-2 px-4 rounded transition shadow-lg transform active:scale-95"
       >
         Calculate Area
@@ -83,7 +84,7 @@ const SolarPanelCalculatorForm = () => {
           </p>
         </div>
       )}
-    </div>
+    </form>
   );
 };
 
