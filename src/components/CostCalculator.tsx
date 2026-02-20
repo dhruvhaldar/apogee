@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import CalculatorCard from './CalculatorCard';
 import CostCalculatorForm from './CostCalculatorForm';
