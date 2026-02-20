@@ -27,3 +27,8 @@
 **Vulnerability:** `SolarPanelCalculatorForm` was using `number` state directly and bypassing the `validateNumericInput` utility, creating a gap in DoS protection and input validation consistency compared to other calculators.
 **Learning:** Inconsistent application of security patterns (like input validation) creates weak points. All similar components must adhere to the established security posture.
 **Prevention:** Refactored `SolarPanelCalculatorForm` to use `string` state and the centralized `validateNumericInput` utility, ensuring length limits and pattern matching are enforced. Added `step="any"` for better floating-point support.
+
+## 2026-10-25 - Strict Content Security and Permissions Policy
+**Vulnerability:** Default Next.js configuration and lenient CSP (allowing `unsafe-eval`) along with a permissive Permissions Policy exposed the application to increased XSS risk and feature abuse potential.
+**Learning:** Next.js 16 production builds are compatible with a stricter CSP (removing `unsafe-eval`), allowing for significant security hardening without breaking core functionality.
+**Prevention:** Enforced strict CSP, comprehensive `Permissions-Policy`, and disabled `X-Powered-By` in `next.config.ts` to minimize the attack surface and prevent unauthorized feature usage.
