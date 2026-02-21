@@ -9,7 +9,8 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'X-DNS-Prefetch-Control',
-            value: 'on'
+            // Disable DNS prefetching to protect user privacy (prevent leaking visited domains via DNS queries)
+            value: 'off'
           },
           {
             key: 'Strict-Transport-Security',
