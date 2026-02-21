@@ -3,6 +3,11 @@
 **Learning:** Even in purely client-side calculators, missing input validation can lead to data integrity issues and confusing UX. It violates the principle of "validate all inputs".
 **Prevention:** Implement strict input validation at the lowest level (utility functions) to ensure data integrity, and update UI components to handle these validation errors gracefully.
 
+## 2026-02-21 - DNS Prefetching Privacy Leak
+**Vulnerability:** Default `X-DNS-Prefetch-Control: on` allows browsers to proactively resolve domains found in page content, potentially leaking browsing behavior and internal domain structures via DNS queries without user interaction.
+**Learning:** Privacy is a component of security. Default configurations often prioritize performance over privacy. Explicitly disabling features that leak metadata is a key defense-in-depth strategy.
+**Prevention:** Explicitly set `X-DNS-Prefetch-Control: off` in `next.config.ts` to disable speculative DNS resolution.
+
 ## 2026-02-23 - Centralized Validation Helper Pattern
 **Vulnerability:** Input validation logic was duplicated and inconsistent across utility functions, and failed to handle `NaN` or `Infinity`, leading to fragile calculations.
 **Learning:** Checking only for `< 0` is insufficient for robust numeric input handling; non-finite numbers must be explicitly rejected to prevent `NaN` propagation.
