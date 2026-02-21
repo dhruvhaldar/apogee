@@ -1,0 +1,29 @@
+
+> apogee@0.1.0 dev /app
+> next dev
+
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+
+✓ Starting...
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+✓ Ready in 1094ms
+ GET / 200 in 3.6s (compile: 3.3s, render: 321ms)
+ GET / 200 in 91ms (compile: 6ms, render: 85ms)
+ GET / 200 in 90ms (compile: 6ms, render: 84ms)
+ GET / 200 in 71ms (compile: 4ms, render: 67ms)
+ GET / 200 in 187ms (compile: 8ms, render: 179ms)
+ GET / 200 in 73ms (compile: 4ms, render: 68ms)
+ GET / 200 in 64ms (compile: 4ms, render: 60ms)
+ GET / 200 in 101ms (compile: 4ms, render: 97ms)
+ GET / 200 in 146ms (compile: 10ms, render: 136ms)
+ GET / 200 in 126ms (compile: 6ms, render: 120ms)
+ GET / 200 in 161ms (compile: 3ms, render: 158ms)
+ GET / 200 in 66ms (compile: 5ms, render: 61ms)
+ GET / 200 in 58ms (compile: 3ms, render: 56ms)
+ GET / 200 in 100ms (compile: 3ms, render: 98ms)
