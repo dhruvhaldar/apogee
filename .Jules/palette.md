@@ -13,3 +13,7 @@
 ## 2025-05-24 - [UX] Keyboard Submission for Calculators
 **Learning:** Users expect to submit forms by pressing "Enter", especially in calculator-like interfaces where speed matters. Relying solely on `onClick` handlers breaks this expectation.
 **Action:** Always wrap inputs and submit buttons in a semantic `<form>` element with an `onSubmit` handler to enable native keyboard submission.
+
+## 2025-05-25 - [UX] Consistent Contextual Guidance
+**Learning:** Inconsistent application of helper text (present in some calculators, missing in others like Solar Panel) creates a disjointed experience. Users rely on these "cheat sheets" for unfamiliar metrics like Watts.
+**Action:** Audit all similar input fields across the application to ensure consistent presence of helper text with typical values, reinforced by `aria-describedby`.

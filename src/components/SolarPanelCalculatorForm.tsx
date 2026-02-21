@@ -51,10 +51,13 @@ const SolarPanelCalculatorForm = () => {
           id="solar-power"
           type="number"
           min="0"
+          step="any"
           value={power}
           onChange={handleInputChange(setPower)}
           className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-red-500 transition"
+          aria-describedby="solar-power-hint"
         />
+        <p id="solar-power-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-red-400 transition-colors">CubeSat: ~1-10W, GPS: ~1000W, ISS: ~100,000W</p>
       </div>
       <div>
         <label htmlFor="solar-efficiency" className="block text-sm mb-1 text-gray-300">Efficiency (0.0 - 1.0)</label>
