@@ -37,3 +37,8 @@
 **Vulnerability:** Default Next.js configuration and lenient CSP (allowing `unsafe-eval`) along with a permissive Permissions Policy exposed the application to increased XSS risk and feature abuse potential.
 **Learning:** Next.js 16 production builds are compatible with a stricter CSP (removing `unsafe-eval`), allowing for significant security hardening without breaking core functionality.
 **Prevention:** Enforced strict CSP, comprehensive `Permissions-Policy`, and disabled `X-Powered-By` in `next.config.ts` to minimize the attack surface and prevent unauthorized feature usage.
+
+## 2026-10-27 - Verification Gap in Security Headers
+**Vulnerability:** The existing automated test (`tests/header.spec.ts`) only verified a single security header (`X-DNS-Prefetch-Control`), leaving critical headers like CSP, HSTS, and X-Frame-Options unverified and prone to silent regression.
+**Learning:** Security controls without comprehensive verification are fragile. A passing test suite can mask significant security gaps if the tests themselves are incomplete.
+**Prevention:** Enhanced the security header test suite to verify the presence and correct values of ALL configured security headers, ensuring regression testing for the entire security posture. Added `Cross-Origin-Opener-Policy` and `Cross-Origin-Resource-Policy` for improved isolation.
