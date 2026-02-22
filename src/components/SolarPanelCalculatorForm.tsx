@@ -81,7 +81,7 @@ const SolarPanelCalculatorForm = () => {
         Calculate Area
       </button>
       {area !== null && (
-        <div className="mt-4 p-4 bg-red-900/30 rounded border border-red-500/30 backdrop-blur-sm">
+        <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-red-900/30 rounded border border-red-500/30 backdrop-blur-sm">
           <p className="text-center font-mono text-xl">
             <span className="text-red-300 font-bold">{area.toFixed(2)}</span> m²
           </p>

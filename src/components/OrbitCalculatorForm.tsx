@@ -67,7 +67,7 @@ const OrbitCalculatorForm = () => {
         Calculate Orbit
       </button>
       {velocity !== null && period !== null && (
-        <div className="mt-4 p-4 bg-purple-900/30 rounded border border-purple-500/30 backdrop-blur-sm space-y-2">
+        <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-purple-900/30 rounded border border-purple-500/30 backdrop-blur-sm space-y-2">
           <p className="font-mono text-lg">
             Velocity: <span className="text-purple-300 font-bold">{velocity.toFixed(3)}</span> km/s
           </p>
