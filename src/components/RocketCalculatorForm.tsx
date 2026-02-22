@@ -100,7 +100,7 @@ const RocketCalculatorForm = () => {
         Calculate Delta-V
       </button>
       {result !== null && (
-        <div className="mt-4 p-4 bg-cyan-900/30 rounded border border-cyan-500/30 backdrop-blur-sm">
+        <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-cyan-900/30 rounded border border-cyan-500/30 backdrop-blur-sm">
           <p className="text-center font-mono text-xl">
             ΔV = <span className="text-cyan-300 font-bold">{result.toFixed(2)}</span> m/s
           </p>

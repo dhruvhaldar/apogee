@@ -17,3 +17,7 @@
 ## 2025-05-25 - [UX] Consistent Contextual Guidance
 **Learning:** Inconsistent application of helper text (present in some calculators, missing in others like Solar Panel) creates a disjointed experience. Users rely on these "cheat sheets" for unfamiliar metrics like Watts.
 **Action:** Audit all similar input fields across the application to ensure consistent presence of helper text with typical values, reinforced by `aria-describedby`.
+
+## 2025-05-26 - [A11y] Dynamic Result Announcements
+**Learning:** Calculator results that appear dynamically without page reload are invisible to screen readers unless explicitly announced.
+**Action:** Wrap result containers in `aria-live="polite"` and `aria-atomic="true"` to ensure users are notified when a calculation completes.

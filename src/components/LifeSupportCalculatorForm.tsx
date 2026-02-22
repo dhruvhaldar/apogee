@@ -80,7 +80,7 @@ const LifeSupportCalculatorForm = () => {
         Calculate Needs
       </button>
       {consumables && (
-        <div className="mt-4 p-4 bg-green-900/30 rounded border border-green-500/30 backdrop-blur-sm text-sm space-y-1">
+        <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-green-900/30 rounded border border-green-500/30 backdrop-blur-sm text-sm space-y-1">
           <p>Oxygen: <span className="text-green-300 font-bold">{consumables.oxygen.toFixed(1)}</span> kg</p>
           <p>Water: <span className="text-green-300 font-bold">{consumables.water.toFixed(1)}</span> kg</p>
           <p>Food: <span className="text-green-300 font-bold">{consumables.food.toFixed(1)}</span> kg</p>
