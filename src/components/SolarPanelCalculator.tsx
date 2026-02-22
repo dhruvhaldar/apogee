@@ -1,6 +1,12 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import CalculatorCard from './CalculatorCard';
-import SolarPanelCalculatorForm from './SolarPanelCalculatorForm';
+import FormSkeleton from './FormSkeleton';
+
+const SolarPanelCalculatorForm = dynamic(() => import('./SolarPanelCalculatorForm'), {
+  loading: () => <FormSkeleton />,
+  ssr: true
+});
 
 const SolarPanelCalculator = () => {
   // Optimization: State is isolated in SolarPanelCalculatorForm (Client Component)

@@ -25,3 +25,7 @@
 ## 2025-02-21 - Mathematical Constant Precomputation
 **Learning:** Precomputing constants (e.g., `sqrt(GM)`) and simplifying algebraic expressions in hot paths (replacing `pow(r, 3)` with `r * sqrt(r)`) yielded an 84% performance improvement in orbital period calculations.
 **Action:** Review utility functions for repeated constant calculations and algebraic simplifications, especially in physics formulas.
+
+## 2025-02-22 - Code Splitting via Dynamic Imports in Server Components
+**Learning:** Using `next/dynamic` to import Client Components into Server Components allows splitting the client-side bundle. This is particularly effective for components initially "below the fold" or secondary to the main user journey, even when `ssr: true` is used (preserving SEO/HTML content).
+**Action:** Audit "below the fold" interactive components and use `dynamic` imports with a skeleton fallback to reduce the initial JavaScript bundle size.
