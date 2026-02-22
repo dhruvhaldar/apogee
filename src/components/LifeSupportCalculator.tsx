@@ -1,6 +1,12 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import CalculatorCard from './CalculatorCard';
-import LifeSupportCalculatorForm from './LifeSupportCalculatorForm';
+import FormSkeleton from './FormSkeleton';
+
+const LifeSupportCalculatorForm = dynamic(() => import('./LifeSupportCalculatorForm'), {
+  loading: () => <FormSkeleton />,
+  ssr: true
+});
 
 const LifeSupportCalculator = () => {
   // Optimization: State is isolated in LifeSupportCalculatorForm (Client Component)

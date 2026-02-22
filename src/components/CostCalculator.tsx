@@ -1,6 +1,12 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import CalculatorCard from './CalculatorCard';
-import CostCalculatorForm from './CostCalculatorForm';
+import FormSkeleton from './FormSkeleton';
+
+const CostCalculatorForm = dynamic(() => import('./CostCalculatorForm'), {
+  loading: () => <FormSkeleton />,
+  ssr: true
+});
 
 const CostCalculator = () => {
   return (
