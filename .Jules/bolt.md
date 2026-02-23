@@ -29,3 +29,7 @@
 ## 2025-02-22 - Code Splitting via Dynamic Imports in Server Components
 **Learning:** Using `next/dynamic` to import Client Components into Server Components allows splitting the client-side bundle. This is particularly effective for components initially "below the fold" or secondary to the main user journey, even when `ssr: true` is used (preserving SEO/HTML content).
 **Action:** Audit "below the fold" interactive components and use `dynamic` imports with a skeleton fallback to reduce the initial JavaScript bundle size.
+
+## 2025-02-23 - Prioritized Code Splitting
+**Learning:** Even components visible "above the fold" on large screens (like secondary calculators in a grid) benefit from dynamic imports if they are not the primary LCP element. This reduces the main bundle size and prioritizes hydration of the most critical interactive element.
+**Action:** Audit component tree for secondary interactive elements and apply `next/dynamic` with `ssr: true` and skeleton loading states.

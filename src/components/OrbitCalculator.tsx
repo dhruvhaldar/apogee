@@ -1,9 +1,16 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import CalculatorCard from './CalculatorCard';
-import OrbitCalculatorForm from './OrbitCalculatorForm';
+import FormSkeleton from './FormSkeleton';
+
+const OrbitCalculatorForm = dynamic(() => import('./OrbitCalculatorForm'), {
+  loading: () => <FormSkeleton />,
+  ssr: true
+});
 
 const OrbitCalculator = () => {
-  // State is now isolated in OrbitCalculatorForm to prevent CalculatorCard re-renders
+  // State is isolated in OrbitCalculatorForm to prevent CalculatorCard re-renders
+  // Dynamic import reduces initial bundle size for this secondary component
   return (
     <CalculatorCard title="Orbital Mechanics" description="Determine orbital velocity and period for a given altitude (e.g., LEO, GEO). Key for mission planning.">
       <OrbitCalculatorForm />
