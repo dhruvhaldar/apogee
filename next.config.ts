@@ -31,7 +31,7 @@ const nextConfig: NextConfig = {
           {
             key: 'Content-Security-Policy',
             // Refined CSP: removed 'unsafe-eval' from script-src
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://www.transparenttextures.com; font-src 'self' data:; connect-src 'self';"
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://www.transparenttextures.com; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;"
           },
           {
             key: 'Permissions-Policy',
