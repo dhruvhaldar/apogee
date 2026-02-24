@@ -31,12 +31,12 @@ const nextConfig: NextConfig = {
           {
             key: 'Content-Security-Policy',
             // Refined CSP: removed 'unsafe-eval' from script-src
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://www.transparenttextures.com; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;"
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;"
           },
           {
             key: 'Permissions-Policy',
             // Comprehensive list of disabled features for defense-in-depth
-            value: 'camera=(), microphone=(), geolocation=(), browsing-topics=(), autoplay=(), clipboard-read=(), clipboard-write=(), payment=(), usb=(), magnetometer=(), accelerometer=(), gyroscope=(), screen-wake-lock=()'
+            value: 'camera=(), microphone=(), geolocation=(), browsing-topics=(), autoplay=(), clipboard-read=(), clipboard-write=(), payment=(), usb=(), magnetometer=(), accelerometer=(), gyroscope=(), screen-wake-lock=(), display-capture=(), web-share=(), serial=(), hid=(), idle-detection=()'
           },
           {
             key: 'X-Permitted-Cross-Domain-Policies',
