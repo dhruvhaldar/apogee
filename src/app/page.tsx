@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import RocketCalculator from '@/components/RocketCalculator';
 import OrbitCalculator from '@/components/OrbitCalculator';
 import LifeSupportCalculator from '@/components/LifeSupportCalculator';
@@ -12,12 +13,16 @@ export default function Home() {
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900 via-[#0B0B1A] to-black"></div>
       {/*
         Performance Optimization: Hosting static assets locally improves load time and reliability.
-        Using inline style for background image to avoid Turbopack module resolution issues with Tailwind arbitrary values.
+        Using next/image for automatic optimization (WebP/AVIF, resizing) and to avoid layout shifts.
       */}
-      <div
-        className="absolute inset-0 z-0 opacity-30"
-        style={{ backgroundImage: "url('/patterns/stardust.png')" }}
-      ></div>
+      <Image
+        src="/patterns/stardust.png"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover z-0 opacity-30"
+      />
       
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto">
