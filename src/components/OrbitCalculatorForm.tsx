@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { calculateOrbitalVelocity, calculateOrbitalPeriod } from '../utils/spaceflight';
 import { logError, getErrorMessage } from '../utils/logger';
 import { validateNumericInput } from '../utils/validation';
+import CopyButton from './CopyButton';
 
 const OrbitCalculatorForm = () => {
   // Use string state to allow proper decimal input handling and strict validation
@@ -67,13 +68,20 @@ const OrbitCalculatorForm = () => {
         Calculate Orbit
       </button>
       {velocity !== null && period !== null && (
-        <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-purple-900/30 rounded border border-purple-500/30 backdrop-blur-sm space-y-2">
+        <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-purple-900/30 rounded border border-purple-500/30 backdrop-blur-sm space-y-2 relative group">
           <p className="font-mono text-lg">
             Velocity: <span className="text-purple-300 font-bold">{velocity.toFixed(3)}</span> km/s
           </p>
           <p className="font-mono text-lg">
             Period: <span className="text-purple-300 font-bold">{period.toFixed(1)}</span> min
           </p>
+          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity focus-within:opacity-100">
+            <CopyButton
+              textToCopy={`Velocity: ${velocity.toFixed(3)} km/s, Period: ${period.toFixed(1)} min`}
+              label="Copy orbital parameters"
+              className="text-purple-400 hover:text-purple-200 focus:ring-purple-400"
+            />
+          </div>
         </div>
       )}
     </form>

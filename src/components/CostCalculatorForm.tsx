@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { calculateMissionCost } from '../utils/spaceflight';
 import { logError, getErrorMessage } from '../utils/logger';
 import { validateNumericInput } from '../utils/validation';
+import CopyButton from './CopyButton';
 
 const CostCalculatorForm = () => {
   const [payload, setPayload] = useState<string>("1000");
@@ -88,10 +89,17 @@ const CostCalculatorForm = () => {
         Calculate Cost
       </button>
       {totalCost !== null && (
-        <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-yellow-900/30 rounded border border-yellow-500/30 backdrop-blur-sm">
+        <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-yellow-900/30 rounded border border-yellow-500/30 backdrop-blur-sm relative group">
           <p className="text-center font-mono text-xl">
             <span className="text-yellow-300 font-bold">${totalCost.toLocaleString()}</span>
           </p>
+          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity focus-within:opacity-100">
+            <CopyButton
+              textToCopy={`$${totalCost.toLocaleString()}`}
+              label="Copy mission cost"
+              className="text-yellow-400 hover:text-yellow-200 focus:ring-yellow-400"
+            />
+          </div>
         </div>
       )}
     </form>

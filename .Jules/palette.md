@@ -21,3 +21,7 @@
 ## 2025-05-26 - [A11y] Dynamic Result Announcements
 **Learning:** Calculator results that appear dynamically without page reload are invisible to screen readers unless explicitly announced.
 **Action:** Wrap result containers in `aria-live="polite"` and `aria-atomic="true"` to ensure users are notified when a calculation completes.
+
+## 2025-05-27 - [UX] Reusable Copy Result Pattern
+**Learning:** In data-heavy applications (like mission planning), users frequently need to transfer calculation results to other tools. Manually selecting and copying text is error-prone and tedious.
+**Action:** Implement a reusable `CopyButton` component for all result displays, providing immediate visual feedback (checkmark) and accessible announcements to streamline the workflow.

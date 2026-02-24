@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { calculateSolarPanelArea } from '../utils/spaceflight';
 import { logError, getErrorMessage } from '../utils/logger';
 import { validateNumericInput } from '../utils/validation';
+import CopyButton from './CopyButton';
 
 const SolarPanelCalculatorForm = () => {
   const [power, setPower] = useState<string>("10000");
@@ -81,10 +82,17 @@ const SolarPanelCalculatorForm = () => {
         Calculate Area
       </button>
       {area !== null && (
-        <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-red-900/30 rounded border border-red-500/30 backdrop-blur-sm">
+        <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-red-900/30 rounded border border-red-500/30 backdrop-blur-sm relative group">
           <p className="text-center font-mono text-xl">
             <span className="text-red-300 font-bold">{area.toFixed(2)}</span> m²
           </p>
+          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity focus-within:opacity-100">
+            <CopyButton
+              textToCopy={`${area.toFixed(2)} m²`}
+              label="Copy solar panel area"
+              className="text-red-400 hover:text-red-200 focus:ring-red-400"
+            />
+          </div>
         </div>
       )}
     </form>

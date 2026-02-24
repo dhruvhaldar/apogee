@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { calculateDeltaV } from '../utils/spaceflight';
 import { logError, getErrorMessage } from '../utils/logger';
 import { validateNumericInput } from '../utils/validation';
+import CopyButton from './CopyButton';
 
 const RocketCalculatorForm = () => {
   const [isp, setIsp] = useState<string>('300');
@@ -100,10 +101,17 @@ const RocketCalculatorForm = () => {
         Calculate Delta-V
       </button>
       {result !== null && (
-        <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-cyan-900/30 rounded border border-cyan-500/30 backdrop-blur-sm">
+        <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-cyan-900/30 rounded border border-cyan-500/30 backdrop-blur-sm relative group">
           <p className="text-center font-mono text-xl">
             ΔV = <span className="text-cyan-300 font-bold">{result.toFixed(2)}</span> m/s
           </p>
+          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity focus-within:opacity-100">
+            <CopyButton
+              textToCopy={`${result.toFixed(2)} m/s`}
+              label="Copy Delta-V result"
+              className="text-cyan-400 hover:text-cyan-200 focus:ring-cyan-400"
+            />
+          </div>
         </div>
       )}
     </form>
