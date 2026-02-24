@@ -12,6 +12,11 @@ test('verify security headers', async ({ page }) => {
   expect(headers['x-content-type-options']).toBe('nosniff');
   expect(headers['referrer-policy']).toBe('strict-origin-when-cross-origin');
   expect(headers['content-security-policy']).toContain("default-src 'self'");
+  expect(headers['content-security-policy']).toContain("object-src 'none'");
+  expect(headers['content-security-policy']).toContain("base-uri 'self'");
+  expect(headers['content-security-policy']).toContain("form-action 'self'");
+  expect(headers['content-security-policy']).toContain("frame-ancestors 'none'");
+  expect(headers['content-security-policy']).toContain("upgrade-insecure-requests");
   expect(headers['permissions-policy']).toContain('camera=()');
   expect(headers['x-permitted-cross-domain-policies']).toBe('none');
 
