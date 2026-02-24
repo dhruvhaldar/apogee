@@ -33,3 +33,7 @@
 ## 2025-02-23 - Prioritized Code Splitting
 **Learning:** Even components visible "above the fold" on large screens (like secondary calculators in a grid) benefit from dynamic imports if they are not the primary LCP element. This reduces the main bundle size and prioritizes hydration of the most critical interactive element.
 **Action:** Audit component tree for secondary interactive elements and apply `next/dynamic` with `ssr: true` and skeleton loading states.
+
+## 2025-02-24 - Optimized Background Images
+**Learning:** Replacing inline CSS background images with `next/image` (using `fill` and `priority`) enables automatic format optimization (WebP/AVIF) and responsive resizing, significantly reducing payload size and improving LCP compared to raw static assets.
+**Action:** Audit CSS `background-image` usage for large assets and replace with `next/image` components where possible.
