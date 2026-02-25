@@ -53,45 +53,60 @@ const RocketCalculatorForm = () => {
         </div>
       )}
       <div>
-        <label htmlFor="rocket-isp" className="block text-sm mb-1 text-gray-300">Specific Impulse (Isp, s)</label>
-        <input
-          id="rocket-isp"
-          type="number"
-          min="0"
-          value={isp}
-          onChange={handleInputChange(setIsp)}
-          className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-cyan-500 transition"
-          aria-label="Specific Impulse in seconds"
-          aria-describedby="rocket-isp-hint"
-        />
+        <label htmlFor="rocket-isp" className="block text-sm mb-1 text-gray-300">Specific Impulse (Isp)</label>
+        <div className="relative">
+          <input
+            id="rocket-isp"
+            type="number"
+            min="0"
+            value={isp}
+            onChange={handleInputChange(setIsp)}
+            className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-8 text-white focus:outline-none focus:border-cyan-500 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            aria-label="Specific Impulse in seconds"
+            aria-describedby="rocket-isp-hint"
+          />
+          <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-cyan-400 transition-colors">
+            s
+          </div>
+        </div>
         <p id="rocket-isp-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-cyan-400 transition-colors">Solid: ~250s, Liquid: ~450s, Nuclear: ~900s</p>
       </div>
       <div>
-        <label htmlFor="rocket-m0" className="block text-sm mb-1 text-gray-300">Initial Mass (m0, kg)</label>
-        <input
-          id="rocket-m0"
-          type="number"
-          min="0"
-          value={m0}
-          onChange={handleInputChange(setM0)}
-          className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-cyan-500 transition"
-          aria-label="Initial Mass in kilograms"
-          aria-describedby="rocket-m0-hint"
-        />
+        <label htmlFor="rocket-m0" className="block text-sm mb-1 text-gray-300">Initial Mass (m0)</label>
+        <div className="relative">
+          <input
+            id="rocket-m0"
+            type="number"
+            min="0"
+            value={m0}
+            onChange={handleInputChange(setM0)}
+            className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text-white focus:outline-none focus:border-cyan-500 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            aria-label="Initial Mass in kilograms"
+            aria-describedby="rocket-m0-hint"
+          />
+          <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-cyan-400 transition-colors">
+            kg
+          </div>
+        </div>
         <p id="rocket-m0-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-cyan-400 transition-colors">e.g., Falcon 9: ~549,000kg, Saturn V: ~2,970,000kg</p>
       </div>
       <div>
-        <label htmlFor="rocket-mf" className="block text-sm mb-1 text-gray-300">Final Mass (mf, kg)</label>
-        <input
-          id="rocket-mf"
-          type="number"
-          min="0"
-          value={mf}
-          onChange={handleInputChange(setMf)}
-          className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-cyan-500 transition"
-          aria-label="Final Mass in kilograms"
-          aria-describedby="rocket-mf-hint"
-        />
+        <label htmlFor="rocket-mf" className="block text-sm mb-1 text-gray-300">Final Mass (mf)</label>
+        <div className="relative">
+          <input
+            id="rocket-mf"
+            type="number"
+            min="0"
+            value={mf}
+            onChange={handleInputChange(setMf)}
+            className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text-white focus:outline-none focus:border-cyan-500 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            aria-label="Final Mass in kilograms"
+            aria-describedby="rocket-mf-hint"
+          />
+          <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-cyan-400 transition-colors">
+            kg
+          </div>
+        </div>
         <p id="rocket-mf-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-cyan-400 transition-colors">Dry mass + payload (e.g., ~25,000kg)</p>
       </div>
       <button

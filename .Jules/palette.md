@@ -25,3 +25,7 @@
 ## 2025-05-27 - [UX] Reusable Copy Result Pattern
 **Learning:** In data-heavy applications (like mission planning), users frequently need to transfer calculation results to other tools. Manually selecting and copying text is error-prone and tedious.
 **Action:** Implement a reusable `CopyButton` component for all result displays, providing immediate visual feedback (checkmark) and accessible announcements to streamline the workflow.
+
+## 2025-05-28 - [UX] Input Unit Suffixes
+**Learning:** Technical inputs with external unit labels (e.g., "Mass (kg)") can be ambiguous or overlooked. Placing units directly inside the input field as a suffix reinforces context and prevents errors.
+**Action:** Use a relative wrapper with an absolute-positioned suffix for units, and hide browser-default spinners to prevent visual clutter and overlap.
