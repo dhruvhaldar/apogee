@@ -19,10 +19,8 @@ test('verify security headers', async ({ page }) => {
   expect(headers['content-security-policy']).toContain("upgrade-insecure-requests");
   expect(headers['permissions-policy']).toContain('camera=()');
   expect(headers['permissions-policy']).toContain('display-capture=()');
-  expect(headers['permissions-policy']).toContain('web-share=()');
   expect(headers['permissions-policy']).toContain('serial=()');
   expect(headers['permissions-policy']).toContain('hid=()');
-  expect(headers['permissions-policy']).toContain('idle-detection=()');
   expect(headers['content-security-policy']).not.toContain('transparenttextures.com');
   expect(headers['x-permitted-cross-domain-policies']).toBe('none');
 

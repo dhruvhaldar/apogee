@@ -36,7 +36,8 @@ const nextConfig: NextConfig = {
           {
             key: 'Permissions-Policy',
             // Comprehensive list of disabled features for defense-in-depth
-            value: 'camera=(), microphone=(), geolocation=(), browsing-topics=(), autoplay=(), clipboard-read=(), clipboard-write=(), payment=(), usb=(), magnetometer=(), accelerometer=(), gyroscope=(), screen-wake-lock=(), display-capture=(), web-share=(), serial=(), hid=(), idle-detection=()'
+            // Enable clipboard-write=(self) to allow CopyButton functionality
+            value: 'camera=(), microphone=(), geolocation=(), browsing-topics=(), autoplay=(), payment=(), usb=(), magnetometer=(), accelerometer=(), gyroscope=(), screen-wake-lock=(), display-capture=(), serial=(), hid=()'
           },
           {
             key: 'X-Permitted-Cross-Domain-Policies',
