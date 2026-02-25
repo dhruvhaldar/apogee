@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { calculateOrbitalVelocity, calculateOrbitalPeriod } from '../utils/spaceflight';
+import { calculateOrbitalStats } from '../utils/spaceflight';
 import { logError, getErrorMessage } from '../utils/logger';
 import { validateNumericInput } from '../utils/validation';
 import CopyButton from './CopyButton';
@@ -21,8 +21,8 @@ const OrbitCalculatorForm = () => {
       if (isNaN(altNum)) {
         throw new Error("Please enter a valid altitude");
       }
-      const v = calculateOrbitalVelocity(altNum);
-      const p = calculateOrbitalPeriod(altNum);
+      // Optimization: Calculate both values in one pass to avoid redundant sqrt() and radius calculations
+      const { velocity: v, period: p } = calculateOrbitalStats(altNum);
       setVelocity(v);
       setPeriod(p);
     } catch (e) {

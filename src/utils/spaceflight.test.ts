@@ -2,6 +2,7 @@ import {
   calculateDeltaV,
   calculateOrbitalVelocity,
   calculateOrbitalPeriod,
+  calculateOrbitalStats,
   calculateConsumables,
   calculateMissionCost,
   calculateSolarPanelArea
@@ -51,6 +52,20 @@ describe('Spaceflight Physics Calculations', () => {
     test('Throws error for negative or invalid altitude', () => {
       expect(() => calculateOrbitalPeriod(-100)).toThrow('Altitude must be a valid non-negative number');
       expect(() => calculateOrbitalPeriod(NaN)).toThrow('Altitude must be a valid non-negative number');
+    });
+  });
+
+  describe('calculateOrbitalStats', () => {
+    test('Calculates both velocity and period for LEO (400km)', () => {
+      const stats = calculateOrbitalStats(400);
+      // Values should match individual function outputs
+      expect(stats.velocity).toBeCloseTo(7.67, 1);
+      expect(stats.period).toBeCloseTo(92.4, 1);
+    });
+
+    test('Throws error for negative or invalid altitude', () => {
+      expect(() => calculateOrbitalStats(-100)).toThrow('Altitude must be a valid non-negative number');
+      expect(() => calculateOrbitalStats(NaN)).toThrow('Altitude must be a valid non-negative number');
     });
   });
 

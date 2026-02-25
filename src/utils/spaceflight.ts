@@ -70,6 +70,29 @@ export function calculateOrbitalPeriod(altitude: number): number {
   return periodSeconds / 60; // Convert seconds to minutes
 }
 
+/**
+ * Calculates both orbital velocity and period for a circular orbit at a given altitude.
+ * Optimization: Shares intermediate calculations (r, sqrt(r)) to avoid redundancy.
+ * @param altitude Altitude above Earth's surface (km)
+ * @returns Object containing velocity (km/s) and period (minutes)
+ */
+export function calculateOrbitalStats(altitude: number): { velocity: number; period: number } {
+  validateFinite(altitude, "Altitude");
+  const r = EARTH_RADIUS + (altitude * 1000); // Convert km to m
+  const sqrtR = Math.sqrt(r);
+
+  // v = sqrt(GM) / sqrt(r)
+  const v = SQRT_EARTH_GM / sqrtR;
+
+  // T = (2*pi/sqrt(GM)) * r * sqrt(r)
+  const periodSeconds = ORBITAL_PERIOD_CONSTANT * r * sqrtR;
+
+  return {
+    velocity: v / 1000, // Convert m/s to km/s
+    period: periodSeconds / 60 // Convert seconds to minutes
+  };
+}
+
 interface Consumables {
   oxygen: number; // kg
   water: number; // kg
