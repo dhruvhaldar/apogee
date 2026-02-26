@@ -13,6 +13,12 @@ export const EARTH_RADIUS = 6371000; // m
 export const STANDARD_GRAVITY = 9.80665; // m/s^2
 export const SOLAR_CONSTANT = 1361; // W/m^2 (at 1 AU)
 
+// Life support constants per person per day (kg)
+// Based on NASA approximate values
+const OXYGEN_PER_PERSON_DAY = 0.84;
+const WATER_PER_PERSON_DAY = 3.5; // drinking + food prep + hygiene - recycling not accounted for here
+const FOOD_PER_PERSON_DAY = 1.8;
+
 /**
  * Validates that a value is a finite, non-negative number.
  * @param value The value to check.
@@ -102,10 +108,7 @@ interface Consumables {
 
 /**
  * Estimates daily consumable requirements for a crew.
- * Based on NASA approximate values per person per day:
- * - Oxygen: 0.84 kg
- * - Water: 3.5 kg (drinking + food prep + hygiene - recycling not accounted for here)
- * - Food: 1.8 kg
+ * Based on NASA approximate values per person per day.
  * @param crewSize Number of crew members
  * @param durationDays Mission duration in days
  * @returns Consumables breakdown in kg
@@ -113,10 +116,6 @@ interface Consumables {
 export function calculateConsumables(crewSize: number, durationDays: number): Consumables {
   validateFinite(crewSize, "Crew size");
   validateFinite(durationDays, "Duration");
-
-  const OXYGEN_PER_PERSON_DAY = 0.84;
-  const WATER_PER_PERSON_DAY = 3.5;
-  const FOOD_PER_PERSON_DAY = 1.8;
 
   const personDays = crewSize * durationDays;
   const oxygen = personDays * OXYGEN_PER_PERSON_DAY;
