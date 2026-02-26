@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { logError } from '../utils/logger';
 
 interface CopyButtonProps {
   textToCopy: string;
@@ -19,7 +20,7 @@ const CopyButton: React.FC<CopyButtonProps> = ({
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error('Failed to copy:', err);
+      logError(err, 'CopyButton');
     }
   };
 
