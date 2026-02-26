@@ -49,16 +49,22 @@ const OrbitCalculatorForm = () => {
         </div>
       )}
       <div>
-        <label htmlFor="orbit-altitude" className="block text-sm mb-1 text-gray-300">Altitude (km)</label>
-        <input
-          id="orbit-altitude"
-          type="number"
-          min="0"
-          value={altitude}
-          onChange={handleInputChange}
-          className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-purple-500 transition"
-          aria-describedby="orbit-altitude-hint"
-        />
+        <label htmlFor="orbit-altitude" className="block text-sm mb-1 text-gray-300">Altitude</label>
+        <div className="relative">
+          <input
+            id="orbit-altitude"
+            type="number"
+            min="0"
+            value={altitude}
+            onChange={handleInputChange}
+            className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text-white focus:outline-none focus:border-purple-500 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            aria-label="Altitude in kilometers"
+            aria-describedby="orbit-altitude-hint"
+          />
+          <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-purple-400 transition-colors">
+            km
+          </div>
+        </div>
         <p id="orbit-altitude-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-purple-400 transition-colors">LEO: ~400km, GPS: ~20200km, GEO: 35786km</p>
       </div>
       <button
