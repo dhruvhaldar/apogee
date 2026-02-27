@@ -47,17 +47,23 @@ const SolarPanelCalculatorForm = () => {
         </div>
       )}
       <div>
-        <label htmlFor="solar-power" className="block text-sm mb-1 text-gray-300">Required Power (Watts)</label>
-        <input
-          id="solar-power"
-          type="number"
-          min="0"
-          step="any"
-          value={power}
-          onChange={handleInputChange(setPower)}
-          className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-red-500 transition"
-          aria-describedby="solar-power-hint"
-        />
+        <label htmlFor="solar-power" className="block text-sm mb-1 text-gray-300">Required Power</label>
+        <div className="relative">
+          <input
+            id="solar-power"
+            type="number"
+            min="0"
+            step="any"
+            value={power}
+            onChange={handleInputChange(setPower)}
+            className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text-white focus:outline-none focus:border-red-500 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            aria-label="Required Power in Watts"
+            aria-describedby="solar-power-hint"
+          />
+          <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-red-400 transition-colors">
+            W
+          </div>
+        </div>
         <p id="solar-power-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-red-400 transition-colors">CubeSat: ~1-10W, GPS: ~1000W, ISS: ~100,000W</p>
       </div>
       <div>

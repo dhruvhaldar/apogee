@@ -57,16 +57,22 @@ const CostCalculatorForm = () => {
         </div>
       )}
       <div>
-        <label htmlFor="cost-payload" className="block text-sm mb-1 text-gray-300">Payload Mass (kg)</label>
-        <input
-          id="cost-payload"
-          type="number"
-          min="0"
-          value={payload}
-          onChange={handlePayloadChange}
-          className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-yellow-500 transition"
-          aria-describedby="cost-payload-hint"
-        />
+        <label htmlFor="cost-payload" className="block text-sm mb-1 text-gray-300">Payload Mass</label>
+        <div className="relative">
+          <input
+            id="cost-payload"
+            type="number"
+            min="0"
+            value={payload}
+            onChange={handlePayloadChange}
+            className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text-white focus:outline-none focus:border-yellow-500 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            aria-label="Payload Mass in kilograms"
+            aria-describedby="cost-payload-hint"
+          />
+          <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-yellow-400 transition-colors">
+            kg
+          </div>
+        </div>
         <p id="cost-payload-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-yellow-400 transition-colors">CubeSat: ~1kg, Starlink: ~260kg, ISS Module: ~15,000kg</p>
       </div>
       <div>
