@@ -50,4 +50,6 @@ const CopyButton: React.FC<CopyButtonProps> = ({
   );
 };
 
-export default CopyButton;
+// ⚡ Performance: Memoized to prevent re-renders when parent form updates but textToCopy hasn't changed.
+// This is useful in forms where keystrokes trigger parent re-renders but the result (and thus the copy button) remains stable.
+export default React.memo(CopyButton);
