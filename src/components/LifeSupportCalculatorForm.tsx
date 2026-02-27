@@ -62,16 +62,22 @@ const LifeSupportCalculatorForm = () => {
         <p id="ls-crew-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-green-400 transition-colors">ISS Typical: 7</p>
       </div>
       <div>
-        <label htmlFor="ls-days" className="block text-sm mb-1 text-gray-300">Duration (days)</label>
-        <input
-          id="ls-days"
-          type="number"
-          min="1"
-          value={days}
-          onChange={handleInputChange(setDays)}
-          className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-green-500 transition"
-          aria-describedby="ls-days-hint"
-        />
+        <label htmlFor="ls-days" className="block text-sm mb-1 text-gray-300">Duration</label>
+        <div className="relative">
+          <input
+            id="ls-days"
+            type="number"
+            min="1"
+            value={days}
+            onChange={handleInputChange(setDays)}
+            className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-12 text-white focus:outline-none focus:border-green-500 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            aria-label="Duration in days"
+            aria-describedby="ls-days-hint"
+          />
+          <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-green-400 transition-colors">
+            days
+          </div>
+        </div>
         <p id="ls-days-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-green-400 transition-colors">Short: ~7d, ISS: ~180d, Mars: ~500d</p>
       </div>
       <button
