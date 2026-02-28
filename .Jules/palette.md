@@ -29,3 +29,7 @@
 ## 2025-05-28 - [UX] Input Unit Suffixes
 **Learning:** Technical inputs with external unit labels (e.g., "Mass (kg)") can be ambiguous or overlooked. Placing units directly inside the input field as a suffix reinforces context and prevents errors.
 **Action:** Use a relative wrapper with an absolute-positioned suffix for units, and hide browser-default spinners to prevent visual clutter and overlap.
+
+## 2025-05-29 - [A11y] Visible Keyboard Focus States on Primary Actions
+**Learning:** Submit buttons within calculator forms lacked clear `focus-visible` styles. Keyboard users tabbing through the form couldn't easily determine when the primary action (Calculate) was focused, leading to potential accidental submissions or confusion.
+**Action:** Always ensure interactive elements, especially primary action buttons, have distinct `focus-visible` states. Use `focus-visible:ring` with a context-appropriate color to match the component's theme.
