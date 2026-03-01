@@ -76,16 +76,22 @@ const CostCalculatorForm = () => {
         <p id="cost-payload-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-yellow-400 transition-colors">CubeSat: ~1kg, Starlink: ~260kg, ISS Module: ~15,000kg</p>
       </div>
       <div>
-        <label htmlFor="cost-rate" className="block text-sm mb-1 text-gray-300">Cost per kg ($)</label>
-        <input
-          id="cost-rate"
-          type="number"
-          min="0"
-          value={costPerKg}
-          onChange={handleCostChange}
-          className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-yellow-500 transition"
-          aria-describedby="cost-rate-hint"
-        />
+        <label htmlFor="cost-rate" className="block text-sm mb-1 text-gray-300">Cost per kg</label>
+        <div className="relative">
+          <input
+            id="cost-rate"
+            type="number"
+            min="0"
+            value={costPerKg}
+            onChange={handleCostChange}
+            className="peer w-full bg-black/50 border border-white/20 rounded py-2 pr-2 pl-7 text-white focus:outline-none focus:border-yellow-500 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            aria-label="Cost per kg in USD"
+            aria-describedby="cost-rate-hint"
+          />
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-yellow-400 transition-colors">
+            $
+          </div>
+        </div>
         <p id="cost-rate-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-yellow-400 transition-colors">e.g., Falcon 9: ~2700, SLS: ~50000+</p>
       </div>
       <button

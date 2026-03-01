@@ -33,3 +33,7 @@
 ## 2025-05-29 - [A11y] Visible Keyboard Focus States on Primary Actions
 **Learning:** Submit buttons within calculator forms lacked clear `focus-visible` styles. Keyboard users tabbing through the form couldn't easily determine when the primary action (Calculate) was focused, leading to potential accidental submissions or confusion.
 **Action:** Always ensure interactive elements, especially primary action buttons, have distinct `focus-visible` states. Use `focus-visible:ring` with a context-appropriate color to match the component's theme.
+
+## 2025-05-30 - [UX] Input Currency Prefixes and Tailwind `peer`
+**Learning:** When adding inline currency prefixes (e.g., "$") to inputs, placing the prefix element *after* the input in the DOM is crucial for Tailwind's `peer-focus` utility to work. If placed before, the prefix cannot react to the input's focus state.
+**Action:** Always structure relative input wrappers with the `<input className="peer ...">` first, followed by the absolute positioned prefix/suffix div using `peer-focus:text-color` to visually link them during interaction. Ensure the input has adequate padding (e.g., `pl-7` for a prefix) to prevent text overlap.
