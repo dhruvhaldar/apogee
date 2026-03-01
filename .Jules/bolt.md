@@ -37,3 +37,7 @@
 ## 2025-02-24 - Optimized Background Images
 **Learning:** Replacing inline CSS background images with `next/image` (using `fill` and `priority`) enables automatic format optimization (WebP/AVIF) and responsive resizing, significantly reducing payload size and improving LCP compared to raw static assets.
 **Action:** Audit CSS `background-image` usage for large assets and replace with `next/image` components where possible.
+
+## 2025-03-01 - Unused Font Loading
+**Learning:** Initializing `next/font/google` fonts without applying them via Tailwind theme config or explicit CSS classes causes Next.js to unnecessarily download fonts and inject `@font-face` and `<link rel="preload">` tags into the initial HTML, slowing down FCP/LCP.
+**Action:** Remove unused `next/font/google` imports from layout components if relying purely on system fonts, to eliminate redundant network requests and reduce the HTML payload size.

@@ -1,16 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// ⚡ Performance: Removed unused `next/font/google` initializations (Geist and Geist_Mono).
+// Since the application explicitly overrides font-family to system fonts (Arial, Helvetica, sans-serif) in globals.css,
+// downloading and injecting @font-face and preload tags for these web fonts added unnecessary network latency and HTML payload size.
+// Relying on system fonts improves First Contentful Paint (FCP) and Largest Contentful Paint (LCP) by freeing up the critical rendering path.
 
 export const metadata: Metadata = {
   title: "Apogee - Spaceflight Calculator",
@@ -24,9 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="antialiased">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 px-4 py-2 bg-white text-black font-bold rounded outline-none ring-2 ring-cyan-500 shadow-xl transition-transform"
