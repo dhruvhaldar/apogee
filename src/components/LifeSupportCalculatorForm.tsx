@@ -50,15 +50,21 @@ const LifeSupportCalculatorForm = () => {
       )}
       <div>
         <label htmlFor="ls-crew" className="block text-sm mb-1 text-gray-300">Crew Size</label>
-        <input
-          id="ls-crew"
-          type="number"
-          min="1"
-          value={crew}
-          onChange={handleInputChange(setCrew)}
-          className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-green-500 transition"
-          aria-describedby="ls-crew-hint"
-        />
+        <div className="relative">
+          <input
+            id="ls-crew"
+            type="number"
+            min="1"
+            value={crew}
+            onChange={handleInputChange(setCrew)}
+            className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-16 text-white focus:outline-none focus:border-green-500 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            aria-label="Crew Size in people"
+            aria-describedby="ls-crew-hint"
+          />
+          <div className="absolute top-2 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-green-400 transition-colors">
+            people
+          </div>
+        </div>
         <p id="ls-crew-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-green-400 transition-colors">ISS Typical: 7</p>
       </div>
       <div>
