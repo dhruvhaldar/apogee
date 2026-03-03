@@ -41,3 +41,7 @@
 ## 2025-02-24 - Unused Next.js Google Fonts
 **Learning:** Removing unused `next/font/google` imports (e.g., Geist) when the application relies on system fonts prevents Next.js from injecting redundant `@font-face` styles and preload tags, reducing HTML payload and network requests to improve FCP/LCP.
 **Action:** Audit `layout.tsx` for unused `next/font/google` imports and font variable injections, and remove them if system fonts are the primary styling.
+
+## 2025-02-24 - Precomputing Unit Conversions
+**Learning:** Unit conversions (like `/ 1000` for meters to kilometers, or `/ 60` for seconds to minutes) applied at the end of hot-path physics calculations add unnecessary runtime division operations.
+**Action:** Precompute combined constants (e.g., `(2 * PI / sqrt(GM)) / 60`) outside the function scope to eliminate unit conversion math during runtime calculation execution.

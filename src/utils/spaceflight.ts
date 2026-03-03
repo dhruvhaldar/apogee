@@ -9,6 +9,10 @@ const SQRT_EARTH_GM = Math.sqrt(EARTH_GM);
 // Precompute constant factor for orbital period: 2*pi / sqrt(GM)
 const ORBITAL_PERIOD_CONSTANT = (2 * Math.PI) / SQRT_EARTH_GM;
 
+// ⚡ Performance: Precompute unit conversion constants to eliminate runtime divisions
+const SQRT_EARTH_GM_KM = SQRT_EARTH_GM / 1000; // m/s to km/s
+const ORBITAL_PERIOD_CONSTANT_MINUTES = ORBITAL_PERIOD_CONSTANT / 60; // seconds to minutes
+
 export const EARTH_RADIUS = 6371000; // m
 export const STANDARD_GRAVITY = 9.80665; // m/s^2
 export const SOLAR_CONSTANT = 1361; // W/m^2 (at 1 AU)
@@ -57,9 +61,8 @@ export function calculateDeltaV(isp: number, massInitial: number, massFinal: num
 export function calculateOrbitalVelocity(altitude: number): number {
   validateFinite(altitude, "Altitude");
   const r = EARTH_RADIUS + (altitude * 1000); // Convert km to m
-  // v = sqrt(GM / r) = sqrt(GM) / sqrt(r)
-  const v = SQRT_EARTH_GM / Math.sqrt(r);
-  return v / 1000; // Convert m/s to km/s
+  // v_km = (sqrt(GM) / 1000) / sqrt(r)
+  return SQRT_EARTH_GM_KM / Math.sqrt(r);
 }
 
 /**
@@ -70,10 +73,8 @@ export function calculateOrbitalVelocity(altitude: number): number {
 export function calculateOrbitalPeriod(altitude: number): number {
   validateFinite(altitude, "Altitude");
   const r = EARTH_RADIUS + (altitude * 1000); // Convert km to m
-  // T = 2 * pi * sqrt(r^3 / GM)
-  // Optimization: T = (2*pi/sqrt(GM)) * r^(3/2)
-  const periodSeconds = ORBITAL_PERIOD_CONSTANT * r * Math.sqrt(r);
-  return periodSeconds / 60; // Convert seconds to minutes
+  // T_min = ((2*pi/sqrt(GM)) / 60) * r^(3/2)
+  return ORBITAL_PERIOD_CONSTANT_MINUTES * r * Math.sqrt(r);
 }
 
 /**
@@ -87,15 +88,9 @@ export function calculateOrbitalStats(altitude: number): { velocity: number; per
   const r = EARTH_RADIUS + (altitude * 1000); // Convert km to m
   const sqrtR = Math.sqrt(r);
 
-  // v = sqrt(GM) / sqrt(r)
-  const v = SQRT_EARTH_GM / sqrtR;
-
-  // T = (2*pi/sqrt(GM)) * r * sqrt(r)
-  const periodSeconds = ORBITAL_PERIOD_CONSTANT * r * sqrtR;
-
   return {
-    velocity: v / 1000, // Convert m/s to km/s
-    period: periodSeconds / 60 // Convert seconds to minutes
+    velocity: SQRT_EARTH_GM_KM / sqrtR,
+    period: ORBITAL_PERIOD_CONSTANT_MINUTES * r * sqrtR
   };
 }
 
