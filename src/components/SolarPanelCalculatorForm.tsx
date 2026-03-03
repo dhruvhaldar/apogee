@@ -77,6 +77,7 @@ const SolarPanelCalculatorForm = () => {
           value={efficiency}
           onChange={handleInputChange(setEfficiency)}
           className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-red-500 transition"
+          aria-label="Efficiency ratio between 0.0 and 1.0"
           aria-describedby="solar-efficiency-hint"
         />
         <p id="solar-efficiency-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-red-400 transition-colors">Typical: 0.2 - 0.3</p>

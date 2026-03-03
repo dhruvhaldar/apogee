@@ -37,3 +37,7 @@
 ## 2025-05-30 - [UX] Input Currency Prefixes and Tailwind `peer`
 **Learning:** When adding inline currency prefixes (e.g., "$") to inputs, placing the prefix element *after* the input in the DOM is crucial for Tailwind's `peer-focus` utility to work. If placed before, the prefix cannot react to the input's focus state.
 **Action:** Always structure relative input wrappers with the `<input className="peer ...">` first, followed by the absolute positioned prefix/suffix div using `peer-focus:text-color` to visually link them during interaction. Ensure the input has adequate padding (e.g., `pl-7` for a prefix) to prevent text overlap.
+
+## 2025-05-31 - [UX] HTML5 Validation for Float Inputs
+**Learning:** Float numeric inputs without `step="any"` will trigger native HTML5 validation errors ("Please enter a valid value") when users input decimals, completely blocking form submission.
+**Action:** Always add `step="any"` to numeric inputs that represent floating-point measurements (e.g., kilograms, seconds, altitudes) to ensure users aren't incorrectly blocked by the browser.

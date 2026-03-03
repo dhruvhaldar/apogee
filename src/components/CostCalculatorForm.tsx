@@ -63,6 +63,7 @@ const CostCalculatorForm = () => {
             id="cost-payload"
             type="number"
             min="0"
+            step="any"
             value={payload}
             onChange={handlePayloadChange}
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text-white focus:outline-none focus:border-yellow-500 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
@@ -82,6 +83,7 @@ const CostCalculatorForm = () => {
             id="cost-rate"
             type="number"
             min="0"
+            step="any"
             value={costPerKg}
             onChange={handleCostChange}
             className="peer w-full bg-black/50 border border-white/20 rounded py-2 pr-2 pl-7 text-white focus:outline-none focus:border-yellow-500 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"

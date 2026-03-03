@@ -55,6 +55,7 @@ const LifeSupportCalculatorForm = () => {
             id="ls-crew"
             type="number"
             min="1"
+            step="any"
             value={crew}
             onChange={handleInputChange(setCrew)}
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-16 text-white focus:outline-none focus:border-green-500 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
@@ -74,6 +75,7 @@ const LifeSupportCalculatorForm = () => {
             id="ls-days"
             type="number"
             min="1"
+            step="any"
             value={days}
             onChange={handleInputChange(setDays)}
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-12 text-white focus:outline-none focus:border-green-500 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
