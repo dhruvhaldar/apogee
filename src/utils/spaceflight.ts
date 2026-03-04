@@ -14,7 +14,14 @@ const SQRT_EARTH_GM_KM = SQRT_EARTH_GM / 1000; // m/s to km/s
 const ORBITAL_PERIOD_CONSTANT_MINUTES = ORBITAL_PERIOD_CONSTANT / 60; // seconds to minutes
 
 export const EARTH_RADIUS = 6371000; // m
+export const EARTH_RADIUS_KM = 6371; // km
 export const STANDARD_GRAVITY = 9.80665; // m/s^2
+
+// ⚡ Performance: Precompute combined constants for km-based orbital mechanics to eliminate scaling math during execution
+// v_km = sqrt(GM / (r_km * 1000)) / 1000 => SQRT_EARTH_GM_KM / sqrt(1000) / sqrt(r_km)
+const ORBITAL_VELOCITY_KM_CONSTANT = SQRT_EARTH_GM_KM / Math.sqrt(1000);
+// T_min = (2*pi / sqrt(GM) / 60) * (r_km * 1000)^(3/2) => ORBITAL_PERIOD_CONSTANT_MINUTES * 1000 * sqrt(1000) * r_km^(3/2)
+const ORBITAL_PERIOD_KM_CONSTANT = ORBITAL_PERIOD_CONSTANT_MINUTES * 1000 * Math.sqrt(1000);
 export const SOLAR_CONSTANT = 1361; // W/m^2 (at 1 AU)
 
 // Life support constants per person per day (kg)
@@ -60,9 +67,8 @@ export function calculateDeltaV(isp: number, massInitial: number, massFinal: num
  */
 export function calculateOrbitalVelocity(altitude: number): number {
   validateFinite(altitude, "Altitude");
-  const r = EARTH_RADIUS + (altitude * 1000); // Convert km to m
-  // v_km = (sqrt(GM) / 1000) / sqrt(r)
-  return SQRT_EARTH_GM_KM / Math.sqrt(r);
+  const r_km = EARTH_RADIUS_KM + altitude;
+  return ORBITAL_VELOCITY_KM_CONSTANT / Math.sqrt(r_km);
 }
 
 /**
@@ -72,9 +78,8 @@ export function calculateOrbitalVelocity(altitude: number): number {
  */
 export function calculateOrbitalPeriod(altitude: number): number {
   validateFinite(altitude, "Altitude");
-  const r = EARTH_RADIUS + (altitude * 1000); // Convert km to m
-  // T_min = ((2*pi/sqrt(GM)) / 60) * r^(3/2)
-  return ORBITAL_PERIOD_CONSTANT_MINUTES * r * Math.sqrt(r);
+  const r_km = EARTH_RADIUS_KM + altitude;
+  return ORBITAL_PERIOD_KM_CONSTANT * r_km * Math.sqrt(r_km);
 }
 
 /**
@@ -85,12 +90,12 @@ export function calculateOrbitalPeriod(altitude: number): number {
  */
 export function calculateOrbitalStats(altitude: number): { velocity: number; period: number } {
   validateFinite(altitude, "Altitude");
-  const r = EARTH_RADIUS + (altitude * 1000); // Convert km to m
-  const sqrtR = Math.sqrt(r);
+  const r_km = EARTH_RADIUS_KM + altitude;
+  const sqrtR_km = Math.sqrt(r_km);
 
   return {
-    velocity: SQRT_EARTH_GM_KM / sqrtR,
-    period: ORBITAL_PERIOD_CONSTANT_MINUTES * r * sqrtR
+    velocity: ORBITAL_VELOCITY_KM_CONSTANT / sqrtR_km,
+    period: ORBITAL_PERIOD_KM_CONSTANT * r_km * sqrtR_km
   };
 }
 
