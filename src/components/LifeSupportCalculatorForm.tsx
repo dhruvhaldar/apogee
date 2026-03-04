@@ -62,11 +62,11 @@ const LifeSupportCalculatorForm = () => {
             aria-label="Crew Size in people"
             aria-describedby="ls-crew-hint"
           />
-          <div className="absolute top-2 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-green-400 transition-colors">
+          <div className="absolute top-2.5 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-green-400 transition-colors">
             people
           </div>
+          <p id="ls-crew-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-green-400 transition-colors">ISS Typical: 7</p>
         </div>
-        <p id="ls-crew-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-green-400 transition-colors">ISS Typical: 7</p>
       </div>
       <div>
         <label htmlFor="ls-days" className="block text-sm mb-1 text-gray-300">Duration</label>
@@ -82,11 +82,11 @@ const LifeSupportCalculatorForm = () => {
             aria-label="Duration in days"
             aria-describedby="ls-days-hint"
           />
-          <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-green-400 transition-colors">
+          <div className="absolute top-2.5 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-green-400 transition-colors">
             days
           </div>
+          <p id="ls-days-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-green-400 transition-colors">Short: ~7d, ISS: ~180d, Mars: ~500d</p>
         </div>
-        <p id="ls-days-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-green-400 transition-colors">Short: ~7d, ISS: ~180d, Mars: ~500d</p>
       </div>
       <button
         type="submit"
