@@ -41,3 +41,7 @@
 ## 2025-05-31 - [UX] HTML5 Validation for Float Inputs
 **Learning:** Float numeric inputs without `step="any"` will trigger native HTML5 validation errors ("Please enter a valid value") when users input decimals, completely blocking form submission.
 **Action:** Always add `step="any"` to numeric inputs that represent floating-point measurements (e.g., kilograms, seconds, altitudes) to ensure users aren't incorrectly blocked by the browser.
+
+## 2025-06-01 - [A11y] Tailwind `peer-focus` and Input Helper Text Alignment
+**Learning:** Tailwind's `peer-focus` relies on the CSS general sibling combinator (`~`), meaning it only targets elements that are true siblings of the `peer`. When an `<input className="peer">` is wrapped in a `div.relative` to support unit adornments, any helper text placed outside that wrapper will fail to receive focus styles. Moving the `<p>` inside the wrapper fixes this but causes issues with adornment vertical centering if `inset-y-0` is used.
+**Action:** Always place the helper text `<p>` inside the relative wrapper so it's a sibling of the input, and use explicit absolute top positioning (e.g., `top-2.5`) for the unit adornment instead of `inset-y-0 flex items-center` to avoid the adornment centering vertically across both the input and the helper text.

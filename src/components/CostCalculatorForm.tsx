@@ -70,11 +70,11 @@ const CostCalculatorForm = () => {
             aria-label="Payload Mass in kilograms"
             aria-describedby="cost-payload-hint"
           />
-          <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-yellow-400 transition-colors">
+          <div className="absolute top-2.5 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-yellow-400 transition-colors">
             kg
           </div>
+          <p id="cost-payload-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-yellow-400 transition-colors">CubeSat: ~1kg, Starlink: ~260kg, ISS Module: ~15,000kg</p>
         </div>
-        <p id="cost-payload-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-yellow-400 transition-colors">CubeSat: ~1kg, Starlink: ~260kg, ISS Module: ~15,000kg</p>
       </div>
       <div>
         <label htmlFor="cost-rate" className="block text-sm mb-1 text-gray-300">Cost per kg</label>
@@ -90,11 +90,11 @@ const CostCalculatorForm = () => {
             aria-label="Cost per kg in USD"
             aria-describedby="cost-rate-hint"
           />
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-yellow-400 transition-colors">
+          <div className="absolute top-2.5 left-0 pl-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-yellow-400 transition-colors">
             $
           </div>
+          <p id="cost-rate-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-yellow-400 transition-colors">e.g., Falcon 9: ~2700, SLS: ~50000+</p>
         </div>
-        <p id="cost-rate-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-yellow-400 transition-colors">e.g., Falcon 9: ~2700, SLS: ~50000+</p>
       </div>
       <button
         type="submit"
