@@ -45,3 +45,7 @@
 ## 2025-02-24 - Precomputing Unit Conversions
 **Learning:** Unit conversions (like `/ 1000` for meters to kilometers, or `/ 60` for seconds to minutes) applied at the end of hot-path physics calculations add unnecessary runtime division operations.
 **Action:** Precompute combined constants (e.g., `(2 * PI / sqrt(GM)) / 60`) outside the function scope to eliminate unit conversion math during runtime calculation execution.
+
+## 2025-03-05 - Domain-Scale Physics Computations
+**Learning:** Converting inputs to standard base units (e.g. km to meters) on every function call adds redundant operations if the output is also expected in scaled units (km/s).
+**Action:** Pre-scale all physical constants into the domain's input/output unit scale (e.g. Kilometers) to avoid runtime scaling multiplications.
