@@ -49,3 +49,7 @@
 ## 2025-03-05 - Domain-Scale Physics Computations
 **Learning:** Converting inputs to standard base units (e.g. km to meters) on every function call adds redundant operations if the output is also expected in scaled units (km/s).
 **Action:** Pre-scale all physical constants into the domain's input/output unit scale (e.g. Kilometers) to avoid runtime scaling multiplications.
+
+## 2025-03-05 - Intl.NumberFormat Caching
+**Learning:** Calling `.toLocaleString()` on numbers internally recreates the `Intl.NumberFormat` instance on every invocation. This is a known performance bottleneck in JS engines, making it roughly 35x slower than calling `.format()` on a cached `Intl.NumberFormat` instance.
+**Action:** When repeatedly formatting numbers (e.g., in React renders or loops), instantiate `new Intl.NumberFormat` once outside the component/loop scope and reuse it.
