@@ -56,6 +56,7 @@ const OrbitCalculatorForm = () => {
             type="number"
             min="0"
             step="any"
+            required
             value={altitude}
             onChange={handleInputChange}
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text-white focus:outline-none focus:border-purple-500 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"

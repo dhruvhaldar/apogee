@@ -60,6 +60,7 @@ const RocketCalculatorForm = () => {
             type="number"
             min="0"
             step="any"
+            required
             value={isp}
             onChange={handleInputChange(setIsp)}
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-8 text-white focus:outline-none focus:border-cyan-500 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
@@ -80,6 +81,7 @@ const RocketCalculatorForm = () => {
             type="number"
             min="0"
             step="any"
+            required
             value={m0}
             onChange={handleInputChange(setM0)}
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text-white focus:outline-none focus:border-cyan-500 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
@@ -100,6 +102,7 @@ const RocketCalculatorForm = () => {
             type="number"
             min="0"
             step="any"
+            required
             value={mf}
             onChange={handleInputChange(setMf)}
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text-white focus:outline-none focus:border-cyan-500 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
