@@ -45,3 +45,7 @@
 ## 2025-06-01 - [A11y] Tailwind `peer-focus` and Input Helper Text Alignment
 **Learning:** Tailwind's `peer-focus` relies on the CSS general sibling combinator (`~`), meaning it only targets elements that are true siblings of the `peer`. When an `<input className="peer">` is wrapped in a `div.relative` to support unit adornments, any helper text placed outside that wrapper will fail to receive focus styles. Moving the `<p>` inside the wrapper fixes this but causes issues with adornment vertical centering if `inset-y-0` is used.
 **Action:** Always place the helper text `<p>` inside the relative wrapper so it's a sibling of the input, and use explicit absolute top positioning (e.g., `top-2.5`) for the unit adornment instead of `inset-y-0 flex items-center` to avoid the adornment centering vertically across both the input and the helper text.
+
+## 2025-06-02 - [A11y] Form Fields Missing Required Indicator
+**Learning:** Calculator form fields lacked the `required` attribute. Without it, users could submit empty values, leading to unexpected application errors (`NaN` values causing component crashes or generic JS alerts) instead of native, accessible browser validation. Screen readers also did not announce the inputs as required.
+**Action:** Always add the `required` attribute to all input fields that are strictly necessary for form submission. This enables HTML5 native validation and implicitly sets `aria-required="true"`.

@@ -54,6 +54,7 @@ const SolarPanelCalculatorForm = () => {
             type="number"
             min="0"
             step="any"
+            required
             value={power}
             onChange={handleInputChange(setPower)}
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text-white focus:outline-none focus:border-red-500 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
@@ -74,6 +75,7 @@ const SolarPanelCalculatorForm = () => {
           min="0"
           max="1"
           step="any"
+          required
           value={efficiency}
           onChange={handleInputChange(setEfficiency)}
           className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-red-500 transition"
