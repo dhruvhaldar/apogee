@@ -13,7 +13,7 @@ const LifeSupportCalculator = () => {
   // to prevent CalculatorCard (Server Component / shared UI) from re-rendering
   // on every keystroke, which avoids expensive CSS repaints (backdrop-blur).
   return (
-    <CalculatorCard title="Life Support" description="Estimate consumables (Oxygen, Water, Food) required for a mission. Critical for medical and logistical planning.">
+    <CalculatorCard title="Life Support" description="Estimate consumables (Oxygen, Water, Food) required for a mission. Critical for medical and logistical planning." titleColor="text-green-400">
       <LifeSupportCalculatorForm />
     </CalculatorCard>
   );

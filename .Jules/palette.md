@@ -49,3 +49,7 @@
 ## 2025-06-02 - [A11y] Form Fields Missing Required Indicator
 **Learning:** Calculator form fields lacked the `required` attribute. Without it, users could submit empty values, leading to unexpected application errors (`NaN` values causing component crashes or generic JS alerts) instead of native, accessible browser validation. Screen readers also did not announce the inputs as required.
 **Action:** Always add the `required` attribute to all input fields that are strictly necessary for form submission. This enables HTML5 native validation and implicitly sets `aria-required="true"`.
+
+## 2026-03-07 - [A11y/UX] Semantic Regions and Thematic Consistency
+**Learning:** Card components representing distinct calculators lacked semantic structure (using generic `div` tags) and failed to visually reinforce their themes. This led to a disjointed visual hierarchy and poor screen reader navigation.
+**Action:** Always wrap distinct sections in semantic tags (e.g., `<section>`) and use `aria-labelledby` linked to the section title (via `useId`) to create clear landmarks for assistive technologies. Additionally, allow title colors to be customized to match the theme of the component's interactive elements for better visual cohesion.

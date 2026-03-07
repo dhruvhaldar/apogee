@@ -10,7 +10,7 @@ const CostCalculatorForm = dynamic(() => import('./CostCalculatorForm'), {
 
 const CostCalculator = () => {
   return (
-    <CalculatorCard title="Mission Cost" description="Estimate launch cost based on payload mass and vehicle rates. Covers economic and political perspectives.">
+    <CalculatorCard title="Mission Cost" description="Estimate launch cost based on payload mass and vehicle rates. Covers economic and political perspectives." titleColor="text-yellow-400">
       <CostCalculatorForm />
     </CalculatorCard>
   );
