@@ -21,6 +21,9 @@ test('verify security headers', async ({ page }) => {
   expect(headers['permissions-policy']).toContain('display-capture=()');
   expect(headers['permissions-policy']).toContain('serial=()');
   expect(headers['permissions-policy']).toContain('hid=()');
+  expect(headers['permissions-policy']).toContain('web-share=()');
+  expect(headers['permissions-policy']).toContain('idle-detection=()');
+  expect(headers['permissions-policy']).toContain('clipboard-write=(self)');
   expect(headers['content-security-policy']).not.toContain('transparenttextures.com');
   expect(headers['x-permitted-cross-domain-policies']).toBe('none');
 
