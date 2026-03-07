@@ -13,7 +13,7 @@ const SolarPanelCalculator = () => {
   // to prevent CalculatorCard (Server Component / shared UI) from re-rendering
   // on every keystroke, which avoids expensive CSS repaints (backdrop-blur).
   return (
-    <CalculatorCard title="Power Systems" description="Determine solar panel area based on power requirements and efficiency. Crucial for space stations.">
+    <CalculatorCard title="Power Systems" description="Determine solar panel area based on power requirements and efficiency. Crucial for space stations." titleColor="text-red-400">
       <SolarPanelCalculatorForm />
     </CalculatorCard>
   );

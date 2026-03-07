@@ -1,49 +1,12 @@
 
-> apogee@0.1.0 dev /app
+> apogee@0.1.0 dev
 > next dev
 
-⚠ Port 3000 is in use by an unknown process, using available port 3001 instead.
 ▲ Next.js 16.1.6 (Turbopack)
-- Local:         http://localhost:3○ Compiling / ...
- GET / 200 in 5.0s (compile: 4.4s, render: 615ms)
- GET / 200 in 175ms (compile: 10ms, render: 165ms)
- GET / 200 in 158ms (compile: 6ms, render: 152ms)
- GET / 200 in 93ms (compile: 5ms, render: 88ms)
- GET / 200 in 84ms (compile: 4ms, render: 81ms)
- GET / 200 in 95ms (compile: 4ms, render: 91ms)
- GET / 200 in 87ms (compile: 6ms, render: 81ms)
- GET / 200 in 73ms (compile: 3ms, render: 71ms)
- GET / 200 in 105ms (compile: 6ms, render: 99ms)
- GET / 200 in 721ms (compile: 272ms, render: 449ms)
- GET / 200 in 86ms (compile: 5ms, render: 81ms)
- GET / 200 in 388ms (compile: 3ms, render: 385ms)
- GET / 200 in 340ms (compile: 3ms, render: 337ms)
-⚠ Cross origin request detected from 127.0.0.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
-Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
- GET / 200 in 96ms (compile: 11ms, render: 85ms)
- GET / 200 in 86ms (compile: 3ms, render: 83ms)
- GET / 200 in 323ms (compile: 8ms, render: 315ms)
- GET / 200 in 79ms (compile: 7ms, render: 73ms)
- GET / 200 in 74ms (compile: 3ms, render: 71ms)
- GET / 200 in 71ms (compile: 3ms, render: 68ms)
- GET / 200 in 73ms (compile: 3ms, render: 70ms)
- GET / 200 in 454ms (compile: 3ms, render: 451ms)
- GET / 200 in 414ms (compile: 3ms, render: 412ms)
- GET / 200 in 313ms (compile: 3ms, render: 310ms)
- GET / 200 in 285ms (compile: 3ms, render: 283ms)
- GET / 200 in 278ms (compile: 3ms, render: 274ms)
- GET / 200 in 238ms (compile: 3ms, render: 235ms)
- GET / 200 in 314ms (compile: 3ms, render: 311ms)
- GET / 200 in 290ms (compile: 3ms, render: 287ms)
- GET / 200 in 86ms (compile: 7ms, render: 79ms)
- GET / 200 in 72ms (compile: 3ms, render: 69ms)
- GET / 200 in 383ms (compile: 5ms, render: 379ms)
- GET / 200 in 348ms (compile: 4ms, render: 343ms)
- GET / 200 in 363ms (compile: 4ms, render: 359ms)
- GET / 200 in 325ms (compile: 3ms, render: 322ms)
- GET / 200 in 128ms (compile: 4ms, render: 125ms)
- GET / 200 in 292ms (compile: 3ms, render: 289ms)
- GET / 200 in 424ms (compile: 4ms, render: 420ms)
- GET / 200 in 381ms (compile: 3ms, render: 378ms)
- GET / 200 in 71ms (compile: 3ms, render: 68ms)
- GET / 200 in 96ms (compile: 4ms, render: 91ms)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+
+✓ Starting...
+✓ Ready in 1347ms
+○ Compiling / ...
+ GET / 200 in 5.8s (compile: 4.9s, render: 922ms)
