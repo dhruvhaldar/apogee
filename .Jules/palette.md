@@ -53,3 +53,7 @@
 ## 2026-03-07 - [A11y/UX] Semantic Regions and Thematic Consistency
 **Learning:** Card components representing distinct calculators lacked semantic structure (using generic `div` tags) and failed to visually reinforce their themes. This led to a disjointed visual hierarchy and poor screen reader navigation.
 **Action:** Always wrap distinct sections in semantic tags (e.g., `<section>`) and use `aria-labelledby` linked to the section title (via `useId`) to create clear landmarks for assistive technologies. Additionally, allow title colors to be customized to match the theme of the component's interactive elements for better visual cohesion.
+
+## 2026-03-09 - Input Focus Visibility on Dark Backgrounds
+**Learning:** Relying solely on a 1px border color change (`focus:border-<color>`) on a dark/black background can lead to poor visibility of the focus indicator, making it difficult for keyboard users to navigate forms. The contrast between a thin border and a dark background is often insufficient for clear visual feedback.
+**Action:** Always combine border color changes with a focus ring (`focus:ring-2 focus:ring-<color>/40`) to create a more prominent, glowing focus state that is clearly visible against dark backgrounds. Additionally, adding a subtle hover state (`hover:border-white/40`) improves the overall interactive feel of the inputs.
