@@ -6,6 +6,10 @@ import { logError, getErrorMessage } from '../utils/logger';
 import { validateNumericInput } from '../utils/validation';
 import CopyButton from './CopyButton';
 
+// ⚡ Performance: Cache Intl.NumberFormat instances outside the component.
+// Calling .toFixed() repeatedly can be optimized by reusing a formatter.
+const deltaVFormatter = new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
 const RocketCalculatorForm = () => {
   const [isp, setIsp] = useState<string>('300');
   const [m0, setM0] = useState<string>('1000');
@@ -124,11 +128,11 @@ const RocketCalculatorForm = () => {
       {result !== null && (
         <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-cyan-900/30 rounded border border-cyan-500/30 backdrop-blur-sm relative group">
           <p className="text-center font-mono text-xl">
-            ΔV = <span className="text-cyan-300 font-bold">{result.toFixed(2)}</span> m/s
+            ΔV = <span className="text-cyan-300 font-bold">{deltaVFormatter.format(result)}</span> m/s
           </p>
           <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity focus-within:opacity-100">
             <CopyButton
-              textToCopy={`${result.toFixed(2)} m/s`}
+              textToCopy={`${deltaVFormatter.format(result)} m/s`}
               label="Copy Delta-V result"
               className="text-cyan-400 hover:text-cyan-200 focus:ring-cyan-400"
             />

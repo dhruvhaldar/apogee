@@ -6,6 +6,11 @@ import { logError, getErrorMessage } from '../utils/logger';
 import { validateNumericInput } from '../utils/validation';
 import CopyButton from './CopyButton';
 
+// ⚡ Performance: Cache Intl.NumberFormat instances outside the component.
+// Calling .toFixed() repeatedly can be optimized by reusing a formatter.
+const velocityFormatter = new Intl.NumberFormat('en-US', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+const periodFormatter = new Intl.NumberFormat('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+
 const OrbitCalculatorForm = () => {
   // Use string state to allow proper decimal input handling and strict validation
   const [altitude, setAltitude] = useState<string>("400");
@@ -78,14 +83,14 @@ const OrbitCalculatorForm = () => {
       {velocity !== null && period !== null && (
         <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-purple-900/30 rounded border border-purple-500/30 backdrop-blur-sm space-y-2 relative group">
           <p className="font-mono text-lg">
-            Velocity: <span className="text-purple-300 font-bold">{velocity.toFixed(3)}</span> km/s
+            Velocity: <span className="text-purple-300 font-bold">{velocityFormatter.format(velocity)}</span> km/s
           </p>
           <p className="font-mono text-lg">
-            Period: <span className="text-purple-300 font-bold">{period.toFixed(1)}</span> min
+            Period: <span className="text-purple-300 font-bold">{periodFormatter.format(period)}</span> min
           </p>
           <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity focus-within:opacity-100">
             <CopyButton
-              textToCopy={`Velocity: ${velocity.toFixed(3)} km/s, Period: ${period.toFixed(1)} min`}
+              textToCopy={`Velocity: ${velocityFormatter.format(velocity)} km/s, Period: ${periodFormatter.format(period)} min`}
               label="Copy orbital parameters"
               className="text-purple-400 hover:text-purple-200 focus:ring-purple-400"
             />
