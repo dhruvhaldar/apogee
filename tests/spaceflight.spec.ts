@@ -43,9 +43,9 @@ test.describe('Apogee Calculator App', () => {
     const button = page.getByRole('button', { name: 'Calculate Delta-V' });
     await button.click();
     
-    // Expect result ~6774.19
-    await expect(page.locator('text=6774.19')).toBeVisible();
-    await expect(page.locator('div[aria-live="polite"]')).toContainText('6774.19');
+    // Expect result ~6,774.19 (after formatter)
+    await expect(page.locator('text=6,774.19')).toBeVisible();
+    await expect(page.locator('div[aria-live="polite"]')).toContainText('6,774.19');
   });
 
   test('Rocket Calculator submits on Enter', async ({ page }) => {
@@ -56,7 +56,7 @@ test.describe('Apogee Calculator App', () => {
     await page.getByLabel(/Final Mass/i).press('Enter');
 
     // Expect result ~6774.19 (same as the button click test)
-    await expect(page.locator('text=6774.19')).toBeVisible();
+    await expect(page.locator('text=6,774.19')).toBeVisible();
   });
 
   test('Orbit Calculator works', async ({ page }) => {

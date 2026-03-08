@@ -6,6 +6,10 @@ import { logError, getErrorMessage } from '../utils/logger';
 import { validateNumericInput } from '../utils/validation';
 import CopyButton from './CopyButton';
 
+// ⚡ Performance: Cache Intl.NumberFormat instances outside the component.
+// Calling .toFixed() repeatedly can be optimized by reusing a formatter.
+const consumablesFormatter = new Intl.NumberFormat('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+
 // Client Component to handle form state and calculations
 // Isolated to prevent re-renders of the parent CalculatorCard
 const LifeSupportCalculatorForm = () => {
@@ -98,15 +102,15 @@ const LifeSupportCalculatorForm = () => {
       </button>
       {consumables && (
         <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-green-900/30 rounded border border-green-500/30 backdrop-blur-sm text-sm space-y-1 relative group">
-          <p>Oxygen: <span className="text-green-300 font-bold">{consumables.oxygen.toFixed(1)}</span> kg</p>
-          <p>Water: <span className="text-green-300 font-bold">{consumables.water.toFixed(1)}</span> kg</p>
-          <p>Food: <span className="text-green-300 font-bold">{consumables.food.toFixed(1)}</span> kg</p>
+          <p>Oxygen: <span className="text-green-300 font-bold">{consumablesFormatter.format(consumables.oxygen)}</span> kg</p>
+          <p>Water: <span className="text-green-300 font-bold">{consumablesFormatter.format(consumables.water)}</span> kg</p>
+          <p>Food: <span className="text-green-300 font-bold">{consumablesFormatter.format(consumables.food)}</span> kg</p>
           <div className="border-t border-green-500/30 pt-1 mt-1">
-            <p className="font-bold">Total: <span className="text-green-300">{consumables.total.toFixed(1)}</span> kg</p>
+            <p className="font-bold">Total: <span className="text-green-300">{consumablesFormatter.format(consumables.total)}</span> kg</p>
           </div>
           <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity focus-within:opacity-100">
             <CopyButton
-              textToCopy={`Oxygen: ${consumables.oxygen.toFixed(1)} kg\nWater: ${consumables.water.toFixed(1)} kg\nFood: ${consumables.food.toFixed(1)} kg\nTotal: ${consumables.total.toFixed(1)} kg`}
+              textToCopy={`Oxygen: ${consumablesFormatter.format(consumables.oxygen)} kg\nWater: ${consumablesFormatter.format(consumables.water)} kg\nFood: ${consumablesFormatter.format(consumables.food)} kg\nTotal: ${consumablesFormatter.format(consumables.total)} kg`}
               label="Copy life support consumables"
               className="text-green-400 hover:text-green-200 focus:ring-green-400"
             />
