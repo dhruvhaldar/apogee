@@ -47,3 +47,8 @@
 **Vulnerability:** The `Permissions-Policy` header in `next.config.ts` was missing critical directives (`web-share`, `idle-detection`), leaving the application vulnerable to potential feature abuse. Furthermore, a comment explicitly stated the need for `clipboard-write=(self)` to allow `CopyButton` functionality, but it was not implemented in the actual header value, leading to a discrepancy between intent and reality.
 **Learning:** Security configurations must be exhaustive and explicitly deny all unnecessary features. Comments outlining security requirements must be strictly verified against the implemented code. Relying on default browser behavior for unconfigured permissions policies violates the principle of least privilege.
 **Prevention:** Ensured the `Permissions-Policy` in `next.config.ts` explicitly includes `web-share=()`, `idle-detection=()`, and `clipboard-write=(self)`. Added corresponding Playwright test assertions in `tests/header.spec.ts` to prevent silent regression and enforce that the implemented policy matches the documented intent.
+
+## 2026-10-28 - Incomplete Cross-Origin Protection Policies
+**Vulnerability:** The application was missing the `Cross-Origin-Embedder-Policy` (COEP) header, which is essential for enabling strict cross-origin isolation and protecting against Spectre-like timing attacks.
+**Learning:** Defense in depth requires explicit configuration of all available security headers. Missing COEP weakens the isolation provided by other headers like COOP and CORP.
+**Prevention:** Added `Cross-Origin-Embedder-Policy: require-corp` to the Next.js header configuration in `next.config.ts` and updated `tests/header.spec.ts` to enforce its presence.
