@@ -36,10 +36,20 @@ const SolarPanelCalculatorForm = () => {
     }
   };
 
-  const handleInputChange = (setter: React.Dispatch<React.SetStateAction<string>>) => (e: React.ChangeEvent<HTMLInputElement>) => {
+  // ⚡ Performance: Refactored curried handleInputChange into specific handlers.
+  // This prevents creating a new function closure on every single render cycle,
+  // reducing garbage collection overhead and potential unnecessary re-renders of child components.
+  const handlePowerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
     if (validateNumericInput(val)) {
-      setter(val);
+      setPower(val);
+    }
+  };
+
+  const handleEfficiencyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    if (validateNumericInput(val)) {
+      setEfficiency(val);
     }
   };
 
@@ -60,7 +70,7 @@ const SolarPanelCalculatorForm = () => {
             step="any"
             required
             value={power}
-            onChange={handleInputChange(setPower)}
+            onChange={handlePowerChange}
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text-white focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             aria-label="Required Power in Watts"
             aria-describedby="solar-power-hint"
@@ -81,7 +91,7 @@ const SolarPanelCalculatorForm = () => {
           step="any"
           required
           value={efficiency}
-          onChange={handleInputChange(setEfficiency)}
+          onChange={handleEfficiencyChange}
           className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/40 hover:border-white/40 transition"
           aria-label="Efficiency ratio between 0.0 and 1.0"
           aria-describedby="solar-efficiency-hint"

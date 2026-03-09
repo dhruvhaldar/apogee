@@ -42,10 +42,27 @@ const RocketCalculatorForm = () => {
     }
   };
 
-  const handleInputChange = (setter: React.Dispatch<React.SetStateAction<string>>) => (e: React.ChangeEvent<HTMLInputElement>) => {
+  // ⚡ Performance: Refactored curried handleInputChange into specific handlers.
+  // This prevents creating a new function closure on every single render cycle,
+  // reducing garbage collection overhead and potential unnecessary re-renders of child components.
+  const handleIspChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
     if (validateNumericInput(val)) {
-      setter(val);
+      setIsp(val);
+    }
+  };
+
+  const handleM0Change = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    if (validateNumericInput(val)) {
+      setM0(val);
+    }
+  };
+
+  const handleMfChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    if (validateNumericInput(val)) {
+      setMf(val);
     }
   };
 
@@ -66,7 +83,7 @@ const RocketCalculatorForm = () => {
             step="any"
             required
             value={isp}
-            onChange={handleInputChange(setIsp)}
+            onChange={handleIspChange}
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-8 text-white focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             aria-label="Specific Impulse in seconds"
             aria-describedby="rocket-isp-hint"
@@ -87,7 +104,7 @@ const RocketCalculatorForm = () => {
             step="any"
             required
             value={m0}
-            onChange={handleInputChange(setM0)}
+            onChange={handleM0Change}
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text-white focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             aria-label="Initial Mass in kilograms"
             aria-describedby="rocket-m0-hint"
@@ -108,7 +125,7 @@ const RocketCalculatorForm = () => {
             step="any"
             required
             value={mf}
-            onChange={handleInputChange(setMf)}
+            onChange={handleMfChange}
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text-white focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             aria-label="Final Mass in kilograms"
             aria-describedby="rocket-mf-hint"
