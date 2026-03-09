@@ -57,3 +57,7 @@
 ## 2026-03-09 - Input Focus Visibility on Dark Backgrounds
 **Learning:** Relying solely on a 1px border color change (`focus:border-<color>`) on a dark/black background can lead to poor visibility of the focus indicator, making it difficult for keyboard users to navigate forms. The contrast between a thin border and a dark background is often insufficient for clear visual feedback.
 **Action:** Always combine border color changes with a focus ring (`focus:ring-2 focus:ring-<color>/40`) to create a more prominent, glowing focus state that is clearly visible against dark backgrounds. Additionally, adding a subtle hover state (`hover:border-white/40`) improves the overall interactive feel of the inputs.
+
+## 2026-03-09 - [A11y/UX] Contextual Focus on Container Elements
+**Learning:** While individual inputs have focus states, large form regions (like Calculator Cards) can feel disconnected when a user is actively engaging with them. Additionally, screen readers announce the `aria-labelledby` title when entering a semantic region, but miss the helpful contextual description text visually available below it.
+**Action:** Use `aria-describedby` on the semantic container (e.g., `<section>`) linked to its descriptive `<p>` tag to provide immediate context to screen reader users upon entering the region. Pair this with Tailwind's `focus-within` on the container to slightly elevate and highlight the entire card when any of its child inputs receive focus, creating a stronger visual connection between the user's action and the active tool block.
