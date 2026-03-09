@@ -30,4 +30,5 @@ test('verify security headers', async ({ page }) => {
   // Enhanced security headers
   expect(headers['cross-origin-opener-policy']).toBe('same-origin');
   expect(headers['cross-origin-resource-policy']).toBe('same-origin');
+  expect(headers['cross-origin-embedder-policy']).toBe('require-corp');
 });
