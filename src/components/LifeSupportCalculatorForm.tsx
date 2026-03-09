@@ -38,10 +38,20 @@ const LifeSupportCalculatorForm = () => {
     }
   };
 
-  const handleInputChange = (setter: React.Dispatch<React.SetStateAction<string>>) => (e: React.ChangeEvent<HTMLInputElement>) => {
+  // ⚡ Performance: Refactored curried handleInputChange into specific handlers.
+  // This prevents creating a new function closure on every single render cycle,
+  // reducing garbage collection overhead and potential unnecessary re-renders of child components.
+  const handleCrewChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
     if (validateNumericInput(val)) {
-      setter(val);
+      setCrew(val);
+    }
+  };
+
+  const handleDaysChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    if (validateNumericInput(val)) {
+      setDays(val);
     }
   };
 
@@ -62,7 +72,7 @@ const LifeSupportCalculatorForm = () => {
             step="any"
             required
             value={crew}
-            onChange={handleInputChange(setCrew)}
+            onChange={handleCrewChange}
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-16 text-white focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             aria-label="Crew Size in people"
             aria-describedby="ls-crew-hint"
@@ -83,7 +93,7 @@ const LifeSupportCalculatorForm = () => {
             step="any"
             required
             value={days}
-            onChange={handleInputChange(setDays)}
+            onChange={handleDaysChange}
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-12 text-white focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             aria-label="Duration in days"
             aria-describedby="ls-days-hint"
