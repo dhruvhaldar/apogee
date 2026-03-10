@@ -92,7 +92,7 @@ const SolarPanelCalculatorForm = () => {
           required
           value={efficiency}
           onChange={handleEfficiencyChange}
-          className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/40 hover:border-white/40 transition"
+          className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           aria-label="Efficiency ratio between 0.0 and 1.0"
           aria-describedby="solar-efficiency-hint"
         />
@@ -109,7 +109,7 @@ const SolarPanelCalculatorForm = () => {
           <p className="text-center font-mono text-xl">
             <span className="text-red-300 font-bold">{areaFormatter.format(area)}</span> m²
           </p>
-          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity focus-within:opacity-100">
+          <div className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity focus-within:opacity-100 sm:focus-within:opacity-100">
             <CopyButton
               textToCopy={`${areaFormatter.format(area)} m²`}
               label="Copy solar panel area"

@@ -90,7 +90,7 @@ const OrbitCalculatorForm = () => {
           <p className="font-mono text-lg">
             Period: <span className="text-purple-300 font-bold">{periodFormatter.format(period)}</span> min
           </p>
-          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity focus-within:opacity-100">
+          <div className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity focus-within:opacity-100 sm:focus-within:opacity-100">
             <CopyButton
               textToCopy={`Velocity: ${velocityFormatter.format(velocity)} km/s, Period: ${periodFormatter.format(period)} min`}
               label="Copy orbital parameters"

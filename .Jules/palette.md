@@ -61,3 +61,7 @@
 ## 2026-03-09 - [A11y/UX] Contextual Focus on Container Elements
 **Learning:** While individual inputs have focus states, large form regions (like Calculator Cards) can feel disconnected when a user is actively engaging with them. Additionally, screen readers announce the `aria-labelledby` title when entering a semantic region, but miss the helpful contextual description text visually available below it.
 **Action:** Use `aria-describedby` on the semantic container (e.g., `<section>`) linked to its descriptive `<p>` tag to provide immediate context to screen reader users upon entering the region. Pair this with Tailwind's `focus-within` on the container to slightly elevate and highlight the entire card when any of its child inputs receive focus, creating a stronger visual connection between the user's action and the active tool block.
+
+## 2026-03-09 - [UX/A11y] Mobile Touch Discoverability for Contextual Actions
+**Learning:** Relying purely on `group-hover:opacity-100` to hide contextual actions (like Copy buttons) until hovered makes those features completely undiscoverable on mobile/touch devices, which lack a hover state. Users shouldn't have to guess where actions are.
+**Action:** Always ensure critical contextual actions are visible by default on touch interfaces (e.g., `opacity-100 sm:opacity-0 sm:group-hover:opacity-100`), or provide a persistent visual cue that doesn't rely solely on mouse hover.

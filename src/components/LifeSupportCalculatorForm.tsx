@@ -118,7 +118,7 @@ const LifeSupportCalculatorForm = () => {
           <div className="border-t border-green-500/30 pt-1 mt-1">
             <p className="font-bold">Total: <span className="text-green-300">{consumablesFormatter.format(consumables.total)}</span> kg</p>
           </div>
-          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity focus-within:opacity-100">
+          <div className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity focus-within:opacity-100 sm:focus-within:opacity-100">
             <CopyButton
               textToCopy={`Oxygen: ${consumablesFormatter.format(consumables.oxygen)} kg\nWater: ${consumablesFormatter.format(consumables.water)} kg\nFood: ${consumablesFormatter.format(consumables.food)} kg\nTotal: ${consumablesFormatter.format(consumables.total)} kg`}
               label="Copy life support consumables"

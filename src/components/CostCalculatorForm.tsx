@@ -114,7 +114,7 @@ const CostCalculatorForm = () => {
           <p className="text-center font-mono text-xl">
             <span className="text-yellow-300 font-bold">${currencyFormatter.format(totalCost)}</span>
           </p>
-          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity focus-within:opacity-100">
+          <div className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity focus-within:opacity-100 sm:focus-within:opacity-100">
             <CopyButton
               textToCopy={`$${currencyFormatter.format(totalCost)}`}
               label="Copy mission cost"

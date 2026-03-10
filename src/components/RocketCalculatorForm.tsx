@@ -147,7 +147,7 @@ const RocketCalculatorForm = () => {
           <p className="text-center font-mono text-xl">
             ΔV = <span className="text-cyan-300 font-bold">{deltaVFormatter.format(result)}</span> m/s
           </p>
-          <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity focus-within:opacity-100">
+          <div className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity focus-within:opacity-100 sm:focus-within:opacity-100">
             <CopyButton
               textToCopy={`${deltaVFormatter.format(result)} m/s`}
               label="Copy Delta-V result"
