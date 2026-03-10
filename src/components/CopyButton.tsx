@@ -28,7 +28,9 @@ const CopyButton: React.FC<CopyButtonProps> = ({
     <button
       type="button"
       onClick={handleCopy}
-      className={`p-1.5 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black ${
+      // ⚡ Performance: Replaced `transition-all` with `transition` to prevent expensive
+      // repaints and layout shifts on interactions.
+      className={`p-1.5 rounded-full transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black ${
         copied
           ? 'bg-green-500/20 text-green-400 focus:ring-green-400'
           : 'bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white'
