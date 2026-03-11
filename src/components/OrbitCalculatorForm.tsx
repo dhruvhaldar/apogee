@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { calculateOrbitalStats } from '../utils/spaceflight';
 import { logError, getErrorMessage } from '../utils/logger';
 import { validateNumericInput } from '../utils/validation';
@@ -17,6 +17,17 @@ const OrbitCalculatorForm = () => {
   const [velocity, setVelocity] = useState<number | null>(null);
   const [period, setPeriod] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  // ⚡ Performance: Memoize formatted strings to prevent redundant Intl.NumberFormat.format() calls.
+  // This form re-renders on every keystroke in the input fields, which would otherwise trigger
+  // redundant format() calls for the same result.
+  const formattedStats = useMemo(() => {
+    if (velocity === null || period === null) return null;
+    return {
+      velocity: velocityFormatter.format(velocity),
+      period: periodFormatter.format(period)
+    };
+  }, [velocity, period]);
 
   const handleCalculate = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
@@ -82,17 +93,17 @@ const OrbitCalculatorForm = () => {
       >
         Calculate Orbit
       </button>
-      {velocity !== null && period !== null && (
+      {formattedStats !== null && (
         <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-purple-900/30 rounded border border-purple-500/30 backdrop-blur-sm space-y-2 relative group">
           <p className="font-mono text-lg">
-            Velocity: <span className="text-purple-300 font-bold">{velocityFormatter.format(velocity)}</span> km/s
+            Velocity: <span className="text-purple-300 font-bold">{formattedStats.velocity}</span> km/s
           </p>
           <p className="font-mono text-lg">
-            Period: <span className="text-purple-300 font-bold">{periodFormatter.format(period)}</span> min
+            Period: <span className="text-purple-300 font-bold">{formattedStats.period}</span> min
           </p>
           <div className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity focus-within:opacity-100 sm:focus-within:opacity-100">
             <CopyButton
-              textToCopy={`Velocity: ${velocityFormatter.format(velocity)} km/s, Period: ${periodFormatter.format(period)} min`}
+              textToCopy={`Velocity: ${formattedStats.velocity} km/s, Period: ${formattedStats.period} min`}
               label="Copy orbital parameters"
               className="text-purple-400 hover:text-purple-200 focus:ring-purple-400"
             />

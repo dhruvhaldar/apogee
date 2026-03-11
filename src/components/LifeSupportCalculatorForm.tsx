@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { calculateConsumables } from '../utils/spaceflight';
 import { logError, getErrorMessage } from '../utils/logger';
 import { validateNumericInput } from '../utils/validation';
@@ -17,6 +17,20 @@ const LifeSupportCalculatorForm = () => {
   const [days, setDays] = useState<string>('10');
   const [consumables, setConsumables] = useState<{ oxygen: number; water: number; food: number; total: number } | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  // ⚡ Performance: Memoize formatted strings to prevent redundant Intl.NumberFormat.format() calls.
+  // Although the formatter is cached globally, calling .format() is still moderately expensive.
+  // This form re-renders on every keystroke in the input fields, which would otherwise trigger
+  // 8 redundant format() calls for the same result.
+  const formattedConsumables = useMemo(() => {
+    if (!consumables) return null;
+    return {
+      oxygen: consumablesFormatter.format(consumables.oxygen),
+      water: consumablesFormatter.format(consumables.water),
+      food: consumablesFormatter.format(consumables.food),
+      total: consumablesFormatter.format(consumables.total)
+    };
+  }, [consumables]);
 
   const handleCalculate = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
@@ -110,17 +124,17 @@ const LifeSupportCalculatorForm = () => {
       >
         Calculate Needs
       </button>
-      {consumables && (
+      {formattedConsumables && (
         <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-green-900/30 rounded border border-green-500/30 backdrop-blur-sm text-sm space-y-1 relative group">
-          <p>Oxygen: <span className="text-green-300 font-bold">{consumablesFormatter.format(consumables.oxygen)}</span> kg</p>
-          <p>Water: <span className="text-green-300 font-bold">{consumablesFormatter.format(consumables.water)}</span> kg</p>
-          <p>Food: <span className="text-green-300 font-bold">{consumablesFormatter.format(consumables.food)}</span> kg</p>
+          <p>Oxygen: <span className="text-green-300 font-bold">{formattedConsumables.oxygen}</span> kg</p>
+          <p>Water: <span className="text-green-300 font-bold">{formattedConsumables.water}</span> kg</p>
+          <p>Food: <span className="text-green-300 font-bold">{formattedConsumables.food}</span> kg</p>
           <div className="border-t border-green-500/30 pt-1 mt-1">
-            <p className="font-bold">Total: <span className="text-green-300">{consumablesFormatter.format(consumables.total)}</span> kg</p>
+            <p className="font-bold">Total: <span className="text-green-300">{formattedConsumables.total}</span> kg</p>
           </div>
           <div className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity focus-within:opacity-100 sm:focus-within:opacity-100">
             <CopyButton
-              textToCopy={`Oxygen: ${consumablesFormatter.format(consumables.oxygen)} kg\nWater: ${consumablesFormatter.format(consumables.water)} kg\nFood: ${consumablesFormatter.format(consumables.food)} kg\nTotal: ${consumablesFormatter.format(consumables.total)} kg`}
+              textToCopy={`Oxygen: ${formattedConsumables.oxygen} kg\nWater: ${formattedConsumables.water} kg\nFood: ${formattedConsumables.food} kg\nTotal: ${formattedConsumables.total} kg`}
               label="Copy life support consumables"
               className="text-green-400 hover:text-green-200 focus:ring-green-400"
             />
