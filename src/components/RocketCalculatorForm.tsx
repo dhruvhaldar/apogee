@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { calculateDeltaV } from '../utils/spaceflight';
 import { logError, getErrorMessage } from '../utils/logger';
 import { validateNumericInput } from '../utils/validation';
@@ -16,6 +16,14 @@ const RocketCalculatorForm = () => {
   const [mf, setMf] = useState<string>('100');
   const [result, setResult] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  // ⚡ Performance: Memoize formatted strings to prevent redundant Intl.NumberFormat.format() calls.
+  // This form re-renders on every keystroke in the input fields, which would otherwise trigger
+  // redundant format() calls for the same result.
+  const formattedResult = useMemo(() => {
+    if (result === null) return null;
+    return deltaVFormatter.format(result);
+  }, [result]);
 
   const handleCalculate = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
@@ -142,14 +150,14 @@ const RocketCalculatorForm = () => {
       >
         Calculate Delta-V
       </button>
-      {result !== null && (
+      {formattedResult !== null && (
         <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-cyan-900/30 rounded border border-cyan-500/30 backdrop-blur-sm relative group">
           <p className="text-center font-mono text-xl">
-            ΔV = <span className="text-cyan-300 font-bold">{deltaVFormatter.format(result)}</span> m/s
+            ΔV = <span className="text-cyan-300 font-bold">{formattedResult}</span> m/s
           </p>
           <div className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity focus-within:opacity-100 sm:focus-within:opacity-100">
             <CopyButton
-              textToCopy={`${deltaVFormatter.format(result)} m/s`}
+              textToCopy={`${formattedResult} m/s`}
               label="Copy Delta-V result"
               className="text-cyan-400 hover:text-cyan-200 focus:ring-cyan-400"
             />

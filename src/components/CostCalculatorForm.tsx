@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { calculateMissionCost } from '../utils/spaceflight';
 import { logError, getErrorMessage } from '../utils/logger';
 import { validateNumericInput } from '../utils/validation';
@@ -16,6 +16,14 @@ const CostCalculatorForm = () => {
   const [costPerKg, setCostPerKg] = useState<string>("2700");
   const [totalCost, setTotalCost] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  // ⚡ Performance: Memoize formatted strings to prevent redundant Intl.NumberFormat.format() calls.
+  // This form re-renders on every keystroke in the input fields, which would otherwise trigger
+  // redundant format() calls for the same result.
+  const formattedTotalCost = useMemo(() => {
+    if (totalCost === null) return null;
+    return currencyFormatter.format(totalCost);
+  }, [totalCost]);
 
   const handleCalculate = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
@@ -109,14 +117,14 @@ const CostCalculatorForm = () => {
       >
         Calculate Cost
       </button>
-      {totalCost !== null && (
+      {formattedTotalCost !== null && (
         <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-yellow-900/30 rounded border border-yellow-500/30 backdrop-blur-sm relative group">
           <p className="text-center font-mono text-xl">
-            <span className="text-yellow-300 font-bold">${currencyFormatter.format(totalCost)}</span>
+            <span className="text-yellow-300 font-bold">${formattedTotalCost}</span>
           </p>
           <div className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity focus-within:opacity-100 sm:focus-within:opacity-100">
             <CopyButton
-              textToCopy={`$${currencyFormatter.format(totalCost)}`}
+              textToCopy={`$${formattedTotalCost}`}
               label="Copy mission cost"
               className="text-yellow-400 hover:text-yellow-200 focus:ring-yellow-400"
             />
