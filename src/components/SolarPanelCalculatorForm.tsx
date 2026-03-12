@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { calculateSolarPanelArea } from '../utils/spaceflight';
 import { logError, getErrorMessage } from '../utils/logger';
 import { validateNumericInput } from '../utils/validation';
@@ -15,6 +15,14 @@ const SolarPanelCalculatorForm = () => {
   const [efficiency, setEfficiency] = useState<string>("0.25");
   const [area, setArea] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  // ⚡ Performance: Memoize formatted strings to prevent redundant Intl.NumberFormat.format() calls.
+  // This form re-renders on every keystroke in the input fields, which would otherwise trigger
+  // redundant format() calls for the same result.
+  const formattedArea = useMemo(() => {
+    if (area === null) return null;
+    return areaFormatter.format(area);
+  }, [area]);
 
   const handleCalculate = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
@@ -104,14 +112,14 @@ const SolarPanelCalculatorForm = () => {
       >
         Calculate Area
       </button>
-      {area !== null && (
+      {formattedArea !== null && (
         <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-red-900/30 rounded border border-red-500/30 backdrop-blur-sm relative group">
           <p className="text-center font-mono text-xl">
-            <span className="text-red-300 font-bold">{areaFormatter.format(area)}</span> m²
+            <span className="text-red-300 font-bold">{formattedArea}</span> m²
           </p>
           <div className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity focus-within:opacity-100 sm:focus-within:opacity-100">
             <CopyButton
-              textToCopy={`${areaFormatter.format(area)} m²`}
+              textToCopy={`${formattedArea} m²`}
               label="Copy solar panel area"
               className="text-red-400 hover:text-red-200 focus:ring-red-400"
             />
