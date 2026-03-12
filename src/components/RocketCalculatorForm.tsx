@@ -82,7 +82,9 @@ const RocketCalculatorForm = () => {
         </div>
       )}
       <div>
-        <label htmlFor="rocket-isp" className="block text-sm mb-1 text-gray-300">Specific Impulse (Isp)</label>
+        <label htmlFor="rocket-isp" className="block text-sm mb-1 text-gray-300">
+          Specific Impulse (Isp) <span className="text-red-500" aria-hidden="true" title="Required">*</span>
+        </label>
         <div className="relative">
           <input
             id="rocket-isp"
@@ -103,7 +105,9 @@ const RocketCalculatorForm = () => {
         </div>
       </div>
       <div>
-        <label htmlFor="rocket-m0" className="block text-sm mb-1 text-gray-300">Initial Mass (m0)</label>
+        <label htmlFor="rocket-m0" className="block text-sm mb-1 text-gray-300">
+          Initial Mass (m0) <span className="text-red-500" aria-hidden="true" title="Required">*</span>
+        </label>
         <div className="relative">
           <input
             id="rocket-m0"
@@ -124,7 +128,9 @@ const RocketCalculatorForm = () => {
         </div>
       </div>
       <div>
-        <label htmlFor="rocket-mf" className="block text-sm mb-1 text-gray-300">Final Mass (mf)</label>
+        <label htmlFor="rocket-mf" className="block text-sm mb-1 text-gray-300">
+          Final Mass (mf) <span className="text-red-500" aria-hidden="true" title="Required">*</span>
+        </label>
         <div className="relative">
           <input
             id="rocket-mf"

@@ -67,7 +67,9 @@ const OrbitCalculatorForm = () => {
         </div>
       )}
       <div>
-        <label htmlFor="orbit-altitude" className="block text-sm mb-1 text-gray-300">Altitude</label>
+        <label htmlFor="orbit-altitude" className="block text-sm mb-1 text-gray-300">
+          Altitude <span className="text-red-500" aria-hidden="true" title="Required">*</span>
+        </label>
         <div className="relative">
           <input
             id="orbit-altitude"

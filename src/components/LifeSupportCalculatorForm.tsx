@@ -77,7 +77,9 @@ const LifeSupportCalculatorForm = () => {
         </div>
       )}
       <div>
-        <label htmlFor="ls-crew" className="block text-sm mb-1 text-gray-300">Crew Size</label>
+        <label htmlFor="ls-crew" className="block text-sm mb-1 text-gray-300">
+          Crew Size <span className="text-red-500" aria-hidden="true" title="Required">*</span>
+        </label>
         <div className="relative">
           <input
             id="ls-crew"
@@ -98,7 +100,9 @@ const LifeSupportCalculatorForm = () => {
         </div>
       </div>
       <div>
-        <label htmlFor="ls-days" className="block text-sm mb-1 text-gray-300">Duration</label>
+        <label htmlFor="ls-days" className="block text-sm mb-1 text-gray-300">
+          Duration <span className="text-red-500" aria-hidden="true" title="Required">*</span>
+        </label>
         <div className="relative">
           <input
             id="ls-days"

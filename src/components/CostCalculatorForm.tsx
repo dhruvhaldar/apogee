@@ -70,7 +70,9 @@ const CostCalculatorForm = () => {
         </div>
       )}
       <div>
-        <label htmlFor="cost-payload" className="block text-sm mb-1 text-gray-300">Payload Mass</label>
+        <label htmlFor="cost-payload" className="block text-sm mb-1 text-gray-300">
+          Payload Mass <span className="text-red-500" aria-hidden="true" title="Required">*</span>
+        </label>
         <div className="relative">
           <input
             id="cost-payload"
@@ -91,7 +93,9 @@ const CostCalculatorForm = () => {
         </div>
       </div>
       <div>
-        <label htmlFor="cost-rate" className="block text-sm mb-1 text-gray-300">Cost per kg</label>
+        <label htmlFor="cost-rate" className="block text-sm mb-1 text-gray-300">
+          Cost per kg <span className="text-red-500" aria-hidden="true" title="Required">*</span>
+        </label>
         <div className="relative">
           <input
             id="cost-rate"

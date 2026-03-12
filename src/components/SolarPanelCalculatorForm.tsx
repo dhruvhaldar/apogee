@@ -69,7 +69,9 @@ const SolarPanelCalculatorForm = () => {
         </div>
       )}
       <div>
-        <label htmlFor="solar-power" className="block text-sm mb-1 text-gray-300">Required Power</label>
+        <label htmlFor="solar-power" className="block text-sm mb-1 text-gray-300">
+          Required Power <span className="text-red-500" aria-hidden="true" title="Required">*</span>
+        </label>
         <div className="relative">
           <input
             id="solar-power"
@@ -90,7 +92,9 @@ const SolarPanelCalculatorForm = () => {
         </div>
       </div>
       <div>
-        <label htmlFor="solar-efficiency" className="block text-sm mb-1 text-gray-300">Efficiency (0.0 - 1.0)</label>
+        <label htmlFor="solar-efficiency" className="block text-sm mb-1 text-gray-300">
+          Efficiency (0.0 - 1.0) <span className="text-red-500" aria-hidden="true" title="Required">*</span>
+        </label>
         <input
           id="solar-efficiency"
           type="number"
