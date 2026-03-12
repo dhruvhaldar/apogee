@@ -36,8 +36,8 @@ const LifeSupportCalculatorForm = () => {
     if (e) e.preventDefault();
     setError(null);
     try {
-      const crewNum = parseInt(crew);
-      const daysNum = parseInt(days);
+      const crewNum = parseInt(crew, 10);
+      const daysNum = parseInt(days, 10);
 
       if (isNaN(crewNum) || isNaN(daysNum)) {
         throw new Error('Please enter valid numeric values');
