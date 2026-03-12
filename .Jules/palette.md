@@ -65,3 +65,7 @@
 ## 2026-03-09 - [UX/A11y] Mobile Touch Discoverability for Contextual Actions
 **Learning:** Relying purely on `group-hover:opacity-100` to hide contextual actions (like Copy buttons) until hovered makes those features completely undiscoverable on mobile/touch devices, which lack a hover state. Users shouldn't have to guess where actions are.
 **Action:** Always ensure critical contextual actions are visible by default on touch interfaces (e.g., `opacity-100 sm:opacity-0 sm:group-hover:opacity-100`), or provide a persistent visual cue that doesn't rely solely on mouse hover.
+
+## 2026-03-12 - [UX/A11y] Visual Required Field Indicators
+**Learning:** While form inputs correctly use the HTML5 `required` attribute (which natively handles validation and screen reader announcements), sighted users have no visual indication that a field is mandatory until they attempt to submit and encounter an error. This violates the principle of predictable UX.
+**Action:** Always pair the `required` attribute on inputs with a visual indicator (like a red asterisk `<span className="text-red-500">*</span>`) in the associated label. Crucially, hide this visual indicator from screen readers using `aria-hidden="true"` to prevent redundant "star" or "asterisk" announcements, since the input itself is already marked as required.
