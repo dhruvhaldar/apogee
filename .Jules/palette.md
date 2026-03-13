@@ -69,3 +69,7 @@
 ## 2026-03-12 - [UX/A11y] Visual Required Field Indicators
 **Learning:** While form inputs correctly use the HTML5 `required` attribute (which natively handles validation and screen reader announcements), sighted users have no visual indication that a field is mandatory until they attempt to submit and encounter an error. This violates the principle of predictable UX.
 **Action:** Always pair the `required` attribute on inputs with a visual indicator (like a red asterisk `<span className="text-red-500">*</span>`) in the associated label. Crucially, hide this visual indicator from screen readers using `aria-hidden="true"` to prevent redundant "star" or "asterisk" announcements, since the input itself is already marked as required.
+
+## 2026-03-13 - [A11y] Dynamic Aria-Label Announcements
+**Learning:** Relying solely on dynamically updating the `aria-label` of an already-focused button (like a Copy button changing from 'Copy' to 'Copied') is unreliable for screen readers (like VoiceOver/NVDA), as they do not automatically announce attribute changes on focused native elements. This leaves visually impaired users without feedback.
+**Action:** Always pair dynamic label changes on interactive elements with a dedicated, visually hidden `aria-live` region (e.g., `<span aria-live="polite" className="sr-only">...</span>`) to ensure the state change is reliably announced.
