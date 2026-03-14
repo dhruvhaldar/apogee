@@ -45,12 +45,12 @@ export default function Home() {
           <SolarPanelCalculator />
           
           {/* Information Card */}
-          <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 flex flex-col justify-center items-center text-center">
-             <h3 className="text-xl font-bold text-gray-300 mb-2">Project Overview</h3>
+          <aside aria-labelledby="overview-title" className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 flex flex-col justify-center items-center text-center">
+             <h3 id="overview-title" className="text-xl font-bold text-gray-300 mb-2">Project Overview</h3>
              <p className="text-gray-400 text-sm">
                This tool helps analyze key aspects of manned space transportation, including vehicle performance, orbital dynamics, life support systems, and mission economics.
              </p>
-          </div>
+          </aside>
         </div>
 
         <footer className="mt-16 text-center text-gray-500 text-sm">
