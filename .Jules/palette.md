@@ -73,3 +73,7 @@
 ## 2026-03-13 - [A11y] Dynamic Aria-Label Announcements
 **Learning:** Relying solely on dynamically updating the `aria-label` of an already-focused button (like a Copy button changing from 'Copy' to 'Copied') is unreliable for screen readers (like VoiceOver/NVDA), as they do not automatically announce attribute changes on focused native elements. This leaves visually impaired users without feedback.
 **Action:** Always pair dynamic label changes on interactive elements with a dedicated, visually hidden `aria-live` region (e.g., `<span aria-live="polite" className="sr-only">...</span>`) to ensure the state change is reliably announced.
+
+## 2026-03-14 - [A11y] Semantic Landmarks for Static Information Cards
+**Learning:** Static informational cards placed alongside a grid of interactive semantic regions (like calculator components using `<section aria-labelledby="...">`) will be skipped or harder to discover by screen reader users navigating via landmarks if left as generic `<div>` tags.
+**Action:** Always wrap informational cards in explicit semantic landmark roles (e.g., `<aside>`) and link them to their visible heading using `aria-labelledby` to ensure consistent discoverability within the document outline alongside interactive regions.
