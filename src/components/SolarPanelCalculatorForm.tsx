@@ -116,20 +116,24 @@ const SolarPanelCalculatorForm = () => {
       >
         Calculate Area
       </button>
-      {formattedArea !== null && (
-        <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-red-900/30 rounded border border-red-500/30 backdrop-blur-sm relative group">
-          <p className="text-center font-mono text-xl">
-            <span className="text-red-300 font-bold">{formattedArea}</span> m²
-          </p>
-          <div className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity focus-within:opacity-100 sm:focus-within:opacity-100">
-            <CopyButton
-              textToCopy={`${formattedArea} m²`}
-              label="Copy solar panel area"
-              className="text-red-400 hover:text-red-200 focus:ring-red-400"
-            />
+
+      {/* 🎨 UX/A11y: Persistent aria-live region so screen readers catch dynamic updates */}
+      <div aria-live="polite" aria-atomic="true" className="min-h-[80px]">
+        {formattedArea !== null && (
+          <div className="mt-4 p-4 bg-red-900/30 rounded border border-red-500/30 backdrop-blur-sm relative group">
+            <p className="text-center font-mono text-xl">
+              <span className="text-red-300 font-bold">{formattedArea}</span> m²
+            </p>
+            <div className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity focus-within:opacity-100 sm:focus-within:opacity-100">
+              <CopyButton
+                textToCopy={`${formattedArea} m²`}
+                label="Copy solar panel area"
+                className="text-red-400 hover:text-red-200 focus:ring-red-400"
+              />
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </form>
   );
 };

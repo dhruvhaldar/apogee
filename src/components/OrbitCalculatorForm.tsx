@@ -95,23 +95,27 @@ const OrbitCalculatorForm = () => {
       >
         Calculate Orbit
       </button>
-      {formattedStats !== null && (
-        <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-purple-900/30 rounded border border-purple-500/30 backdrop-blur-sm space-y-2 relative group">
-          <p className="font-mono text-lg">
-            Velocity: <span className="text-purple-300 font-bold">{formattedStats.velocity}</span> km/s
-          </p>
-          <p className="font-mono text-lg">
-            Period: <span className="text-purple-300 font-bold">{formattedStats.period}</span> min
-          </p>
-          <div className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity focus-within:opacity-100 sm:focus-within:opacity-100">
-            <CopyButton
-              textToCopy={`Velocity: ${formattedStats.velocity} km/s, Period: ${formattedStats.period} min`}
-              label="Copy orbital parameters"
-              className="text-purple-400 hover:text-purple-200 focus:ring-purple-400"
-            />
+
+      {/* 🎨 UX/A11y: Persistent aria-live region so screen readers catch dynamic updates */}
+      <div aria-live="polite" aria-atomic="true" className="min-h-[100px]">
+        {formattedStats !== null && (
+          <div className="mt-4 p-4 bg-purple-900/30 rounded border border-purple-500/30 backdrop-blur-sm space-y-2 relative group">
+            <p className="font-mono text-lg">
+              Velocity: <span className="text-purple-300 font-bold">{formattedStats.velocity}</span> km/s
+            </p>
+            <p className="font-mono text-lg">
+              Period: <span className="text-purple-300 font-bold">{formattedStats.period}</span> min
+            </p>
+            <div className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity focus-within:opacity-100 sm:focus-within:opacity-100">
+              <CopyButton
+                textToCopy={`Velocity: ${formattedStats.velocity} km/s, Period: ${formattedStats.period} min`}
+                label="Copy orbital parameters"
+                className="text-purple-400 hover:text-purple-200 focus:ring-purple-400"
+              />
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </form>
   );
 };
