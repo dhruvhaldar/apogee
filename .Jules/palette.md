@@ -77,3 +77,7 @@
 ## 2026-03-14 - [A11y] Semantic Landmarks for Static Information Cards
 **Learning:** Static informational cards placed alongside a grid of interactive semantic regions (like calculator components using `<section aria-labelledby="...">`) will be skipped or harder to discover by screen reader users navigating via landmarks if left as generic `<div>` tags.
 **Action:** Always wrap informational cards in explicit semantic landmark roles (e.g., `<aside>`) and link them to their visible heading using `aria-labelledby` to ensure consistent discoverability within the document outline alongside interactive regions.
+
+## 2026-03-15 - [A11y] Conditionally Rendered Aria-Live Regions
+**Learning:** Placing `aria-live` on an element that is conditionally rendered (e.g., `{result && <div aria-live="polite">...</div>}`) often causes screen readers to ignore the update because the region itself wasn't present in the accessibility tree when the mutation occurred.
+**Action:** Always place `aria-live` attributes on a persistent, unconditionally rendered wrapper element in the DOM, and conditionally render the dynamic content *inside* it.

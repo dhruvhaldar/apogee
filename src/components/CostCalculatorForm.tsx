@@ -121,20 +121,24 @@ const CostCalculatorForm = () => {
       >
         Calculate Cost
       </button>
-      {formattedTotalCost !== null && (
-        <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-yellow-900/30 rounded border border-yellow-500/30 backdrop-blur-sm relative group">
-          <p className="text-center font-mono text-xl">
-            <span className="text-yellow-300 font-bold">${formattedTotalCost}</span>
-          </p>
-          <div className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity focus-within:opacity-100 sm:focus-within:opacity-100">
-            <CopyButton
-              textToCopy={`$${formattedTotalCost}`}
-              label="Copy mission cost"
-              className="text-yellow-400 hover:text-yellow-200 focus:ring-yellow-400"
-            />
+
+      {/* 🎨 UX/A11y: Persistent aria-live region so screen readers catch dynamic updates */}
+      <div aria-live="polite" aria-atomic="true" className="min-h-[80px]">
+        {formattedTotalCost !== null && (
+          <div className="mt-4 p-4 bg-yellow-900/30 rounded border border-yellow-500/30 backdrop-blur-sm relative group">
+            <p className="text-center font-mono text-xl">
+              <span className="text-yellow-300 font-bold">${formattedTotalCost}</span>
+            </p>
+            <div className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity focus-within:opacity-100 sm:focus-within:opacity-100">
+              <CopyButton
+                textToCopy={`$${formattedTotalCost}`}
+                label="Copy mission cost"
+                className="text-yellow-400 hover:text-yellow-200 focus:ring-yellow-400"
+              />
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </form>
   );
 };

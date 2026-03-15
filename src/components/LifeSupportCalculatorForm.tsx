@@ -128,23 +128,27 @@ const LifeSupportCalculatorForm = () => {
       >
         Calculate Needs
       </button>
-      {formattedConsumables && (
-        <div aria-live="polite" aria-atomic="true" className="mt-4 p-4 bg-green-900/30 rounded border border-green-500/30 backdrop-blur-sm text-sm space-y-1 relative group">
-          <p>Oxygen: <span className="text-green-300 font-bold">{formattedConsumables.oxygen}</span> kg</p>
-          <p>Water: <span className="text-green-300 font-bold">{formattedConsumables.water}</span> kg</p>
-          <p>Food: <span className="text-green-300 font-bold">{formattedConsumables.food}</span> kg</p>
-          <div className="border-t border-green-500/30 pt-1 mt-1">
-            <p className="font-bold">Total: <span className="text-green-300">{formattedConsumables.total}</span> kg</p>
+
+      {/* 🎨 UX/A11y: Persistent aria-live region so screen readers catch dynamic updates */}
+      <div aria-live="polite" aria-atomic="true" className="min-h-[140px]">
+        {formattedConsumables && (
+          <div className="mt-4 p-4 bg-green-900/30 rounded border border-green-500/30 backdrop-blur-sm text-sm space-y-1 relative group">
+            <p>Oxygen: <span className="text-green-300 font-bold">{formattedConsumables.oxygen}</span> kg</p>
+            <p>Water: <span className="text-green-300 font-bold">{formattedConsumables.water}</span> kg</p>
+            <p>Food: <span className="text-green-300 font-bold">{formattedConsumables.food}</span> kg</p>
+            <div className="border-t border-green-500/30 pt-1 mt-1">
+              <p className="font-bold">Total: <span className="text-green-300">{formattedConsumables.total}</span> kg</p>
+            </div>
+            <div className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity focus-within:opacity-100 sm:focus-within:opacity-100">
+              <CopyButton
+                textToCopy={`Oxygen: ${formattedConsumables.oxygen} kg\nWater: ${formattedConsumables.water} kg\nFood: ${formattedConsumables.food} kg\nTotal: ${formattedConsumables.total} kg`}
+                label="Copy life support consumables"
+                className="text-green-400 hover:text-green-200 focus:ring-green-400"
+              />
+            </div>
           </div>
-          <div className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity focus-within:opacity-100 sm:focus-within:opacity-100">
-            <CopyButton
-              textToCopy={`Oxygen: ${formattedConsumables.oxygen} kg\nWater: ${formattedConsumables.water} kg\nFood: ${formattedConsumables.food} kg\nTotal: ${formattedConsumables.total} kg`}
-              label="Copy life support consumables"
-              className="text-green-400 hover:text-green-200 focus:ring-green-400"
-            />
-          </div>
-        </div>
-      )}
+        )}
+      </div>
     </form>
   );
 };
