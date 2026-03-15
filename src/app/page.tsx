@@ -14,12 +14,15 @@ export default function Home() {
       {/*
         Performance Optimization: Hosting static assets locally improves load time and reliability.
         Using next/image for automatic optimization (WebP/AVIF, resizing) and to avoid layout shifts.
+        ⚡ Performance: Added quality={40} (default 75) for a low-opacity background texture.
+        This drastically reduces the generated WebP/AVIF file size while visual degradation remains imperceptible, improving LCP.
       */}
       <Image
         src="/patterns/stardust.png"
         alt=""
         fill
         priority
+        quality={40}
         sizes="100vw"
         className="object-cover z-0 opacity-30"
       />
