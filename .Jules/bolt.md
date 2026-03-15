@@ -8,3 +8,7 @@
 ## 2025-03-10 - Memoize Intl.NumberFormat.format() calls
 **Learning:** While initializing `new Intl.NumberFormat()` is a known performance bottleneck that should be cached outside the component, calling `.format()` multiple times directly inside JSX on every keystroke can still cause redundant operations and performance overhead for frequently re-rendered components.
 **Action:** Use `useMemo` hooks to memoize formatted string results and prevent redundant `.format()` calls when calculation results have not changed.
+
+## 2025-03-15 - Optimize Low-Opacity Background Image Quality
+**Learning:** Next.js `next/image` components default to a quality of `75`. For background textures or hero images that are rendered with low opacity (e.g., `opacity-30`) or strong blur, this default quality generates unnecessarily large WebP/AVIF files since visual compression artifacts are completely masked by the CSS effects.
+**Action:** When adding or maintaining `next/image` components used purely for background textures or heavily filtered decorations, aggressively lower the `quality` prop (e.g., to `40`) to significantly reduce the bandwidth cost of the critical LCP payload.
