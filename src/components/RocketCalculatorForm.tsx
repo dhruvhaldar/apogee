@@ -158,8 +158,8 @@ const RocketCalculatorForm = () => {
       </button>
 
       {/* 🎨 UX/A11y: Persistent aria-live region so screen readers catch dynamic updates */}
-      <div aria-live="polite" aria-atomic="true" className="min-h-[80px]">
-        {formattedResult !== null && (
+      <div aria-live="polite" aria-atomic="true" className="min-h-[80px] flex flex-col">
+        {formattedResult !== null ? (
           <div className="mt-4 p-4 bg-cyan-900/30 rounded border border-cyan-500/30 backdrop-blur-sm relative group">
             <p className="text-center font-mono text-xl">
               ΔV = <span className="text-cyan-300 font-bold">{formattedResult}</span> m/s
@@ -171,6 +171,10 @@ const RocketCalculatorForm = () => {
                 className="text-cyan-400 hover:text-cyan-200 focus:ring-cyan-400"
               />
             </div>
+          </div>
+        ) : (
+          <div className="mt-4 flex-grow rounded border border-dashed border-white/10 flex items-center justify-center text-gray-500 text-sm">
+            Ready to calculate
           </div>
         )}
       </div>

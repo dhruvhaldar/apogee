@@ -123,8 +123,8 @@ const CostCalculatorForm = () => {
       </button>
 
       {/* 🎨 UX/A11y: Persistent aria-live region so screen readers catch dynamic updates */}
-      <div aria-live="polite" aria-atomic="true" className="min-h-[80px]">
-        {formattedTotalCost !== null && (
+      <div aria-live="polite" aria-atomic="true" className="min-h-[80px] flex flex-col">
+        {formattedTotalCost !== null ? (
           <div className="mt-4 p-4 bg-yellow-900/30 rounded border border-yellow-500/30 backdrop-blur-sm relative group">
             <p className="text-center font-mono text-xl">
               <span className="text-yellow-300 font-bold">${formattedTotalCost}</span>
@@ -136,6 +136,10 @@ const CostCalculatorForm = () => {
                 className="text-yellow-400 hover:text-yellow-200 focus:ring-yellow-400"
               />
             </div>
+          </div>
+        ) : (
+          <div className="mt-4 flex-grow rounded border border-dashed border-white/10 flex items-center justify-center text-gray-500 text-sm">
+            Ready to calculate
           </div>
         )}
       </div>

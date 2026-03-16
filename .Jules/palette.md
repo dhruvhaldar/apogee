@@ -81,3 +81,7 @@
 ## 2026-03-15 - [A11y] Conditionally Rendered Aria-Live Regions
 **Learning:** Placing `aria-live` on an element that is conditionally rendered (e.g., `{result && <div aria-live="polite">...</div>}`) often causes screen readers to ignore the update because the region itself wasn't present in the accessibility tree when the mutation occurred.
 **Action:** Always place `aria-live` attributes on a persistent, unconditionally rendered wrapper element in the DOM, and conditionally render the dynamic content *inside* it.
+
+## 2026-03-16 - [UX] Calculator Empty States
+**Learning:** Reserving empty space (`min-h`) for conditionally rendered dynamic results successfully prevents layout shift, but leaving it completely blank creates visual dead zones that make the UI feel incomplete before interaction.
+**Action:** Always provide subtle, descriptive empty states (e.g., dashed borders, "Ready to calculate") within reserved dynamic areas to clarify their purpose and improve visual balance prior to user interaction. Ensure the wrapper uses `flex flex-col` and the empty state uses `flex-grow` to seamlessly fill the required space.
