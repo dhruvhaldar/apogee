@@ -12,3 +12,7 @@
 ## 2025-03-15 - Optimize Low-Opacity Background Image Quality
 **Learning:** Next.js `next/image` components default to a quality of `75`. For background textures or hero images that are rendered with low opacity (e.g., `opacity-30`) or strong blur, this default quality generates unnecessarily large WebP/AVIF files since visual compression artifacts are completely masked by the CSS effects.
 **Action:** When adding or maintaining `next/image` components used purely for background textures or heavily filtered decorations, aggressively lower the `quality` prop (e.g., to `40`) to significantly reduce the bandwidth cost of the critical LCP payload.
+
+## 2026-03-16 - Next.js Image Component Quality Optimization Pitfall
+**Learning:** Explicitly lowering the `quality` prop (e.g., to `40`) on `next/image` components used for low-opacity background textures or heavily blurred decorations can significantly reduce the LCP payload size. However, if that specific quality isn't explicitly configured in `next.config.ts`'s `images.qualities` array, Next.js will return a 400 Bad Request error. This completely breaks the image rendering and defeats the optimization.
+**Action:** When using a non-standard `quality` value (default is 75) in a `next/image` component to improve bandwidth cost, ALWAYS ensure that specific quality value (e.g., `40`) is added to the `images.qualities` array in `next.config.ts`. Also consider adding optimized formats like `['image/avif', 'image/webp']` to the `images.formats` configuration for maximum savings.
