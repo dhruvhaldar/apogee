@@ -97,8 +97,8 @@ const OrbitCalculatorForm = () => {
       </button>
 
       {/* 🎨 UX/A11y: Persistent aria-live region so screen readers catch dynamic updates */}
-      <div aria-live="polite" aria-atomic="true" className="min-h-[100px]">
-        {formattedStats !== null && (
+      <div aria-live="polite" aria-atomic="true" className="min-h-[100px] flex flex-col">
+        {formattedStats !== null ? (
           <div className="mt-4 p-4 bg-purple-900/30 rounded border border-purple-500/30 backdrop-blur-sm space-y-2 relative group">
             <p className="font-mono text-lg">
               Velocity: <span className="text-purple-300 font-bold">{formattedStats.velocity}</span> km/s
@@ -113,6 +113,10 @@ const OrbitCalculatorForm = () => {
                 className="text-purple-400 hover:text-purple-200 focus:ring-purple-400"
               />
             </div>
+          </div>
+        ) : (
+          <div className="mt-4 flex-grow rounded border border-dashed border-white/10 flex items-center justify-center text-gray-500 text-sm">
+            Ready to calculate
           </div>
         )}
       </div>

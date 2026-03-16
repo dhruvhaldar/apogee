@@ -130,8 +130,8 @@ const LifeSupportCalculatorForm = () => {
       </button>
 
       {/* 🎨 UX/A11y: Persistent aria-live region so screen readers catch dynamic updates */}
-      <div aria-live="polite" aria-atomic="true" className="min-h-[140px]">
-        {formattedConsumables && (
+      <div aria-live="polite" aria-atomic="true" className="min-h-[140px] flex flex-col">
+        {formattedConsumables ? (
           <div className="mt-4 p-4 bg-green-900/30 rounded border border-green-500/30 backdrop-blur-sm text-sm space-y-1 relative group">
             <p>Oxygen: <span className="text-green-300 font-bold">{formattedConsumables.oxygen}</span> kg</p>
             <p>Water: <span className="text-green-300 font-bold">{formattedConsumables.water}</span> kg</p>
@@ -146,6 +146,10 @@ const LifeSupportCalculatorForm = () => {
                 className="text-green-400 hover:text-green-200 focus:ring-green-400"
               />
             </div>
+          </div>
+        ) : (
+          <div className="mt-4 flex-grow rounded border border-dashed border-white/10 flex items-center justify-center text-gray-500 text-sm">
+            Ready to calculate
           </div>
         )}
       </div>
