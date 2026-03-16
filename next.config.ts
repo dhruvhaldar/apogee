@@ -2,6 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false, // Prevents exposing X-Powered-By: Next.js
+  images: {
+    qualities: [25, 38, 40, 50, 60, 70, 75, 80, 90, 100],
+    formats: ['image/avif', 'image/webp'],
+  },
   async headers() {
     return [
       {
