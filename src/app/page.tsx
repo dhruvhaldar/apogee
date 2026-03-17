@@ -56,7 +56,7 @@ export default function Home() {
           </aside>
         </div>
 
-        <footer className="mt-16 text-center text-gray-500 text-sm">
+        <footer className="mt-16 text-center text-gray-400 text-sm">
           <p>Apogee © 2026 | MIT License</p>
           <p className="mt-1">Developed for Human Spaceflight Course SD2905</p>
         </footer>

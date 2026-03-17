@@ -85,3 +85,7 @@
 ## 2026-03-16 - [UX] Calculator Empty States
 **Learning:** Reserving empty space (`min-h`) for conditionally rendered dynamic results successfully prevents layout shift, but leaving it completely blank creates visual dead zones that make the UI feel incomplete before interaction.
 **Action:** Always provide subtle, descriptive empty states (e.g., dashed borders, "Ready to calculate") within reserved dynamic areas to clarify their purpose and improve visual balance prior to user interaction. Ensure the wrapper uses `flex flex-col` and the empty state uses `flex-grow` to seamlessly fill the required space.
+
+## 2026-03-17 - [A11y] Text Contrast on Dark Backgrounds
+**Learning:** Using `text-gray-500` (which is `#6b7280`) on a dark theme (like `#000` or `bg-white/10`) results in poor contrast ratios (~3.2:1) that fail WCAG AA minimum contrast requirements (4.5:1 for normal text). This makes secondary or "empty state" text unreadable for visually impaired users.
+**Action:** Avoid using `text-gray-500` for text on very dark backgrounds. Instead, use a lighter shade like `text-gray-400` (`#9ca3af`), which achieves a passing contrast ratio (>5.0:1) while still maintaining the desired subdued visual hierarchy.
