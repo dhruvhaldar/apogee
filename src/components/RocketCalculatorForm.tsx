@@ -173,7 +173,7 @@ const RocketCalculatorForm = () => {
             </div>
           </div>
         ) : (
-          <div className="mt-4 flex-grow rounded border border-dashed border-white/10 flex items-center justify-center text-gray-500 text-sm">
+          <div className="mt-4 flex-grow rounded border border-dashed border-white/10 flex items-center justify-center text-gray-400 text-sm">
             Ready to calculate
           </div>
         )}
