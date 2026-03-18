@@ -89,7 +89,7 @@ const LifeSupportCalculatorForm = () => {
             required
             value={crew}
             onChange={handleCrewChange}
-            className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-16 text-white focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-16 text-white focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/40 focus:invalid:border-red-500 focus:invalid:ring-red-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             aria-label="Crew Size in people"
             aria-describedby="ls-crew-hint"
           />
@@ -112,7 +112,7 @@ const LifeSupportCalculatorForm = () => {
             required
             value={days}
             onChange={handleDaysChange}
-            className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-12 text-white focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-12 text-white focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/40 focus:invalid:border-red-500 focus:invalid:ring-red-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             aria-label="Duration in days"
             aria-describedby="ls-days-hint"
           />
