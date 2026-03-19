@@ -45,7 +45,7 @@ test.describe('Apogee Calculator App', () => {
     
     // Expect result ~6,774.19 (after formatter)
     await expect(page.locator('text=6,774.19')).toBeVisible();
-    await expect(page.locator('div[aria-live="polite"]')).toContainText('6,774.19');
+    await expect(page.locator('div[aria-live="polite"]').filter({ hasText: 'ΔV =' })).toContainText('6,774.19');
   });
 
   test('Rocket Calculator submits on Enter', async ({ page }) => {
