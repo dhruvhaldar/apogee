@@ -52,3 +52,8 @@
 **Vulnerability:** The application was missing the `Cross-Origin-Embedder-Policy` (COEP) header, leaving it vulnerable to cross-origin attacks despite having COOP and CORP headers. Without COEP, the application cannot achieve full cross-origin isolation.
 **Learning:** Cross-origin isolation requires a complete set of headers (COOP, CORP, and COEP). Missing any of these headers can leave the application partially exposed and fail to achieve the intended security posture.
 **Prevention:** Added `Cross-Origin-Embedder-Policy: require-corp` to `next.config.ts` to enforce strict cross-origin isolation and updated the Playwright test suite to verify its presence.
+
+## 2026-10-30 - Outdated Dependencies With Known Vulnerabilities
+**Vulnerability:** The application was using Next.js 16.1.6, which had known vulnerabilities such as HTTP request smuggling, unbounded cache growth, DoS risks, and CSRF bypass.
+**Learning:** Outdated frameworks and dependencies frequently contain publicly known security vulnerabilities (CVEs) that attackers can exploit. Regular auditing and patching are crucial.
+**Prevention:** Integrate dependency auditing (e.g., `pnpm audit`) into the development workflow and regularly update dependencies to their latest secure versions.
