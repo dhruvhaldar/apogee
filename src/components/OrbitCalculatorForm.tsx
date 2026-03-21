@@ -118,7 +118,12 @@ const OrbitCalculatorForm = () => {
             </div>
           </div>
         ) : (
-          <div className="mt-4 flex-grow rounded border border-dashed border-white/10 flex items-center justify-center text-gray-400 text-sm">
+          <div className="mt-4 flex-grow rounded border border-dashed border-white/10 flex items-center justify-center gap-2 text-gray-400 text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="opacity-50">
+              <path d="M12 2a10 10 0 1 0 10 10 10 10 0 0 0-10-10zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path>
+              <path d="M12 6a6 6 0 1 0 6 6 6 6 0 0 0-6-6zm0 10a4 4 0 1 1 4-4 4 4 0 0 1-4 4z"></path>
+              <path d="M22 12A10 10 0 0 0 12 2v2a8 8 0 0 1 8 8h2z"></path>
+            </svg>
             Ready to calculate
           </div>
         )}

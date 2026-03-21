@@ -141,7 +141,11 @@ const CostCalculatorForm = () => {
             </div>
           </div>
         ) : (
-          <div className="mt-4 flex-grow rounded border border-dashed border-white/10 flex items-center justify-center text-gray-400 text-sm">
+          <div className="mt-4 flex-grow rounded border border-dashed border-white/10 flex items-center justify-center gap-2 text-gray-400 text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="opacity-50">
+              <line x1="12" y1="1" x2="12" y2="23"></line>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
             Ready to calculate
           </div>
         )}
