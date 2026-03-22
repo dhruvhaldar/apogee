@@ -4,3 +4,6 @@
 ## 2026-03-19 - [UX] Keyboard Shortcut Affordance for Forms
 **Learning:** Forms implicitly support the "Enter" key for submission, but sighted users often default to using the mouse to click the submit button if no visual affordance is present, breaking their typing flow.
 **Action:** Add a visually subtle, screen-reader-hidden `<kbd>` hint (e.g., "↵ Enter") to primary form submit buttons. This educates users about available keyboard shortcuts and encourages a more seamless, accessible keyboard-driven interaction without cluttering the accessible name of the button.
+## 2026-03-22 - [UX] Alert Icons in Error Messages
+**Learning:** Depending entirely on color (e.g., red borders, red background text) to convey an error state violates WCAG 1.4.1 (Use of Color). Colorblind users or individuals using high-contrast modes may not perceive the error context correctly.
+**Action:** Always pair visual error states with a distinct, contextually relevant icon (e.g., an alert circle SVG with `aria-hidden="true"`) to guarantee that error states are easily perceived by all users, establishing a more accessible and polished UI.
