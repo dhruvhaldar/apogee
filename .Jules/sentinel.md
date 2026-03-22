@@ -57,3 +57,8 @@
 **Vulnerability:** The application was using Next.js 16.1.6, which had known vulnerabilities such as HTTP request smuggling, unbounded cache growth, DoS risks, and CSRF bypass.
 **Learning:** Outdated frameworks and dependencies frequently contain publicly known security vulnerabilities (CVEs) that attackers can exploit. Regular auditing and patching are crucial.
 **Prevention:** Integrate dependency auditing (e.g., `pnpm audit`) into the development workflow and regularly update dependencies to their latest secure versions.
+
+## 2026-03-22 - Outdated Dependencies With Known Vulnerabilities Resolved
+**Vulnerability:** The application was using Next.js 16.1.7 and multiple dependencies (e.g., `minimatch`, `ajv`, `flatted`) which had known vulnerabilities, including high-severity ReDoS vulnerabilities.
+**Learning:** Outdated frameworks and dependencies frequently contain publicly known security vulnerabilities (CVEs) that attackers can exploit.
+**Prevention:** Executed `pnpm audit --fix` to address subdependency vulnerabilities and manually updated Next.js to the latest stable version (16.2.1) to ensure known framework vulnerabilities are patched.
