@@ -31,14 +31,19 @@ const CopyButton: React.FC<CopyButtonProps> = ({
         onClick={handleCopy}
         // ⚡ Performance: Replaced `transition-all` with `transition` to prevent expensive
         // repaints and layout shifts on interactions.
-        className={`p-1.5 rounded-full transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black ${
+        className={`group relative p-1.5 rounded-full transition duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-black ${
           copied
-            ? 'bg-green-500/20 text-green-400 focus:ring-green-400'
+            ? 'bg-green-500/20 text-green-400 focus-visible:ring-green-400'
             : 'bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white'
         } ${className}`}
         aria-label={copied ? 'Copied to clipboard' : label}
-        title={copied ? 'Copied!' : label}
       >
+        <span
+          className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-xs font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100 border border-white/10"
+          aria-hidden="true"
+        >
+          {copied ? 'Copied!' : label}
+        </span>
         {copied ? (
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <polyline points="20 6 9 17 4 12"></polyline>

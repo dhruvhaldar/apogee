@@ -19,7 +19,9 @@ test('Copy button works and shows success state', async ({ page }) => {
   // Check for success state
   const successButton = page.getByLabel('Copied to clipboard');
   await expect(successButton).toBeVisible();
-  await expect(successButton).toHaveAttribute('title', 'Copied!');
+  // We removed the native title attribute to improve keyboard accessibility.
+  // The custom tooltip element should contain the text 'Copied!'
+  await expect(page.locator('text=Copied!').first()).toBeVisible();
 
   // Screenshot for verification
   await page.screenshot({ path: 'copy-success.png' });
