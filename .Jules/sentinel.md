@@ -62,3 +62,8 @@
 **Vulnerability:** The application was using Next.js 16.1.7 and multiple dependencies (e.g., `minimatch`, `ajv`, `flatted`) which had known vulnerabilities, including high-severity ReDoS vulnerabilities.
 **Learning:** Outdated frameworks and dependencies frequently contain publicly known security vulnerabilities (CVEs) that attackers can exploit.
 **Prevention:** Executed `pnpm audit --fix` to address subdependency vulnerabilities and manually updated Next.js to the latest stable version (16.2.1) to ensure known framework vulnerabilities are patched.
+
+## 2024-03-26 - Outdated Subdependencies With Known Vulnerabilities Resolved
+**Vulnerability:** The application was using subdependencies (`picomatch` and `brace-expansion`) which had known vulnerabilities, including high-severity ReDoS vulnerabilities.
+**Learning:** Outdated frameworks and dependencies frequently contain publicly known security vulnerabilities (CVEs) that attackers can exploit. Subdependencies can be tricky to update without tools.
+**Prevention:** Executed `pnpm audit --fix` to address subdependency vulnerabilities by generating and applying resolution rules under the `pnpm.overrides` field in `package.json`.
