@@ -88,7 +88,7 @@ const RocketCalculatorForm = () => {
       )}
       <div>
         <label htmlFor="rocket-isp" className="block text-sm mb-1 text-gray-300">
-          Specific Impulse (Isp) <span className="text-red-500" aria-hidden="true" title="Required">*</span>
+          Specific Impulse (Isp) <span className="group relative inline-block cursor-help" aria-label="Required"><span className="text-red-500" aria-hidden="true">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10" aria-hidden="true">Required</span></span>
         </label>
         <div className="relative">
           <input
@@ -111,7 +111,7 @@ const RocketCalculatorForm = () => {
       </div>
       <div>
         <label htmlFor="rocket-m0" className="block text-sm mb-1 text-gray-300">
-          Initial Mass (m0) <span className="text-red-500" aria-hidden="true" title="Required">*</span>
+          Initial Mass (m0) <span className="group relative inline-block cursor-help" aria-label="Required"><span className="text-red-500" aria-hidden="true">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10" aria-hidden="true">Required</span></span>
         </label>
         <div className="relative">
           <input
@@ -134,7 +134,7 @@ const RocketCalculatorForm = () => {
       </div>
       <div>
         <label htmlFor="rocket-mf" className="block text-sm mb-1 text-gray-300">
-          Final Mass (mf) <span className="text-red-500" aria-hidden="true" title="Required">*</span>
+          Final Mass (mf) <span className="group relative inline-block cursor-help" aria-label="Required"><span className="text-red-500" aria-hidden="true">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10" aria-hidden="true">Required</span></span>
         </label>
         <div className="relative">
           <input
