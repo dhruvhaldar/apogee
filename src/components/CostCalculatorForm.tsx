@@ -76,7 +76,7 @@ const CostCalculatorForm = () => {
       )}
       <div>
         <label htmlFor="cost-payload" className="block text-sm mb-1 text-gray-300">
-          Payload Mass <span className="text-red-500" aria-hidden="true" title="Required">*</span>
+          Payload Mass <span className="group relative inline-block cursor-help" aria-label="Required"><span className="text-red-500" aria-hidden="true">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10" aria-hidden="true">Required</span></span>
         </label>
         <div className="relative">
           <input
@@ -99,7 +99,7 @@ const CostCalculatorForm = () => {
       </div>
       <div>
         <label htmlFor="cost-rate" className="block text-sm mb-1 text-gray-300">
-          Cost per kg <span className="text-red-500" aria-hidden="true" title="Required">*</span>
+          Cost per kg <span className="group relative inline-block cursor-help" aria-label="Required"><span className="text-red-500" aria-hidden="true">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10" aria-hidden="true">Required</span></span>
         </label>
         <div className="relative">
           <input
