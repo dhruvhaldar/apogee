@@ -2,58 +2,411 @@
 > apogee@0.1.0 dev /app
 > next dev
 
-▲ Next.js 16.1.6 (Turbopack)
+▲ Next.js 16.2.1 (Turbopack)
 - Local:         http://localhost:3000
 - Network:       http://192.168.0.2:3000
+✓ Ready in 947ms
 
-✓ Starting...
-Attention: Next.js now collects completely anonymous telemetry regarding usage.
-This information is used to shape Next.js' roadmap and prioritize features.
-You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
-https://nextjs.org/telemetry
+ GET / 200 in 3.5s (next.js: 3.1s, application-code: 387ms)
+ GET / 200 in 100ms (next.js: 4ms, application-code: 96ms)
+ GET / 200 in 121ms (next.js: 6ms, application-code: 115ms)
+⚠ Blocked cross-origin request to Next.js dev resource /_next/webpack-hmr from "127.0.0.1".
+Cross-origin access to Next.js dev resources is blocked by default for safety.
 
-✓ Ready in 1026ms
- GET / 200 in 3.8s (compile: 3.2s, render: 581ms)
- GET / 200 in 83ms (compile: 5ms, render: 78ms)
- GET / 200 in 224ms (compile: 4ms, render: 220ms)
- GET / 200 in 225ms (compile: 34ms, render: 191ms)
-⚠ Cross origin request detected from 127.0.0.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+To allow this host in development, add it to "allowedDevOrigins" in next.config.js and restart the dev server:
+
+// next.config.js
+module.exports = {
+  allowedDevOrigins: ['127.0.0.1'],
+}
+
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
- GET / 200 in 115ms (compile: 7ms, render: 108ms)
- GET / 200 in 125ms (compile: 3ms, render: 122ms)
- GET / 200 in 262ms (compile: 14ms, render: 248ms)
- GET / 200 in 171ms (compile: 7ms, render: 164ms)
- GET / 200 in 179ms (compile: 8ms, render: 171ms)
- GET / 200 in 399ms (compile: 3ms, render: 395ms)
- GET / 200 in 392ms (compile: 3ms, render: 389ms)
- GET / 200 in 331ms (compile: 3ms, render: 328ms)
- GET / 200 in 315ms (compile: 3ms, render: 312ms)
- GET / 200 in 102ms (compile: 3ms, render: 99ms)
- GET / 200 in 78ms (compile: 3ms, render: 76ms)
- GET / 200 in 101ms (compile: 3ms, render: 98ms)
- GET / 200 in 80ms (compile: 3ms, render: 77ms)
- GET / 200 in 94ms (compile: 4ms, render: 90ms)
- GET / 200 in 100ms (compile: 5ms, render: 95ms)
- GET / 200 in 93ms (compile: 5ms, render: 88ms)
- GET / 200 in 695ms (compile: 286ms, render: 409ms)
- GET / 200 in 81ms (compile: 3ms, render: 78ms)
- GET / 200 in 501ms (compile: 3ms, render: 498ms)
- GET / 200 in 444ms (compile: 3ms, render: 441ms)
- GET / 200 in 107ms (compile: 3ms, render: 104ms)
- GET / 200 in 102ms (compile: 3ms, render: 99ms)
- GET / 200 in 129ms (compile: 6ms, render: 122ms)
- GET / 200 in 102ms (compile: 4ms, render: 99ms)
- GET / 200 in 79ms (compile: 3ms, render: 77ms)
- GET / 200 in 84ms (compile: 3ms, render: 81ms)
- GET / 200 in 101ms (compile: 3ms, render: 99ms)
- GET / 200 in 442ms (compile: 3ms, render: 439ms)
- GET / 200 in 78ms (compile: 4ms, render: 74ms)
- GET / 200 in 250ms (compile: 4ms, render: 246ms)
- GET / 200 in 290ms (compile: 3ms, render: 287ms)
- GET / 200 in 256ms (compile: 2ms, render: 253ms)
- GET / 200 in 76ms (compile: 3ms, render: 73ms)
- GET / 200 in 229ms (compile: 5ms, render: 224ms)
- GET / 200 in 81ms (compile: 3ms, render: 78ms)
- GET / 200 in 239ms (compile: 6ms, render: 233ms)
- GET / 200 in 94ms (compile: 5ms, render: 89ms)
- GET / 200 in 99ms (compile: 4ms, render: 95ms)
+ GET /? 200 in 98ms (next.js: 4ms, application-code: 94ms)
+ GET / 200 in 95ms (next.js: 7ms, application-code: 89ms)
+ GET / 200 in 85ms (next.js: 3ms, application-code: 82ms)
+ GET / 200 in 85ms (next.js: 3ms, application-code: 81ms)
+ GET /? 200 in 85ms (next.js: 3ms, application-code: 82ms)
+ GET / 200 in 318ms (next.js: 23ms, application-code: 294ms)
+ GET / 200 in 133ms (next.js: 5ms, application-code: 128ms)
+ GET / 200 in 128ms (next.js: 5ms, application-code: 123ms)
+ GET /? 200 in 131ms (next.js: 3ms, application-code: 128ms)
+ GET / 200 in 79ms (next.js: 7ms, application-code: 72ms)
+ GET / 200 in 69ms (next.js: 3ms, application-code: 65ms)
+ GET / 200 in 71ms (next.js: 3ms, application-code: 69ms)
+ GET /? 200 in 81ms (next.js: 3ms, application-code: 77ms)
+ GET / 200 in 93ms (next.js: 7ms, application-code: 87ms)
+ GET / 200 in 76ms (next.js: 4ms, application-code: 73ms)
+ GET / 200 in 96ms (next.js: 3ms, application-code: 93ms)
+[browser] eval() is not supported in this environment. If this page was served with a `Content-Security-Policy` header, make sure that `unsafe-eval` is included. React requires eval() in development mode for various debugging features like reconstructing callstacks from a different environment.
+React will never use eval() in production mode
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+      <SegmentViewNode type="page" pagePath="src/page.tsx">
+        <SegmentTrieNode>
+        <Home>
+          <main className="min-h-scre...">
+            <div>
+            <img>
+            <ImagePreload>
+            <div className="relative z...">
+              <header>
+              <div className="grid grid-...">
+                <RocketCalculator>
+                  <CalculatorCard>
+                    <section aria-labelledby="_S_1_" aria-describedby="_S_2_" className="bg-white/1...">
+                      <h2>
+                      <p>
+                      ...
+                        <PreloadChunks>
+                        <RocketCalculatorForm>
+                          <form onSubmit={function handleCalculate} className="space-y-3">
+                            <div>
+                              <label>
+                              <div className="relative">
+                                <input
+                                  id="rocket-isp"
+                                  type="number"
+                                  min="0"
+                                  step="any"
+                                  required={true}
+                                  value="300"
+                                  onChange={function handleIspChange}
+                                  className={"peer w-full bg-black/50 border border-white/20 rounded p-2 pr-8 text-wh..."}
+                                  aria-label="Specific Impulse in seconds"
+                                  aria-describedby="rocket-isp-hint"
+-                                 style={{caret-color:"transparent"}}
+                                >
+                                ...
+                            <div>
+                              <label>
+                              <div className="relative">
+                                <input
+                                  id="rocket-m0"
+                                  type="number"
+                                  min="0"
+                                  step="any"
+                                  required={true}
+                                  value="1000"
+                                  onChange={function handleM0Change}
+                                  className={"peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text-w..."}
+                                  aria-label="Initial Mass in kilograms"
+                                  aria-describedby="rocket-m0-hint"
+-                                 style={{caret-color:"transparent"}}
+                                >
+                                ...
+                            <div>
+                              <label>
+                              <div className="relative">
+                                <input
+                                  id="rocket-mf"
+                                  type="number"
+                                  min="0"
+                                  step="any"
+                                  required={true}
+                                  value="100"
+                                  onChange={function handleMfChange}
+                                  className={"peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text-w..."}
+                                  aria-label="Final Mass in kilograms"
+                                  aria-describedby="rocket-mf-hint"
+-                                 style={{caret-color:"transparent"}}
+                                >
+                                ...
+                            ...
+                ...
+              ...
+      ...
+
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+      <SegmentViewNode type="page" pagePath="src/page.tsx">
+        <SegmentTrieNode>
+        <Home>
+          <main className="min-h-scre...">
+            <div>
+            <img>
+            <ImagePreload>
+            <div className="relative z...">
+              <header>
+              <div className="grid grid-...">
+                <section>
+                <OrbitCalculator>
+                  <CalculatorCard>
+                    <section aria-labelledby="_S_3_" aria-describedby="_S_4_" className="bg-white/1...">
+                      <h2>
+                      <p>
+                      ...
+                        <PreloadChunks>
+                        <OrbitCalculatorForm>
+                          <form onSubmit={function handleCalculate} className="space-y-3">
+                            <div>
+                              <label>
+                              <div className="relative">
+                                <input
+                                  id="orbit-altitude"
+                                  type="number"
+                                  min="0"
+                                  step="any"
+                                  required={true}
+                                  value="400"
+                                  onChange={function handleAltitudeChange}
+                                  className={"peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text-w..."}
+                                  aria-label="Altitude in kilometers"
+                                  aria-describedby="orbit-altitude-hint"
+-                                 style={{caret-color:"transparent"}}
+                                >
+                                ...
+                            ...
+                ...
+              ...
+      ...
+
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+      <SegmentViewNode type="page" pagePath="src/page.tsx">
+        <SegmentTrieNode>
+        <Home>
+          <main className="min-h-scre...">
+            <div>
+            <img>
+            <ImagePreload>
+            <div className="relative z...">
+              <header>
+              <div className="grid grid-...">
+                <section>
+                <section>
+                <LifeSupportCalculator>
+                  <CalculatorCard>
+                    <section aria-labelledby="_S_5_" aria-describedby="_S_6_" className="bg-white/1...">
+                      <h2>
+                      <p>
+                      ...
+                        <PreloadChunks>
+                        <LifeSupportCalculatorForm>
+                          <form onSubmit={function handleCalculate} className="space-y-3">
+                            <div>
+                              <label>
+                              <div className="relative">
+                                <input
+                                  id="ls-crew"
+                                  type="number"
+                                  min="1"
+                                  step="any"
+                                  required={true}
+                                  value="3"
+                                  onChange={function handleCrewChange}
+                                  className={"peer w-full bg-black/50 border border-white/20 rounded p-2 pr-16 text-w..."}
+                                  aria-label="Crew Size in people"
+                                  aria-describedby="ls-crew-hint"
+-                                 style={{caret-color:"transparent"}}
+                                >
+                                ...
+                            <div>
+                              <label>
+                              <div className="relative">
+                                <input
+                                  id="ls-days"
+                                  type="number"
+                                  min="1"
+                                  step="any"
+                                  required={true}
+                                  value="10"
+                                  onChange={function handleDaysChange}
+                                  className={"peer w-full bg-black/50 border border-white/20 rounded p-2 pr-12 text-w..."}
+                                  aria-label="Duration in days"
+                                  aria-describedby="ls-days-hint"
+-                                 style={{caret-color:"transparent"}}
+                                >
+                                ...
+                            ...
+                ...
+              ...
+      ...
+
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+      <SegmentViewNode type="page" pagePath="src/page.tsx">
+        <SegmentTrieNode>
+        <Home>
+          <main className="min-h-scre...">
+            <div>
+            <img>
+            <ImagePreload>
+            <div className="relative z...">
+              <header>
+              <div className="grid grid-...">
+                <section>
+                <section>
+                <section>
+                <CostCalculator>
+                  <CalculatorCard>
+                    <section aria-labelledby="_S_7_" aria-describedby="_S_8_" className="bg-white/1...">
+                      <h2>
+                      <p>
+                      ...
+                        <PreloadChunks>
+                        <CostCalculatorForm>
+                          <form onSubmit={function handleCalculate} className="space-y-3">
+                            <div>
+                              <label>
+                              <div className="relative">
+                                <input
+                                  id="cost-payload"
+                                  type="number"
+                                  min="0"
+                                  step="any"
+                                  required={true}
+                                  value="1000"
+                                  onChange={function handlePayloadChange}
+                                  className={"peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text-w..."}
+                                  aria-label="Payload Mass in kilograms"
+                                  aria-describedby="cost-payload-hint"
+-                                 style={{caret-color:"transparent"}}
+                                >
+                                ...
+                            <div>
+                              <label>
+                              <div className="relative">
+                                <input
+                                  id="cost-rate"
+                                  type="number"
+                                  min="0"
+                                  step="any"
+                                  required={true}
+                                  value="2700"
+                                  onChange={function handleCostChange}
+                                  className={"peer w-full bg-black/50 border border-white/20 rounded py-2 pr-2 pl-7 t..."}
+                                  aria-label="Cost per kg in USD"
+                                  aria-describedby="cost-rate-hint"
+-                                 style={{caret-color:"transparent"}}
+                                >
+                                ...
+                            ...
+                ...
+              ...
+      ...
+
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectErrorBoundary router={{...}}>
+      <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+        <SegmentViewNode type="page" pagePath="src/page.tsx">
+          <SegmentTrieNode>
+          <Home>
+            <main className="min-h-scre...">
+              <div>
+              <img>
+              <ImagePreload>
+              <div className="relative z...">
+                <header>
+                <div className="grid grid-...">
+                  <section>
+                  <section>
+                  <section>
+                  <section>
+                  <SolarPanelCalculator>
+                    <CalculatorCard>
+                      <section aria-labelledby="_S_9_" aria-describedby="_S_a_" className="bg-white/1...">
+                        <h2>
+                        <p>
+                        ...
+                          <PreloadChunks>
+                          <SolarPanelCalculatorForm>
+                            <form onSubmit={function handleCalculate} className="space-y-3">
+                              <div>
+                                <label>
+                                <div className="relative">
+                                  <input
+                                    id="solar-power"
+                                    type="number"
+                                    min="0"
+                                    step="any"
+                                    required={true}
+                                    value="10000"
+                                    onChange={function handlePowerChange}
+                                    className={"peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text..."}
+                                    aria-label="Required Power in Watts"
+                                    aria-describedby="solar-power-hint"
+-                                   style={{caret-color:"transparent"}}
+                                  >
+                                  ...
+                              <div>
+                                <label>
+                                <input
+                                  id="solar-efficiency"
+                                  type="number"
+                                  min="0"
+                                  max="1"
+                                  step="any"
+                                  required={true}
+                                  value="0.25"
+                                  onChange={function handleEfficiencyChange}
+                                  className={"peer w-full bg-black/50 border border-white/20 rounded p-2 text-white f..."}
+                                  aria-label="Efficiency ratio between 0.0 and 1.0"
+                                  aria-describedby="solar-efficiency-hint"
+-                                 style={{caret-color:"transparent"}}
+                                >
+                                ...
+                              ...
+                  ...
+                ...
+        ...
+      ...
