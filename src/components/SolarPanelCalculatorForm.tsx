@@ -75,7 +75,7 @@ const SolarPanelCalculatorForm = () => {
       )}
       <div>
         <label htmlFor="solar-power" className="block text-sm mb-1 text-gray-300">
-          Required Power <span className="group relative inline-block cursor-help" aria-label="Required"><span className="text-red-500" aria-hidden="true">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10" aria-hidden="true">Required</span></span>
+          Required Power <span className="group relative inline-block cursor-help" aria-hidden="true"><span className="text-red-500">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10">Required</span></span>
         </label>
         <div className="relative">
           <input
@@ -87,7 +87,6 @@ const SolarPanelCalculatorForm = () => {
             value={power}
             onChange={handlePowerChange}
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text-white focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/40 focus:invalid:border-red-500 focus:invalid:ring-red-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-            aria-label="Required Power in Watts"
             aria-describedby="solar-power-hint"
           />
           <div className="absolute top-2.5 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-red-400 transition-colors">
@@ -98,7 +97,7 @@ const SolarPanelCalculatorForm = () => {
       </div>
       <div>
         <label htmlFor="solar-efficiency" className="block text-sm mb-1 text-gray-300">
-          Efficiency (0.0 - 1.0) <span className="group relative inline-block cursor-help" aria-label="Required"><span className="text-red-500" aria-hidden="true">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10" aria-hidden="true">Required</span></span>
+          Efficiency (0.0 - 1.0) <span className="group relative inline-block cursor-help" aria-hidden="true"><span className="text-red-500">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10">Required</span></span>
         </label>
         <input
           id="solar-efficiency"
@@ -110,7 +109,6 @@ const SolarPanelCalculatorForm = () => {
           value={efficiency}
           onChange={handleEfficiencyChange}
           className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/40 focus:invalid:border-red-500 focus:invalid:ring-red-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-          aria-label="Efficiency ratio between 0.0 and 1.0"
           aria-describedby="solar-efficiency-hint"
         />
         <p id="solar-efficiency-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-red-400 transition-colors">Typical: 0.2 - 0.3</p>

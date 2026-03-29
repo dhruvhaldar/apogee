@@ -88,7 +88,7 @@ const RocketCalculatorForm = () => {
       )}
       <div>
         <label htmlFor="rocket-isp" className="block text-sm mb-1 text-gray-300">
-          Specific Impulse (Isp) <span className="group relative inline-block cursor-help" aria-label="Required"><span className="text-red-500" aria-hidden="true">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10" aria-hidden="true">Required</span></span>
+          Specific Impulse (Isp) <span className="group relative inline-block cursor-help" aria-hidden="true"><span className="text-red-500">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10">Required</span></span>
         </label>
         <div className="relative">
           <input
@@ -100,7 +100,6 @@ const RocketCalculatorForm = () => {
             value={isp}
             onChange={handleIspChange}
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-8 text-white focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/40 focus:invalid:border-red-500 focus:invalid:ring-red-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-            aria-label="Specific Impulse in seconds"
             aria-describedby="rocket-isp-hint"
           />
           <div className="absolute top-2.5 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-cyan-400 transition-colors">
@@ -111,7 +110,7 @@ const RocketCalculatorForm = () => {
       </div>
       <div>
         <label htmlFor="rocket-m0" className="block text-sm mb-1 text-gray-300">
-          Initial Mass (m0) <span className="group relative inline-block cursor-help" aria-label="Required"><span className="text-red-500" aria-hidden="true">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10" aria-hidden="true">Required</span></span>
+          Initial Mass (m0) <span className="group relative inline-block cursor-help" aria-hidden="true"><span className="text-red-500">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10">Required</span></span>
         </label>
         <div className="relative">
           <input
@@ -123,7 +122,6 @@ const RocketCalculatorForm = () => {
             value={m0}
             onChange={handleM0Change}
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text-white focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/40 focus:invalid:border-red-500 focus:invalid:ring-red-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-            aria-label="Initial Mass in kilograms"
             aria-describedby="rocket-m0-hint"
           />
           <div className="absolute top-2.5 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-cyan-400 transition-colors">
@@ -134,7 +132,7 @@ const RocketCalculatorForm = () => {
       </div>
       <div>
         <label htmlFor="rocket-mf" className="block text-sm mb-1 text-gray-300">
-          Final Mass (mf) <span className="group relative inline-block cursor-help" aria-label="Required"><span className="text-red-500" aria-hidden="true">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10" aria-hidden="true">Required</span></span>
+          Final Mass (mf) <span className="group relative inline-block cursor-help" aria-hidden="true"><span className="text-red-500">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10">Required</span></span>
         </label>
         <div className="relative">
           <input
@@ -146,7 +144,6 @@ const RocketCalculatorForm = () => {
             value={mf}
             onChange={handleMfChange}
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text-white focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/40 focus:invalid:border-red-500 focus:invalid:ring-red-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-            aria-label="Final Mass in kilograms"
             aria-describedby="rocket-mf-hint"
           />
           <div className="absolute top-2.5 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-cyan-400 transition-colors">
