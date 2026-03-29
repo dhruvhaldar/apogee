@@ -67,3 +67,8 @@
 **Vulnerability:** The application was using subdependencies (`picomatch` and `brace-expansion`) which had known vulnerabilities, including high-severity ReDoS vulnerabilities.
 **Learning:** Outdated frameworks and dependencies frequently contain publicly known security vulnerabilities (CVEs) that attackers can exploit. Subdependencies can be tricky to update without tools.
 **Prevention:** Executed `pnpm audit --fix` to address subdependency vulnerabilities by generating and applying resolution rules under the `pnpm.overrides` field in `package.json`.
+
+## 2026-11-01 - Subdependency Vulnerability Resolution
+**Vulnerability:** The `handlebars` (via `ts-jest`) and `brace-expansion` (via `minimatch` in `eslint`) packages had multiple high-severity vulnerabilities, including XSS, prototype pollution, and denial of service.
+**Learning:** These are classic examples of transitive dependency vulnerabilities, which can be hard to track manually.
+**Prevention:** Utilizing package manager tools like `pnpm audit --fix` easily generated the correct resolution rules under `pnpm.overrides` to strictly use the patched versions. Routine dependency audits using these tools is essential.
