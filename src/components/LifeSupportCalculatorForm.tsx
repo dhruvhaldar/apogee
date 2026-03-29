@@ -83,7 +83,7 @@ const LifeSupportCalculatorForm = () => {
       )}
       <div>
         <label htmlFor="ls-crew" className="block text-sm mb-1 text-gray-300">
-          Crew Size <span className="group relative inline-block cursor-help" aria-label="Required"><span className="text-red-500" aria-hidden="true">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10" aria-hidden="true">Required</span></span>
+          Crew Size <span className="group relative inline-block cursor-help" aria-hidden="true"><span className="text-red-500">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10">Required</span></span>
         </label>
         <div className="relative">
           <input
@@ -95,7 +95,6 @@ const LifeSupportCalculatorForm = () => {
             value={crew}
             onChange={handleCrewChange}
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-16 text-white focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/40 focus:invalid:border-red-500 focus:invalid:ring-red-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-            aria-label="Crew Size in people"
             aria-describedby="ls-crew-hint"
           />
           <div className="absolute top-2.5 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-green-400 transition-colors">
@@ -106,7 +105,7 @@ const LifeSupportCalculatorForm = () => {
       </div>
       <div>
         <label htmlFor="ls-days" className="block text-sm mb-1 text-gray-300">
-          Duration <span className="group relative inline-block cursor-help" aria-label="Required"><span className="text-red-500" aria-hidden="true">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10" aria-hidden="true">Required</span></span>
+          Duration <span className="group relative inline-block cursor-help" aria-hidden="true"><span className="text-red-500">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10">Required</span></span>
         </label>
         <div className="relative">
           <input
@@ -118,7 +117,6 @@ const LifeSupportCalculatorForm = () => {
             value={days}
             onChange={handleDaysChange}
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-12 text-white focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/40 focus:invalid:border-red-500 focus:invalid:ring-red-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-            aria-label="Duration in days"
             aria-describedby="ls-days-hint"
           />
           <div className="absolute top-2.5 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-green-400 transition-colors">
