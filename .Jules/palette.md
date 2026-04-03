@@ -21,3 +21,7 @@
 ## 2026-04-20 - [UX] Axe Region Violations on Skip-To-Content Links
 **Learning:** Skip-to-content links that are placed directly in the `<body>` outside of any landmark region (e.g., `<header>`, `<main>`, `<nav>`) will trigger Axe-core's "region" violation ("Ensure all page content is contained by landmarks").
 **Action:** Always wrap application-level elements like skip links inside a semantically appropriate landmark, such as a hidden `<header>` or `<nav>` (e.g., `<header className="sr-only focus-within:not-sr-only">`), to ensure they are discoverable in the accessibility tree and comply with landmark rules.
+
+## 2026-04-21 - [UX] Retaining Layout Classes in Shared Components
+**Learning:** In shared components (like `CopyButton`), conditionally dropping the parent-provided `className` string to resolve Tailwind color conflicts during state changes (e.g., success state) causes unpredictable layout shifts. The parent often uses `className` for positioning (e.g., `ml-4`, `absolute`).
+**Action:** When overriding styles for a specific state in a component that accepts a generic `className` prop, never omit the `className`. Instead, append it safely and use CSS specificity overrides (e.g., Tailwind's `!` modifier like `!text-green-400`) or dedicated class-merging logic to ensure both layout utilities from the parent and state-specific overrides from the component are applied simultaneously.
