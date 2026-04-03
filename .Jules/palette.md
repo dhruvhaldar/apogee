@@ -21,3 +21,7 @@
 ## 2026-04-20 - [UX] Axe Region Violations on Skip-To-Content Links
 **Learning:** Skip-to-content links that are placed directly in the `<body>` outside of any landmark region (e.g., `<header>`, `<main>`, `<nav>`) will trigger Axe-core's "region" violation ("Ensure all page content is contained by landmarks").
 **Action:** Always wrap application-level elements like skip links inside a semantically appropriate landmark, such as a hidden `<header>` or `<nav>` (e.g., `<header className="sr-only focus-within:not-sr-only">`), to ensure they are discoverable in the accessibility tree and comply with landmark rules.
+
+## 2026-04-25 - [UX] Smooth Scrolling for Skip-to-Content Links
+**Learning:** When keyboard users or screen reader users who navigate visually activate a "skip-to-content" link, an instantaneous layout jump can be disorienting and cause them to lose their spatial awareness of the page's structure.
+**Action:** Apply `scroll-behavior: smooth` to the `html` element globally. This ensures that anchor links (like skip links) trigger a smooth scroll transition, helping users visually track the movement down the page and better understand the spatial relationship between the header and main content.
