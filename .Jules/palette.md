@@ -25,3 +25,7 @@
 ## 2026-04-25 - [UX] Smooth Scrolling for Skip-to-Content Links
 **Learning:** When keyboard users or screen reader users who navigate visually activate a "skip-to-content" link, an instantaneous layout jump can be disorienting and cause them to lose their spatial awareness of the page's structure.
 **Action:** Apply `scroll-behavior: smooth` to the `html` element globally. This ensures that anchor links (like skip links) trigger a smooth scroll transition, helping users visually track the movement down the page and better understand the spatial relationship between the header and main content.
+
+## 2026-04-26 - [UX] Auto-select Pre-filled Data Entry
+**Learning:** Forms with pre-filled default values (e.g. `1000`) designed for quick testing become cumbersome when a user clicks or tabs into them. By default, the cursor is placed at the end of the text, requiring the user to manually backspace or select the text before typing their intended value, adding unnecessary friction.
+**Action:** Use `onFocus={(e) => e.target.select()}` on inputs with default numeric values. This classic calculator UX pattern instantly highlights the existing value upon focus, enabling the user's first keystroke to automatically clear the field and begin fresh data entry.
