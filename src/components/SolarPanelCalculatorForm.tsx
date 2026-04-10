@@ -136,7 +136,7 @@ const SolarPanelCalculatorForm = () => {
               <CopyButton
                 textToCopy={`${formattedArea} m²`}
                 label="Copy solar panel area"
-                className="text-red-400 hover:text-red-200 focus:ring-red-400"
+                className="!text-red-400 hover:!text-red-200 focus-visible:!ring-red-400"
               />
             </div>
           </div>

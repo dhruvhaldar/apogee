@@ -118,7 +118,7 @@ const OrbitCalculatorForm = () => {
               <CopyButton
                 textToCopy={`Velocity: ${formattedStats.velocity} km/s, Period: ${formattedStats.period} min`}
                 label="Copy orbital parameters"
-                className="text-purple-400 hover:text-purple-200 focus:ring-purple-400"
+                className="!text-purple-400 hover:!text-purple-200 focus-visible:!ring-purple-400"
               />
             </div>
           </div>

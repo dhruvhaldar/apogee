@@ -176,7 +176,7 @@ const RocketCalculatorForm = () => {
               <CopyButton
                 textToCopy={`${formattedResult} m/s`}
                 label="Copy Delta-V result"
-                className="text-cyan-400 hover:text-cyan-200 focus:ring-cyan-400"
+                className="!text-cyan-400 hover:!text-cyan-200 focus-visible:!ring-cyan-400"
               />
             </div>
           </div>

@@ -141,7 +141,7 @@ const CostCalculatorForm = () => {
               <CopyButton
                 textToCopy={`$${formattedTotalCost}`}
                 label="Copy mission cost"
-                className="text-yellow-400 hover:text-yellow-200 focus:ring-yellow-400"
+                className="!text-yellow-400 hover:!text-yellow-200 focus-visible:!ring-yellow-400"
               />
             </div>
           </div>

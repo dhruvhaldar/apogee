@@ -151,7 +151,7 @@ const LifeSupportCalculatorForm = () => {
               <CopyButton
                 textToCopy={`Oxygen: ${formattedConsumables.oxygen} kg\nWater: ${formattedConsumables.water} kg\nFood: ${formattedConsumables.food} kg\nTotal: ${formattedConsumables.total} kg`}
                 label="Copy life support consumables"
-                className="text-green-400 hover:text-green-200 focus:ring-green-400"
+                className="!text-green-400 hover:!text-green-200 focus-visible:!ring-green-400"
               />
             </div>
           </div>
