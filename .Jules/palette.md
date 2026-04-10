@@ -29,3 +29,7 @@
 ## 2026-04-26 - [UX] Auto-select Pre-filled Data Entry
 **Learning:** Forms with pre-filled default values (e.g. `1000`) designed for quick testing become cumbersome when a user clicks or tabs into them. By default, the cursor is placed at the end of the text, requiring the user to manually backspace or select the text before typing their intended value, adding unnecessary friction.
 **Action:** Use `onFocus={(e) => e.target.select()}` on inputs with default numeric values. This classic calculator UX pattern instantly highlights the existing value upon focus, enabling the user's first keystroke to automatically clear the field and begin fresh data entry.
+
+## 2026-05-10 - [UX] CSS Specificity and Focus on Reusable Components
+**Learning:** When passing dynamic `className` props (e.g., `text-cyan-400 focus:ring-cyan-400`) into a reusable UI component that has its own base styles (e.g., `text-gray-400`), Tailwind's CSS precedence rules might cause the base style to unintentionally win out, ignoring the passed colors. Additionally, using `focus:ring` on buttons causes an unwanted persistent focus ring after a mouse click, which is visually jarring and breaks the distinction between keyboard focus and active mouse clicks.
+**Action:** When class-merging libraries (like `tailwind-merge`) are unavailable or disallowed, use Tailwind's `!` important modifier (e.g., `!text-cyan-400`) on passed props to guarantee the intended theme override. Always prefer `focus-visible:` over `focus:` for button focus rings to ensure they only appear during keyboard navigation.
