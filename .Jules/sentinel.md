@@ -72,3 +72,8 @@
 **Vulnerability:** The `handlebars` (via `ts-jest`) and `brace-expansion` (via `minimatch` in `eslint`) packages had multiple high-severity vulnerabilities, including XSS, prototype pollution, and denial of service.
 **Learning:** These are classic examples of transitive dependency vulnerabilities, which can be hard to track manually.
 **Prevention:** Utilizing package manager tools like `pnpm audit --fix` easily generated the correct resolution rules under `pnpm.overrides` to strictly use the patched versions. Routine dependency audits using these tools is essential.
+
+## 2024-04-12 - Next.js Denial of Service Vulnerability
+**Vulnerability:** Next.js <16.2.3 Denial of Service with Server Components (GHSA-q4gf-8mx6-v5v3).
+**Learning:** Core framework dependencies can introduce vulnerabilities. Audits are necessary.
+**Prevention:** Use `pnpm audit` proactively to identify and resolve vulnerabilities.
