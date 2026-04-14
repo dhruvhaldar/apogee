@@ -44,6 +44,10 @@ const nextConfig: NextConfig = {
             value: 'camera=(), microphone=(), geolocation=(), browsing-topics=(), autoplay=(), payment=(), usb=(), magnetometer=(), accelerometer=(), gyroscope=(), screen-wake-lock=(), display-capture=(), serial=(), hid=(), web-share=(), idle-detection=(), clipboard-write=(self)'
           },
           {
+            key: 'X-XSS-Protection',
+            value: '0'
+          },
+          {
             key: 'X-Permitted-Cross-Domain-Policies',
             value: 'none'
           },
