@@ -77,3 +77,7 @@
 **Vulnerability:** Next.js <16.2.3 Denial of Service with Server Components (GHSA-q4gf-8mx6-v5v3).
 **Learning:** Core framework dependencies can introduce vulnerabilities. Audits are necessary.
 **Prevention:** Use `pnpm audit` proactively to identify and resolve vulnerabilities.
+## 2026-04-15 - Explicitly deny programmatic clipboard reading
+**Vulnerability:** The `Permissions-Policy` header allowed programmatic clipboard reading by default, potentially exposing sensitive user clipboard data to malicious scripts.
+**Learning:** Security configurations must explicitly deny unnecessary permissions to reduce the attack surface. Default browser permissions can be overly permissive.
+**Prevention:** Added `clipboard-read=()` to the `Permissions-Policy` in `next.config.ts` to strictly deny read access to the clipboard.
