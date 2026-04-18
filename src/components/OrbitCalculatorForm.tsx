@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { calculateOrbitalStats } from '../utils/spaceflight';
-import { logError, getErrorMessage } from '../utils/logger';
+import { logError, getErrorMessage, ValidationError } from '../utils/logger';
 import { validateNumericInput } from '../utils/validation';
 import CopyButton from './CopyButton';
 
@@ -35,7 +35,7 @@ const OrbitCalculatorForm = () => {
     try {
       const altNum = parseFloat(altitude);
       if (isNaN(altNum)) {
-        throw new Error("Please enter a valid altitude");
+        throw new ValidationError("Please enter a valid altitude");
       }
       // Optimization: Calculate both values in one pass to avoid redundant sqrt() and radius calculations
       const { velocity: v, period: p } = calculateOrbitalStats(altNum);

@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { calculateMissionCost } from '../utils/spaceflight';
-import { logError, getErrorMessage } from '../utils/logger';
+import { logError, getErrorMessage, ValidationError } from '../utils/logger';
 import { validateNumericInput } from '../utils/validation';
 import CopyButton from './CopyButton';
 

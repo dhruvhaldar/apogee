@@ -81,3 +81,8 @@
 **Vulnerability:** The `Permissions-Policy` header allowed programmatic clipboard reading by default, potentially exposing sensitive user clipboard data to malicious scripts.
 **Learning:** Security configurations must explicitly deny unnecessary permissions to reduce the attack surface. Default browser permissions can be overly permissive.
 **Prevention:** Added `clipboard-read=()` to the `Permissions-Policy` in `next.config.ts` to strictly deny read access to the clipboard.
+
+## 2026-11-02 - Error Info Exposure via UI
+**Vulnerability:** The `getErrorMessage` utility in `src/utils/logger.ts` always returned the raw `error.message` for any standard `Error` instance. If an unexpected internal error or a third-party library threw an error, these sensitive system details or stack traces could be displayed directly in the user interface via form error states.
+**Learning:** Returning `error.message` indiscriminately in UI error handlers violates the principle of "Fail securely." Intentional validation errors must be explicitly typed to differentiate them from unexpected system errors.
+**Prevention:** Created a custom `ValidationError` class. Refactored `getErrorMessage` to only return the specific message if `error instanceof ValidationError`, and to return a generic fallback message ("An unexpected error occurred. Please try again.") for all other errors. Updated all form validation logic to throw `ValidationError`.

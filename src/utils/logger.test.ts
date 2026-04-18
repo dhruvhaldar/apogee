@@ -1,4 +1,4 @@
-import { logError, getErrorMessage } from './logger';
+import { logError, getErrorMessage, ValidationError } from './logger';
 
 describe('Logger Utility', () => {
   const originalEnv = process.env.NODE_ENV;
@@ -14,15 +14,20 @@ describe('Logger Utility', () => {
   });
 
   describe('getErrorMessage', () => {
-    it('should return the error message for Error objects', () => {
-      const error = new Error('Test error');
-      expect(getErrorMessage(error)).toBe('Test error');
+    it('should return the error message for ValidationError objects', () => {
+      const error = new ValidationError('Validation failed');
+      expect(getErrorMessage(error)).toBe('Validation failed');
+    });
+
+    it('should return a generic message for standard Error objects to prevent information leakage', () => {
+      const error = new Error('Database connection failed: user admin');
+      expect(getErrorMessage(error)).toBe('An unexpected error occurred. Please try again.');
     });
 
     it('should return a generic message for non-Error objects', () => {
-      expect(getErrorMessage('something went wrong')).toBe('An unexpected error occurred');
-      expect(getErrorMessage(null)).toBe('An unexpected error occurred');
-      expect(getErrorMessage({})).toBe('An unexpected error occurred');
+      expect(getErrorMessage('something went wrong')).toBe('An unexpected error occurred. Please try again.');
+      expect(getErrorMessage(null)).toBe('An unexpected error occurred. Please try again.');
+      expect(getErrorMessage({})).toBe('An unexpected error occurred. Please try again.');
     });
   });
 

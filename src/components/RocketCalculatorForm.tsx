@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { calculateDeltaV } from '../utils/spaceflight';
-import { logError, getErrorMessage } from '../utils/logger';
+import { logError, getErrorMessage, ValidationError } from '../utils/logger';
 import { validateNumericInput } from '../utils/validation';
 import CopyButton from './CopyButton';
 
@@ -34,7 +34,7 @@ const RocketCalculatorForm = () => {
       const mfNum = parseFloat(mf);
 
       if (isNaN(ispNum) || isNaN(m0Num) || isNaN(mfNum)) {
-        throw new Error('Please enter valid numeric values');
+        throw new ValidationError('Please enter valid numeric values');
       }
 
       if (m0Num <= mfNum) {

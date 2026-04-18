@@ -1,4 +1,16 @@
 /**
+ * Security: ValidationError explicitly represents a safe, user-facing error message.
+ * This differentiates intentional validation errors from unexpected internal errors
+ * that might leak sensitive system details or stack traces if exposed to the UI.
+ */
+export class ValidationError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'ValidationError';
+  }
+}
+
+/**
  * Securely logs errors to the console.
  * In development, this logs the full error object for debugging.
  * In production, this logs only the error message or a generic message to prevent leaking stack traces.
@@ -26,8 +38,9 @@ export const logError = (error: unknown, context: string = 'App'): void => {
  * @returns The error message string.
  */
 export const getErrorMessage = (error: unknown): string => {
-  if (error instanceof Error) {
+  if (error instanceof ValidationError) {
     return error.message;
   }
-  return 'An unexpected error occurred';
+  // Fallback for unexpected errors to prevent information leakage
+  return 'An unexpected error occurred. Please try again.';
 };
