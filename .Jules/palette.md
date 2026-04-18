@@ -37,3 +37,7 @@
 ## 2026-05-18 - [UX] Keyboard Focus Parity for Contextual Hints
 **Learning:** Contextual hints, such as `<kbd> ↵ Enter</kbd>` instructions on form submit buttons, are often styled to only appear on mouse hover (e.g., via `group-hover:opacity-100`). This leaves sighted keyboard-only users without the same affordances, breaking accessibility parity.
 **Action:** Whenever applying hover-based visibility classes (`group-hover:opacity-100`) to contextual hints inside interactive elements, always pair them with an equivalent focus-visible class (`group-focus-visible:opacity-100`). This ensures the hint becomes visible when a user navigates to the element using the `Tab` key.
+
+## 2026-05-20 - [UX] Parity between Hover and Focus-Within States for Visual Polish
+**Learning:** Container elements (like cards) often implement `focus-within` styling (e.g., highlighting borders and backgrounds) to visually group their internal interactive elements when focused. However, omitting equivalent `hover` styles can make these elements feel static or non-responsive to mouse users, creating a slight "false affordance" disconnect compared to keyboard navigation.
+**Action:** When a static semantic container (like a `<section>` acting as a card) implements `focus-within` visual highlights, mirror those styles with equivalent `hover` states (e.g., `hover:border-white/40 hover:bg-white/[0.12] hover:shadow-2xl`) to provide consistent, satisfying visual polish across all interaction methods.
