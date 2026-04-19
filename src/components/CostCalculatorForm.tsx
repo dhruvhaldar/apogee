@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { calculateMissionCost } from '../utils/spaceflight';
-import { logError, getErrorMessage } from '../utils/logger';
+import { logError, getErrorMessage, ValidationError } from '../utils/logger';
 import { validateNumericInput } from '../utils/validation';
 import CopyButton from './CopyButton';
 
@@ -33,10 +33,10 @@ const CostCalculatorForm = () => {
       const costNum = parseFloat(costPerKg);
 
       if (isNaN(payloadNum) || payloadNum < 0) {
-        throw new Error("Please enter a valid payload mass");
+        throw new ValidationError("Please enter a valid payload mass");
       }
       if (isNaN(costNum) || costNum < 0) {
-        throw new Error("Please enter a valid cost per kg");
+        throw new ValidationError("Please enter a valid cost per kg");
       }
 
       const result = calculateMissionCost(payloadNum, costNum);
