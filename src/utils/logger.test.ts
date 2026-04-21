@@ -1,4 +1,4 @@
-import { logError, getErrorMessage } from './logger';
+import { logError, getErrorMessage, ValidationError } from './logger';
 
 describe('Logger Utility', () => {
   const originalEnv = process.env.NODE_ENV;
@@ -14,9 +14,14 @@ describe('Logger Utility', () => {
   });
 
   describe('getErrorMessage', () => {
-    it('should return the error message for Error objects', () => {
+    it('should return the error message for ValidationError objects', () => {
+      const error = new ValidationError('Test validation error');
+      expect(getErrorMessage(error)).toBe('Test validation error');
+    });
+
+    it('should return a generic message for generic Error objects', () => {
       const error = new Error('Test error');
-      expect(getErrorMessage(error)).toBe('Test error');
+      expect(getErrorMessage(error)).toBe('An unexpected error occurred');
     });
 
     it('should return a generic message for non-Error objects', () => {

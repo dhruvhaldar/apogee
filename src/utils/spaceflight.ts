@@ -1,3 +1,5 @@
+import { ValidationError } from './logger';
+
 // Spaceflight Physics Utility Functions
 // Constants based on Earth standard values
 
@@ -37,7 +39,7 @@ const FOOD_PER_PERSON_DAY = 1.8;
  */
 function validateFinite(value: number, name: string): void {
   if (!Number.isFinite(value) || value < 0) {
-    throw new Error(`${name} must be a valid non-negative number`);
+    throw new ValidationError(`${name} must be a valid non-negative number`);
   }
 }
 
@@ -54,7 +56,7 @@ export function calculateDeltaV(isp: number, massInitial: number, massFinal: num
   validateFinite(massFinal, "Final Mass");
 
   if (massInitial === 0 || massFinal === 0 || massFinal > massInitial) {
-    throw new Error("Invalid mass parameters");
+    throw new ValidationError("Invalid mass parameters");
   }
   // deltaV = Isp * g0 * ln(m0 / mf)
   return isp * STANDARD_GRAVITY * Math.log(massInitial / massFinal);
@@ -154,7 +156,7 @@ export function calculateSolarPanelArea(powerWatts: number, efficiency: number):
   validateFinite(efficiency, "Efficiency");
 
   if (efficiency === 0 || efficiency > 1) {
-    throw new Error("Efficiency must be between 0 and 1");
+    throw new ValidationError("Efficiency must be between 0 and 1");
   }
   // Power = Area * Efficiency * SolarConstant
   // Area = Power / (Efficiency * SolarConstant)

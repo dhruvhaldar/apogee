@@ -20,13 +20,23 @@ export const logError = (error: unknown, context: string = 'App'): void => {
 };
 
 /**
+ * Custom error class for expected user-facing validation failures.
+ */
+export class ValidationError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'ValidationError';
+  }
+}
+
+/**
  * Extracts a user-friendly error message from an unknown error object.
  *
  * @param error The error object.
  * @returns The error message string.
  */
 export const getErrorMessage = (error: unknown): string => {
-  if (error instanceof Error) {
+  if (error instanceof ValidationError) {
     return error.message;
   }
   return 'An unexpected error occurred';

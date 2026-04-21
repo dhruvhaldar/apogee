@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { calculateSolarPanelArea } from '../utils/spaceflight';
-import { logError, getErrorMessage } from '../utils/logger';
+import { logError, getErrorMessage, ValidationError } from '../utils/logger';
 import { validateNumericInput } from '../utils/validation';
 import CopyButton from './CopyButton';
 
@@ -32,7 +32,7 @@ const SolarPanelCalculatorForm = () => {
       const efficiencyNum = parseFloat(efficiency);
 
       if (isNaN(powerNum) || isNaN(efficiencyNum)) {
-        throw new Error('Please enter valid numeric values');
+        throw new ValidationError('Please enter valid numeric values');
       }
 
       const result = calculateSolarPanelArea(powerNum, efficiencyNum);

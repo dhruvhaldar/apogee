@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { calculateConsumables } from '../utils/spaceflight';
-import { logError, getErrorMessage } from '../utils/logger';
+import { logError, getErrorMessage, ValidationError } from '../utils/logger';
 import { validateNumericInput } from '../utils/validation';
 import CopyButton from './CopyButton';
 
@@ -40,7 +40,7 @@ const LifeSupportCalculatorForm = () => {
       const daysNum = parseInt(days, 10);
 
       if (isNaN(crewNum) || isNaN(daysNum)) {
-        throw new Error('Please enter valid numeric values');
+        throw new ValidationError('Please enter valid numeric values');
       }
 
       const result = calculateConsumables(crewNum, daysNum);
