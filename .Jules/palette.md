@@ -37,3 +37,7 @@
 ## 2026-05-18 - [UX] Keyboard Focus Parity for Contextual Hints
 **Learning:** Contextual hints, such as `<kbd> ↵ Enter</kbd>` instructions on form submit buttons, are often styled to only appear on mouse hover (e.g., via `group-hover:opacity-100`). This leaves sighted keyboard-only users without the same affordances, breaking accessibility parity.
 **Action:** Whenever applying hover-based visibility classes (`group-hover:opacity-100`) to contextual hints inside interactive elements, always pair them with an equivalent focus-visible class (`group-focus-visible:opacity-100`). This ensures the hint becomes visible when a user navigates to the element using the `Tab` key.
+
+## 2026-05-20 - [UX] Visual Feedback Parity for Semantic Containers
+**Learning:** Calculator Cards used `focus-within` styles to highlight the active container for keyboard users, providing excellent spatial awareness. However, this state was entirely absent for mouse hover, creating a disjointed experience where mouse users received no interactive feedback before clicking.
+**Action:** Always ensure visual feedback parity for interactive semantic containers. If a container highlights upon receiving focus (`focus-within`), it should mirror those visual cues on hover (`hover:border-white/40 hover:bg-white/[0.12] hover:shadow-2xl`) to provide a consistent, intuitive experience regardless of input method.
