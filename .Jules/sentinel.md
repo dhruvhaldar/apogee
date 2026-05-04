@@ -82,3 +82,8 @@
 **Learning:** Security configurations must explicitly deny unnecessary permissions to reduce the attack surface. Default browser permissions can be overly permissive.
 **Prevention:** Added `clipboard-read=()` to the `Permissions-Policy` in `next.config.ts` to strictly deny read access to the clipboard.
 ## 2026-04-19 - Prevent Information Disclosure via Error Messages\n**Vulnerability:** Generic JavaScript errors thrown during normal form validation were leaking unhandled stack traces and internal application structure when logged or propagated inappropriately.\n**Learning:** Relying on generic `Error` objects for expected user input validation makes it impossible to securely distinguish between safe, user-facing feedback and sensitive internal system failures.\n**Prevention:** Introduce and enforce a custom `ValidationError` class. Ensure logging utilities and error catch blocks sanitize all generic `Error` instances, only permitting `ValidationError` messages to reach the client UI.
+
+## 2025-05-04 - PostCSS XSS Vulnerability Resolution
+**Vulnerability:** `postcss` <8.5.10 had a Cross-Site Scripting (XSS) vulnerability via unescaped `</style>` tags in its CSS Stringify Output.
+**Learning:** Using `pnpm audit --fix` automatically generates `>=` version ranges which can sometimes lead to pulling in incompatible major versions breaking the parent packages.
+**Prevention:** Added overrides via `pnpm audit --fix`, but manually adjusted the overrides for `postcss` in `package.json` to use a compatible caret range (`^8.5.10`) to prevent breaking changes. Routine dependency audits should accompany manual adjustments to prevent similar crashes.
