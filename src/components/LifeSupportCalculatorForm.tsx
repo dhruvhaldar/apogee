@@ -59,6 +59,7 @@ const LifeSupportCalculatorForm = () => {
     const val = e.target.value;
     if (validateNumericInput(val)) {
       setCrew(val);
+      setConsumables(null);
     }
   };
 
@@ -66,6 +67,7 @@ const LifeSupportCalculatorForm = () => {
     const val = e.target.value;
     if (validateNumericInput(val)) {
       setDays(val);
+      setConsumables(null);
     }
   };
 

@@ -53,7 +53,9 @@ test.describe('Apogee Calculator App', () => {
 
     // Use default values (300, 1000, 100)
     // Press Enter in one of the fields
-    await page.getByLabel(/Final Mass/i).press('Enter');
+    const finalMassInput = page.getByLabel(/Final Mass/i);
+    await finalMassInput.click();
+    await page.keyboard.press('Enter');
 
     // Expect result ~6774.19 (same as the button click test)
     await expect(page.locator('text=6,774.19')).toBeVisible();

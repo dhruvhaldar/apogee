@@ -56,6 +56,7 @@ const RocketCalculatorForm = () => {
     const val = e.target.value;
     if (validateNumericInput(val)) {
       setIsp(val);
+      setResult(null);
     }
   };
 
@@ -63,6 +64,7 @@ const RocketCalculatorForm = () => {
     const val = e.target.value;
     if (validateNumericInput(val)) {
       setM0(val);
+      setResult(null);
     }
   };
 
@@ -70,6 +72,7 @@ const RocketCalculatorForm = () => {
     const val = e.target.value;
     if (validateNumericInput(val)) {
       setMf(val);
+      setResult(null);
     }
   };
 

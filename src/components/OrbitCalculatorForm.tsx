@@ -56,6 +56,8 @@ const OrbitCalculatorForm = () => {
     // Validate length and pattern (prevent DoS and invalid chars)
     if (validateNumericInput(val)) {
       setAltitude(val);
+      setVelocity(null);
+      setPeriod(null);
     }
   };
 
