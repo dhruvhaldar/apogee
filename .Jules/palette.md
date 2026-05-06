@@ -41,3 +41,7 @@
 ## 2026-05-20 - [UX] Visual Feedback Parity for Semantic Containers
 **Learning:** Calculator Cards used `focus-within` styles to highlight the active container for keyboard users, providing excellent spatial awareness. However, this state was entirely absent for mouse hover, creating a disjointed experience where mouse users received no interactive feedback before clicking.
 **Action:** Always ensure visual feedback parity for interactive semantic containers. If a container highlights upon receiving focus (`focus-within`), it should mirror those visual cues on hover (`hover:border-white/40 hover:bg-white/[0.12] hover:shadow-2xl`) to provide a consistent, intuitive experience regardless of input method.
+
+## 2026-05-25 - [UX] Prevent Stale Results in Manual Submission Forms
+**Learning:** In forms that require manual submission (e.g., clicking a "Calculate" button), changing input fields leaves the previously calculated result visible on screen. This creates a confusing UX mismatch where the displayed result is stale and does not accurately reflect the current input values.
+**Action:** Always clear the result state (e.g., `setResult(null)`) within the `onChange` handlers of the associated input fields. This forces the UI to return to its empty state, prompting the user to recalculate and guaranteeing that data display always matches input intent.
