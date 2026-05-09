@@ -90,6 +90,7 @@ const CostCalculatorForm = () => {
             value={payload}
             onChange={handlePayloadChange}
             onFocus={(e) => e.target.select()}
+            onWheel={(e) => (e.target as HTMLInputElement).blur()}
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text-white focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/40 focus:invalid:border-red-500 focus:invalid:ring-red-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             aria-describedby="cost-payload-hint"
           />
@@ -113,6 +114,7 @@ const CostCalculatorForm = () => {
             value={costPerKg}
             onChange={handleCostChange}
             onFocus={(e) => e.target.select()}
+            onWheel={(e) => (e.target as HTMLInputElement).blur()}
             className="peer w-full bg-black/50 border border-white/20 rounded py-2 pr-2 pl-7 text-white focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/40 focus:invalid:border-red-500 focus:invalid:ring-red-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             aria-describedby="cost-rate-hint"
           />

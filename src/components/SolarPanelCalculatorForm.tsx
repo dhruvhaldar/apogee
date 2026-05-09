@@ -89,6 +89,7 @@ const SolarPanelCalculatorForm = () => {
             value={power}
             onChange={handlePowerChange}
             onFocus={(e) => e.target.select()}
+            onWheel={(e) => (e.target as HTMLInputElement).blur()}
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-10 text-white focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/40 focus:invalid:border-red-500 focus:invalid:ring-red-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             aria-describedby="solar-power-hint"
           />
@@ -112,6 +113,7 @@ const SolarPanelCalculatorForm = () => {
           value={efficiency}
           onChange={handleEfficiencyChange}
           onFocus={(e) => e.target.select()}
+          onWheel={(e) => (e.target as HTMLInputElement).blur()}
           className="peer w-full bg-black/50 border border-white/20 rounded p-2 text-white focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/40 focus:invalid:border-red-500 focus:invalid:ring-red-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           aria-describedby="solar-efficiency-hint"
         />
