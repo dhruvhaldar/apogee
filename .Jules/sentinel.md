@@ -87,3 +87,7 @@
 **Vulnerability:** `postcss` <8.5.10 had a Cross-Site Scripting (XSS) vulnerability via unescaped `</style>` tags in its CSS Stringify Output.
 **Learning:** Using `pnpm audit --fix` automatically generates `>=` version ranges which can sometimes lead to pulling in incompatible major versions breaking the parent packages.
 **Prevention:** Added overrides via `pnpm audit --fix`, but manually adjusted the overrides for `postcss` in `package.json` to use a compatible caret range (`^8.5.10`) to prevent breaking changes. Routine dependency audits should accompany manual adjustments to prevent similar crashes.
+## 2026-05-09 - Enforce Strict Referrer-Policy
+**Vulnerability:** The application was using `strict-origin-when-cross-origin` for its Referrer-Policy, which still leaks the origin URL to cross-origin requests. Since the application does not rely on referrer headers, this unnecessarily increased the attack surface for privacy-related information disclosure.
+**Learning:** Default security configurations, even relatively modern ones like `strict-origin-when-cross-origin`, may not be strict enough for applications that do not strictly require them. The principle of least privilege should apply to data sharing via headers.
+**Prevention:** Changed the `Referrer-Policy` to `no-referrer` in `next.config.ts` to ensure no referrer information is ever leaked, maximizing user privacy.
