@@ -45,3 +45,7 @@
 ## 2026-05-25 - [UX] Prevent Stale Results in Manual Submission Forms
 **Learning:** In forms that require manual submission (e.g., clicking a "Calculate" button), changing input fields leaves the previously calculated result visible on screen. This creates a confusing UX mismatch where the displayed result is stale and does not accurately reflect the current input values.
 **Action:** Always clear the result state (e.g., `setResult(null)`) within the `onChange` handlers of the associated input fields. This forces the UI to return to its empty state, prompting the user to recalculate and guaranteeing that data display always matches input intent.
+
+## 2026-05-30 - [UX] Prevent Numeric Input Scroll Hijacking
+**Learning:** Browsers natively allow `<input type="number">` values to be changed via the mouse scroll wheel when the input is focused or hovered. In long forms or dashboard-style grids with many number inputs, this often results in accidental data changes when users are simply trying to scroll down the page, leading to frustrating and unnoticed errors.
+**Action:** Always add `onWheel={(e) => (e.target as HTMLInputElement).blur()}` to `<input type="number">` elements. This intercepts the scroll event and removes focus from the input, safely passing the scroll intent back to the window and preventing accidental value modification.
