@@ -10,7 +10,7 @@ test('verify security headers', async ({ page }) => {
   expect(headers['strict-transport-security']).toBe('max-age=63072000; includeSubDomains; preload');
   expect(headers['x-frame-options']).toBe('DENY');
   expect(headers['x-content-type-options']).toBe('nosniff');
-  expect(headers['referrer-policy']).toBe('strict-origin-when-cross-origin');
+  expect(headers['referrer-policy']).toBe('no-referrer');
   expect(headers['content-security-policy']).toContain("default-src 'self'");
   expect(headers['content-security-policy']).toContain("object-src 'none'");
   expect(headers['content-security-policy']).toContain("base-uri 'self'");
