@@ -91,3 +91,7 @@
 **Vulnerability:** The application was using `strict-origin-when-cross-origin` for its Referrer-Policy, which still leaks the origin URL to cross-origin requests. Since the application does not rely on referrer headers, this unnecessarily increased the attack surface for privacy-related information disclosure.
 **Learning:** Default security configurations, even relatively modern ones like `strict-origin-when-cross-origin`, may not be strict enough for applications that do not strictly require them. The principle of least privilege should apply to data sharing via headers.
 **Prevention:** Changed the `Referrer-Policy` to `no-referrer` in `next.config.ts` to ensure no referrer information is ever leaked, maximizing user privacy.
+## 2025-05-11 - Prevent CRLF Log Injection
+**Vulnerability:** The logging utility (`src/utils/logger.ts`) directly outputted user-supplied or application-generated error messages without sanitizing newline characters.
+**Learning:** This allowed for potential log forging or CRLF injection if user input were ever reflected directly into an error message, enabling an attacker to create misleading or fake log entries.
+**Prevention:** Always strip or sanitize newline characters (`\r`, `\n`) from all dynamically populated variables (like `message` and `context`) before passing them to logging sinks.

@@ -14,8 +14,12 @@ export const logError = (error: unknown, context: string = 'App'): void => {
   } else {
     // In production, avoid logging the full error object which might contain stack traces.
     // Instead, log a sanitized message.
-    const message = error instanceof Error ? error.message : 'An unexpected error occurred';
-    console.error(`[${context}] Error: ${message}`);
+    let message = error instanceof Error ? error.message : 'An unexpected error occurred';
+    // Defense-in-depth: Sanitize the message to prevent CRLF injection in logs
+    message = message.replace(/[\r\n]+/g, ' ');
+    // Also sanitize context to prevent log forging
+    const sanitizedContext = context.replace(/[\r\n]+/g, ' ');
+    console.error(`[${sanitizedContext}] Error: ${message}`);
   }
 };
 
