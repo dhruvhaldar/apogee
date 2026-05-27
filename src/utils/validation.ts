@@ -11,12 +11,9 @@
 export const MAX_INPUT_LENGTH = 15;
 
 // Regex for positive numbers (integer or float).
-// ^\d* matches any number of digits at the start.
-// \.? matches an optional decimal point.
-// \d*$ matches any number of digits after the decimal point.
 // This allows: "123", "123.", ".123", "123.456", and "" (empty string).
-// It disallows: "-", "-123", "1.2.3", "abc".
-const POSITIVE_NUMBER_REGEX = /^\d*\.?\d*$/;
+// It disallows: "-", "-123", "1.2.3", "abc", and "." (a single dot).
+const POSITIVE_NUMBER_REGEX = /^(?:\d+(?:\.\d*)?|\.\d+)?$/;
 
 /**
  * Validates a numeric input string against security constraints.
