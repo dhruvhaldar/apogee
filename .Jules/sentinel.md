@@ -95,3 +95,8 @@
 **Vulnerability:** The logging utility (`src/utils/logger.ts`) directly outputted user-supplied or application-generated error messages without sanitizing newline characters.
 **Learning:** This allowed for potential log forging or CRLF injection if user input were ever reflected directly into an error message, enabling an attacker to create misleading or fake log entries.
 **Prevention:** Always strip or sanitize newline characters (`\r`, `\n`) from all dynamically populated variables (like `message` and `context`) before passing them to logging sinks.
+
+## 2026-11-02 - Prevent Invalid Numeric Inputs (Single Dot)
+**Vulnerability:** The regular expression used for client-side numeric validation (`/^\d*\.?\d*$/`) allowed a solitary dot (`"."`) to pass validation. When this value was processed by `parseFloat` or `parseInt` in the application logic, it evaluated to `NaN`, leading to unexpected application states or potential crashes downstream.
+**Learning:** Regular expressions that use optional quantifiers (`*`, `?`) indiscriminately can create edge cases where non-numeric strings (like a single dot) are incorrectly validated as numbers. Input validation must be strictly constrained to require actual numerical digits.
+**Prevention:** Modified the validation regex to `/^(?:\d+(?:\.\d*)?|\.\d+)?$/`. This pattern ensures that if a decimal point is present, it must be accompanied by at least one digit, preventing a solitary dot from passing validation while still allowing empty strings.

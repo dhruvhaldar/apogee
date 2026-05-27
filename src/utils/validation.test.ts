@@ -24,6 +24,7 @@ describe('validateNumericInput', () => {
   it('should return false for non-numeric strings', () => {
     expect(validateNumericInput('abc')).toBe(false);
     expect(validateNumericInput('12a')).toBe(false);
+    expect(validateNumericInput('.')).toBe(false);
   });
 
   it('should return false for inputs exceeding max length', () => {
