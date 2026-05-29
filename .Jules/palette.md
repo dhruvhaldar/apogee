@@ -49,3 +49,7 @@
 ## 2026-05-30 - [UX] Prevent Numeric Input Scroll Hijacking
 **Learning:** Browsers natively allow `<input type="number">` values to be changed via the mouse scroll wheel when the input is focused or hovered. In long forms or dashboard-style grids with many number inputs, this often results in accidental data changes when users are simply trying to scroll down the page, leading to frustrating and unnoticed errors.
 **Action:** Always add `onWheel={(e) => (e.target as HTMLInputElement).blur()}` to `<input type="number">` elements. This intercepts the scroll event and removes focus from the input, safely passing the scroll intent back to the window and preventing accidental value modification.
+
+## 2026-05-31 - [UX] Prevent Tooltip Mis-triggers with Nested Tailwind Groups
+**Learning:** When a parent container uses the `group` class (e.g., to reveal a child button on hover), and the child button also uses the `group` class for its own internal hover states (like a tooltip), hovering the parent will prematurely trigger the child's tooltip. This creates a confusing experience where a tooltip appears far away from the user's cursor.
+**Action:** Use named groups (e.g., `group/button` and `group-hover/button:opacity-100`) for interactive elements that contain tooltips when they might be placed inside other `group` containers. This isolates the hover state and ensures tooltips only appear when intended.
