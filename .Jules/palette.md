@@ -53,3 +53,7 @@
 ## 2026-05-31 - [UX] Prevent Tooltip Mis-triggers with Nested Tailwind Groups
 **Learning:** When a parent container uses the `group` class (e.g., to reveal a child button on hover), and the child button also uses the `group` class for its own internal hover states (like a tooltip), hovering the parent will prematurely trigger the child's tooltip. This creates a confusing experience where a tooltip appears far away from the user's cursor.
 **Action:** Use named groups (e.g., `group/button` and `group-hover/button:opacity-100`) for interactive elements that contain tooltips when they might be placed inside other `group` containers. This isolates the hover state and ensures tooltips only appear when intended.
+
+## 2026-06-01 - [UX] Hide Decorative Inline Units from Screen Readers
+**Learning:** Form inputs with inline visual adornments (like 'kg', '$', or 's' positioned absolutely inside the input wrapper) are often read sequentially by screen readers after the input field. Because the input's label and `aria-describedby` hint already provide the necessary context and units, reading the visual unit creates redundant and potentially confusing announcements for non-sighted users.
+**Action:** Always add `aria-hidden="true"` to purely decorative inline visual units or icons inside form controls. This ensures they only serve as visual aids for sighted users and keeps the screen reader's accessibility tree clean and focused on the semantic label and hint.
