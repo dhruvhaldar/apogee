@@ -64,7 +64,7 @@ const SolarPanelCalculatorForm = () => {
   };
 
   return (
-    <form onSubmit={handleCalculate} className="space-y-3">
+    <form onSubmit={handleCalculate} className="space-y-3 group/form">
       {error && (
         <div role="alert" className="p-3 bg-red-900/50 border border-red-500/50 rounded text-red-200 text-sm flex items-start gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="flex-shrink-0 mt-0.5 text-red-400">
@@ -145,8 +145,8 @@ const SolarPanelCalculatorForm = () => {
             </div>
           </div>
         ) : (
-          <div className="mt-4 flex-grow rounded border border-dashed border-white/10 flex items-center justify-center gap-2 text-gray-400 text-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="opacity-50">
+          <div className="mt-4 flex-grow rounded border border-dashed border-white/10 group-focus-within/form:border-red-500/30 flex items-center justify-center gap-2 text-gray-400 group-focus-within/form:text-red-400 transition-colors duration-300 text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="opacity-50 group-focus-within/form:opacity-80 transition-opacity duration-300">
               <circle cx="12" cy="12" r="4"></circle>
               <path d="M12 2v2"></path>
               <path d="M12 20v2"></path>

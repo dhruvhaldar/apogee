@@ -57,3 +57,7 @@
 ## 2026-06-01 - [UX] Hide Decorative Inline Units from Screen Readers
 **Learning:** Form inputs with inline visual adornments (like 'kg', '$', or 's' positioned absolutely inside the input wrapper) are often read sequentially by screen readers after the input field. Because the input's label and `aria-describedby` hint already provide the necessary context and units, reading the visual unit creates redundant and potentially confusing announcements for non-sighted users.
 **Action:** Always add `aria-hidden="true"` to purely decorative inline visual units or icons inside form controls. This ensures they only serve as visual aids for sighted users and keeps the screen reader's accessibility tree clean and focused on the semantic label and hint.
+
+## 2026-06-03 - [UX] Visual Connection Between Inputs and Empty States
+**Learning:** In dashboard layouts with multiple independent forms, users can lose the visual connection between the inputs they are typing in and where the result will appear, especially if the empty state is visually muted (e.g., low opacity, dashed borders).
+**Action:** Use Tailwind's `group-focus-within` on the parent `<form>` to subtly highlight the associated empty state container (e.g., brightening the text, icon, and border to match the form's specific theme color) when any input within that form receives focus. This creates a strong spatial relationship and anticipates the result for the user.
