@@ -101,7 +101,7 @@ const LifeSupportCalculatorForm = () => {
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-16 text-white focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/40 focus:invalid:border-red-500 focus:invalid:ring-red-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             aria-describedby="ls-crew-hint"
           />
-          <div className="absolute top-2.5 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-green-400 transition-colors">
+          <div aria-hidden="true" className="absolute top-2.5 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-green-400 transition-colors">
             people
           </div>
           <p id="ls-crew-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-green-400 transition-colors">ISS Typical: 7</p>
@@ -125,7 +125,7 @@ const LifeSupportCalculatorForm = () => {
             className="peer w-full bg-black/50 border border-white/20 rounded p-2 pr-12 text-white focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/40 focus:invalid:border-red-500 focus:invalid:ring-red-500/40 hover:border-white/40 transition [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             aria-describedby="ls-days-hint"
           />
-          <div className="absolute top-2.5 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-green-400 transition-colors">
+          <div aria-hidden="true" className="absolute top-2.5 right-0 pr-3 flex items-center pointer-events-none text-gray-400 peer-focus:text-green-400 transition-colors">
             days
           </div>
           <p id="ls-days-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-green-400 transition-colors">Short: ~7d, ISS: ~180d, Mars: ~500d</p>
