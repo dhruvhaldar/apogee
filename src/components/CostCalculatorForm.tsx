@@ -65,7 +65,7 @@ const CostCalculatorForm = () => {
   };
 
   return (
-    <form onSubmit={handleCalculate} className="space-y-3">
+    <form onSubmit={handleCalculate} className="space-y-3 group/form">
       {error && (
         <div role="alert" className="p-3 bg-red-900/50 border border-red-500/50 rounded text-red-200 text-sm flex items-start gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="flex-shrink-0 mt-0.5 text-red-400">
@@ -150,8 +150,8 @@ const CostCalculatorForm = () => {
             </div>
           </div>
         ) : (
-          <div className="mt-4 flex-grow rounded border border-dashed border-white/10 flex items-center justify-center gap-2 text-gray-400 text-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="opacity-50">
+          <div className="mt-4 flex-grow rounded border border-dashed border-white/10 group-focus-within/form:border-yellow-500/30 flex items-center justify-center gap-2 text-gray-400 group-focus-within/form:text-yellow-400 transition-colors duration-300 text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="opacity-50 group-focus-within/form:opacity-80 transition-opacity duration-300">
               <line x1="12" y1="1" x2="12" y2="23"></line>
               <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
             </svg>
