@@ -52,6 +52,7 @@ const SolarPanelCalculatorForm = () => {
     if (validateNumericInput(val)) {
       setPower(val);
       setArea(null);
+      setError(null);
     }
   };
 
@@ -60,6 +61,7 @@ const SolarPanelCalculatorForm = () => {
     if (validateNumericInput(val)) {
       setEfficiency(val);
       setArea(null);
+      setError(null);
     }
   };
 

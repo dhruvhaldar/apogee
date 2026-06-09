@@ -53,6 +53,7 @@ const CostCalculatorForm = () => {
     if (validateNumericInput(val)) {
       setPayload(val);
       setTotalCost(null);
+      setError(null);
     }
   };
 
@@ -61,6 +62,7 @@ const CostCalculatorForm = () => {
     if (validateNumericInput(val)) {
       setCostPerKg(val);
       setTotalCost(null);
+      setError(null);
     }
   };
 

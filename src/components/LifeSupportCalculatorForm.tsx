@@ -60,6 +60,7 @@ const LifeSupportCalculatorForm = () => {
     if (validateNumericInput(val)) {
       setCrew(val);
       setConsumables(null);
+      setError(null);
     }
   };
 
@@ -68,6 +69,7 @@ const LifeSupportCalculatorForm = () => {
     if (validateNumericInput(val)) {
       setDays(val);
       setConsumables(null);
+      setError(null);
     }
   };
 
