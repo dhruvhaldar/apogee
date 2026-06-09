@@ -61,3 +61,7 @@
 ## 2026-06-03 - [UX] Visual Connection Between Inputs and Empty States
 **Learning:** In dashboard layouts with multiple independent forms, users can lose the visual connection between the inputs they are typing in and where the result will appear, especially if the empty state is visually muted (e.g., low opacity, dashed borders).
 **Action:** Use Tailwind's `group-focus-within` on the parent `<form>` to subtly highlight the associated empty state container (e.g., brightening the text, icon, and border to match the form's specific theme color) when any input within that form receives focus. This creates a strong spatial relationship and anticipates the result for the user.
+
+## 2026-06-05 - [UX] Clear Stale Validation Errors on Input
+**Learning:** In manual-submission forms, when a user encounters a validation error (e.g., initial mass < final mass) and begins typing to correct it, the previous error message remains visible on the screen. This creates a confusing UX mismatch where the displayed error does not accurately reflect the current input values that the user is attempting to correct.
+**Action:** Always clear the error state (e.g., `setError(null)`) within the `onChange` handlers of the associated input fields. This ensures the error message immediately disappears as the user begins to fix their input, guaranteeing that the validation feedback state always matches the user's current intent.

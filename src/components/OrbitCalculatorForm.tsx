@@ -58,6 +58,7 @@ const OrbitCalculatorForm = () => {
       setAltitude(val);
       setVelocity(null);
       setPeriod(null);
+      setError(null);
     }
   };
 
