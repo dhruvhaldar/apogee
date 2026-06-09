@@ -65,3 +65,7 @@
 ## 2026-06-05 - [UX] Clear Stale Validation Errors on Input
 **Learning:** In manual-submission forms, when a user encounters a validation error (e.g., initial mass < final mass) and begins typing to correct it, the previous error message remains visible on the screen. This creates a confusing UX mismatch where the displayed error does not accurately reflect the current input values that the user is attempting to correct.
 **Action:** Always clear the error state (e.g., `setError(null)`) within the `onChange` handlers of the associated input fields. This ensures the error message immediately disappears as the user begins to fix their input, guaranteeing that the validation feedback state always matches the user's current intent.
+
+## 2026-06-09 - [UX] Smooth Text Selection for Formatted Numbers
+**Learning:** Native browsers often break word boundaries at punctuation marks like commas when users attempt to select formatted numbers (e.g., `1,000.00`) by double-clicking. This causes fragmented selections and frustrates users trying to copy the precise value without using the dedicated copy button.
+**Action:** Add Tailwind's `select-all` class (`user-select: all`) directly to the container elements (like `<span>`) wrapping calculated numerical outputs. This ensures that a single click instantly and cleanly highlights the entire number (including commas and decimals) as a single block, eliminating selection fragmentation and friction.

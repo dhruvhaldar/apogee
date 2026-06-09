@@ -178,7 +178,7 @@ const RocketCalculatorForm = () => {
         {formattedResult !== null ? (
           <div className="mt-4 p-4 bg-cyan-900/30 rounded border border-cyan-500/30 backdrop-blur-sm relative group">
             <p className="text-center font-mono text-xl">
-              ΔV = <span className="text-cyan-300 font-bold">{formattedResult}</span> m/s
+              ΔV = <span className="text-cyan-300 font-bold select-all">{formattedResult}</span> m/s
             </p>
             <div className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity focus-within:opacity-100 sm:focus-within:opacity-100">
               <CopyButton
