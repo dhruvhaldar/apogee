@@ -105,3 +105,8 @@
 **Vulnerability:** The application was fully client-side relying entirely on React synthetic events (`onSubmit` with `e.preventDefault()`). However, `next.config.ts`'s Content-Security-Policy allowed `base-uri 'self'` and `form-action 'self'`, leaving the application unnecessarily exposed to injection attacks aiming to alter base tag resolution or hijack native form submisssions.
 **Learning:** Even when standard framework tools handle certain browser mechanisms locally (like form submission via JavaScript), the broader security policy needs to strictly block their native counterparts to achieve defense-in-depth and enforce expected behavior.
 **Prevention:** Hardened the Content-Security-Policy by explicitly changing `base-uri` and `form-action` to `'none'`. Since the app operates strictly via JS logic, native form submissions and external base definitions are never required, making `'none'` the optimal and safest setting.
+
+## 2026-06-13 - Prevent Terminal Escape Sequence Injection
+**Vulnerability:** The logging utility (`src/utils/logger.ts`) only sanitized newline characters (`\r`, `\n`) but left other control characters and ANSI escape sequences intact. If an attacker inputs these sequences, they could execute terminal escape sequence injection when logs are viewed in a terminal.
+**Learning:** Terminal escape sequences can alter log output, hide information, or even execute commands depending on the terminal emulator. Sanitization must cover all control characters, not just newlines.
+**Prevention:** Use a broader regex (`/[\x00-\x1F\x7F]+/g`) to strip or replace all control characters, ensuring safe log output in all environments.
