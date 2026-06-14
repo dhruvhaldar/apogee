@@ -72,3 +72,7 @@
 ## 2026-06-13 - [UX] Accessible Form Skeletons
 **Learning:** Loading skeleton components (`FormSkeleton.tsx`) that use purely visual animations (`animate-pulse`) and `aria-hidden="true"` leave screen reader users completely unaware that dynamic content is currently fetching or rendering.
 **Action:** Always wrap skeleton placeholders in a container that includes a visually hidden live region or status announcement (`<span className="sr-only" role="status">Loading...</span>`) while keeping the complex visual structure hidden from the accessibility tree. This provides crucial feedback to non-sighted users during async operations without cluttering the sequential read order.
+
+## 2026-06-14 - [UX] Complete Visual Parity for Form Fields on Focus
+**Learning:** While input borders, inline units, and helper text often change color on focus (via `focus:` and `peer-focus:` classes), leaving the primary `<label>` text statically colored creates a disjointed spatial experience, especially in dense dashboard layouts where identifying the active field at a glance is critical.
+**Action:** Wrap the entire field structure (label and input container) in a named group (`<div className="group/field">`) and apply a matching focus-within color to the label (e.g., `group-focus-within/field:text-cyan-400`). This ensures the entire vertical stack (label, border, unit, and hint) lights up cohesively when the user focuses the input, providing complete visual parity and reinforcing brand themes per component.
