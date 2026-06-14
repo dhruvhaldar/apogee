@@ -91,8 +91,8 @@ const RocketCalculatorForm = () => {
           <span>{error}</span>
         </div>
       )}
-      <div>
-        <label htmlFor="rocket-isp" className="block text-sm mb-1 text-gray-300">
+      <div className="group/field">
+        <label htmlFor="rocket-isp" className="block text-sm mb-1 text-gray-300 group-focus-within/field:text-cyan-400 transition-colors">
           Specific Impulse (Isp) <span className="group relative inline-block cursor-help" aria-hidden="true"><span className="text-red-500">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10">Required</span></span>
         </label>
         <div className="relative">
@@ -115,8 +115,8 @@ const RocketCalculatorForm = () => {
           <p id="rocket-isp-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-cyan-400 transition-colors">Solid: ~250s, Liquid: ~450s, Nuclear: ~900s</p>
         </div>
       </div>
-      <div>
-        <label htmlFor="rocket-m0" className="block text-sm mb-1 text-gray-300">
+      <div className="group/field">
+        <label htmlFor="rocket-m0" className="block text-sm mb-1 text-gray-300 group-focus-within/field:text-cyan-400 transition-colors">
           Initial Mass (m0) <span className="group relative inline-block cursor-help" aria-hidden="true"><span className="text-red-500">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10">Required</span></span>
         </label>
         <div className="relative">
@@ -139,8 +139,8 @@ const RocketCalculatorForm = () => {
           <p id="rocket-m0-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-cyan-400 transition-colors">e.g., Falcon 9: ~549,000kg, Saturn V: ~2,970,000kg</p>
         </div>
       </div>
-      <div>
-        <label htmlFor="rocket-mf" className="block text-sm mb-1 text-gray-300">
+      <div className="group/field">
+        <label htmlFor="rocket-mf" className="block text-sm mb-1 text-gray-300 group-focus-within/field:text-cyan-400 transition-colors">
           Final Mass (mf) <span className="group relative inline-block cursor-help" aria-hidden="true"><span className="text-red-500">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10">Required</span></span>
         </label>
         <div className="relative">

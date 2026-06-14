@@ -77,8 +77,8 @@ const SolarPanelCalculatorForm = () => {
           <span>{error}</span>
         </div>
       )}
-      <div>
-        <label htmlFor="solar-power" className="block text-sm mb-1 text-gray-300">
+      <div className="group/field">
+        <label htmlFor="solar-power" className="block text-sm mb-1 text-gray-300 group-focus-within/field:text-red-400 transition-colors">
           Required Power <span className="group relative inline-block cursor-help" aria-hidden="true"><span className="text-red-500">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10">Required</span></span>
         </label>
         <div className="relative">
@@ -101,8 +101,8 @@ const SolarPanelCalculatorForm = () => {
           <p id="solar-power-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-red-400 transition-colors">CubeSat: ~1-10W, GPS: ~1000W, ISS: ~100,000W</p>
         </div>
       </div>
-      <div>
-        <label htmlFor="solar-efficiency" className="block text-sm mb-1 text-gray-300">
+      <div className="group/field">
+        <label htmlFor="solar-efficiency" className="block text-sm mb-1 text-gray-300 group-focus-within/field:text-red-400 transition-colors">
           Efficiency (0.0 - 1.0) <span className="group relative inline-block cursor-help" aria-hidden="true"><span className="text-red-500">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10">Required</span></span>
         </label>
         <input

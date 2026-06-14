@@ -78,8 +78,8 @@ const CostCalculatorForm = () => {
           <span>{error}</span>
         </div>
       )}
-      <div>
-        <label htmlFor="cost-payload" className="block text-sm mb-1 text-gray-300">
+      <div className="group/field">
+        <label htmlFor="cost-payload" className="block text-sm mb-1 text-gray-300 group-focus-within/field:text-yellow-400 transition-colors">
           Payload Mass <span className="group relative inline-block cursor-help" aria-hidden="true"><span className="text-red-500">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10">Required</span></span>
         </label>
         <div className="relative">
@@ -102,8 +102,8 @@ const CostCalculatorForm = () => {
           <p id="cost-payload-hint" className="text-xs text-gray-400 mt-1 peer-focus:text-yellow-400 transition-colors">CubeSat: ~1kg, Starlink: ~260kg, ISS Module: ~15,000kg</p>
         </div>
       </div>
-      <div>
-        <label htmlFor="cost-rate" className="block text-sm mb-1 text-gray-300">
+      <div className="group/field">
+        <label htmlFor="cost-rate" className="block text-sm mb-1 text-gray-300 group-focus-within/field:text-yellow-400 transition-colors">
           Cost per kg <span className="group relative inline-block cursor-help" aria-hidden="true"><span className="text-red-500">*</span><span className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 whitespace-nowrap rounded bg-black/90 px-2 py-1 text-[10px] font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 border border-white/10">Required</span></span>
         </label>
         <div className="relative">
