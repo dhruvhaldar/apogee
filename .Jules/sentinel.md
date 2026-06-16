@@ -110,3 +110,8 @@
 **Vulnerability:** The logging utility (`src/utils/logger.ts`) only sanitized newline characters (`\r`, `\n`) but left other control characters and ANSI escape sequences intact. If an attacker inputs these sequences, they could execute terminal escape sequence injection when logs are viewed in a terminal.
 **Learning:** Terminal escape sequences can alter log output, hide information, or even execute commands depending on the terminal emulator. Sanitization must cover all control characters, not just newlines.
 **Prevention:** Use a broader regex (`/[\x00-\x1F\x7F]+/g`) to strip or replace all control characters, ensuring safe log output in all environments.
+
+## 2026-11-04 - Subdependency Vulnerability Resolution (js-yaml and @babel/core)
+**Vulnerability:** The `js-yaml` (via `eslint`) and `@babel/core` (via `eslint-config-next`) packages had vulnerabilities, including DoS and arbitrary file read.
+**Learning:** `pnpm audit --fix` automatically generates `>=` version ranges which can sometimes lead to pulling in incompatible major versions breaking the parent packages.
+**Prevention:** Utilizing package manager tools like `pnpm audit --fix` easily generated the correct resolution rules under `pnpm.overrides`, but manually adjusted the overrides in `package.json` to use a compatible caret range (`^`) to prevent breaking changes.
