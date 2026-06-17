@@ -67,7 +67,7 @@ const CostCalculatorForm = () => {
   };
 
   return (
-    <form onSubmit={handleCalculate} className="space-y-3 group/form">
+    <form onSubmit={handleCalculate} autoComplete="off" className="space-y-3 group/form">
       {error && (
         <div role="alert" className="p-3 bg-red-900/50 border border-red-500/50 rounded text-red-200 text-sm flex items-start gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="flex-shrink-0 mt-0.5 text-red-400">
