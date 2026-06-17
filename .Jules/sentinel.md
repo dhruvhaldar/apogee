@@ -115,3 +115,7 @@
 **Vulnerability:** The `js-yaml` (via `eslint`) and `@babel/core` (via `eslint-config-next`) packages had vulnerabilities, including DoS and arbitrary file read.
 **Learning:** `pnpm audit --fix` automatically generates `>=` version ranges which can sometimes lead to pulling in incompatible major versions breaking the parent packages.
 **Prevention:** Utilizing package manager tools like `pnpm audit --fix` easily generated the correct resolution rules under `pnpm.overrides`, but manually adjusted the overrides in `package.json` to use a compatible caret range (`^`) to prevent breaking changes.
+## 2026-06-17 - Prevent Browser Caching of Sensitive Form Data
+**Vulnerability:** The calculator forms did not specify an autocomplete attribute, allowing browsers to potentially cache and autofill sensitive mission calculation data (e.g., payload mass, costs, orbital parameters) on shared devices, which could lead to information disclosure.
+**Learning:** Browsers natively cache form inputs by default. For tools handling proprietary or sensitive calculations, this default behavior poses a localized privacy risk.
+**Prevention:** Added `autoComplete="off"` to all `<form>` elements to explicitly instruct browsers not to cache the input data as a defense-in-depth measure.
