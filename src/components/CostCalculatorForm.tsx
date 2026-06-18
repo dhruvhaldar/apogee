@@ -86,6 +86,7 @@ const CostCalculatorForm = () => {
           <input
             id="cost-payload"
             type="number"
+            inputMode="decimal"
             min="0"
             step="any"
             required
@@ -110,6 +111,7 @@ const CostCalculatorForm = () => {
           <input
             id="cost-rate"
             type="number"
+            inputMode="decimal"
             min="0"
             step="any"
             required

@@ -93,8 +93,9 @@ const LifeSupportCalculatorForm = () => {
           <input
             id="ls-crew"
             type="number"
+            inputMode="numeric"
             min="1"
-            step="any"
+            step="1"
             required
             value={crew}
             onChange={handleCrewChange}
@@ -117,8 +118,9 @@ const LifeSupportCalculatorForm = () => {
           <input
             id="ls-days"
             type="number"
+            inputMode="numeric"
             min="1"
-            step="any"
+            step="1"
             required
             value={days}
             onChange={handleDaysChange}

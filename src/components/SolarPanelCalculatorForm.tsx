@@ -85,6 +85,7 @@ const SolarPanelCalculatorForm = () => {
           <input
             id="solar-power"
             type="number"
+            inputMode="decimal"
             min="0"
             step="any"
             required
@@ -108,6 +109,7 @@ const SolarPanelCalculatorForm = () => {
         <input
           id="solar-efficiency"
           type="number"
+          inputMode="decimal"
           min="0"
           max="1"
           step="any"

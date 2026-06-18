@@ -82,6 +82,7 @@ const OrbitCalculatorForm = () => {
           <input
             id="orbit-altitude"
             type="number"
+            inputMode="decimal"
             min="0"
             step="any"
             required

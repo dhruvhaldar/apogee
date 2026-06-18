@@ -99,6 +99,7 @@ const RocketCalculatorForm = () => {
           <input
             id="rocket-isp"
             type="number"
+            inputMode="decimal"
             min="0"
             step="any"
             required
@@ -123,6 +124,7 @@ const RocketCalculatorForm = () => {
           <input
             id="rocket-m0"
             type="number"
+            inputMode="decimal"
             min="0"
             step="any"
             required
@@ -147,6 +149,7 @@ const RocketCalculatorForm = () => {
           <input
             id="rocket-mf"
             type="number"
+            inputMode="decimal"
             min="0"
             step="any"
             required
