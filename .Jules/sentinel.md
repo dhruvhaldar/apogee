@@ -119,3 +119,8 @@
 **Vulnerability:** The calculator forms did not specify an autocomplete attribute, allowing browsers to potentially cache and autofill sensitive mission calculation data (e.g., payload mass, costs, orbital parameters) on shared devices, which could lead to information disclosure.
 **Learning:** Browsers natively cache form inputs by default. For tools handling proprietary or sensitive calculations, this default behavior poses a localized privacy risk.
 **Prevention:** Added `autoComplete="off"` to all `<form>` elements to explicitly instruct browsers not to cache the input data as a defense-in-depth measure.
+
+## 2026-11-05 - Strictly Scoped Transitive Dependency Vulnerability Resolution (js-yaml)
+**Vulnerability:** The `js-yaml` package had a vulnerability (Quadratic-complexity DoS) in version `<=4.1.1`. The application contained a transitive dependency on `js-yaml@^3.13.1` (via `@istanbuljs/load-nyc-config`).
+**Learning:** An existing override of `"js-yaml@>=4.0.0 <=4.1.1": "^4.2.0"` was too narrowly scoped to the `4.x` branch and did not resolve the vulnerability in the `3.x` dependency tree.
+**Prevention:** Updated the `pnpm.overrides` configuration to use a strictly scoped range spanning the vulnerable branches used in the project (`"js-yaml@>=3.0.0 <=4.1.1": "^4.2.0"`) to properly catch and patch the `3.x` transitive dependency, instead of leaving it unbounded (`<=4.1.1`).
