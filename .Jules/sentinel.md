@@ -124,3 +124,7 @@
 **Vulnerability:** The `js-yaml` package had a vulnerability (Quadratic-complexity DoS) in version `<=4.1.1`. The application contained a transitive dependency on `js-yaml@^3.13.1` (via `@istanbuljs/load-nyc-config`).
 **Learning:** An existing override of `"js-yaml@>=4.0.0 <=4.1.1": "^4.2.0"` was too narrowly scoped to the `4.x` branch and did not resolve the vulnerability in the `3.x` dependency tree.
 **Prevention:** Updated the `pnpm.overrides` configuration to use a strictly scoped range spanning the vulnerable branches used in the project (`"js-yaml@>=3.0.0 <=4.1.1": "^4.2.0"`) to properly catch and patch the `3.x` transitive dependency, instead of leaving it unbounded (`<=4.1.1`).
+## 2026-11-06 - Prevent Control Character Injection
+**Vulnerability:** The logging utility (`src/utils/logger.ts`) sanitized C0 control characters and DEL (`[\x00-\x1F\x7F]+`) but left C1 control characters (`[\x80-\x9F]+`) intact. If an attacker inputs these sequences, they could execute terminal escape sequence injection when logs are viewed in some terminal emulators.
+**Learning:** Terminal escape sequences can alter log output, hide information, or even execute commands depending on the terminal emulator. Sanitization must cover all control characters, including C1.
+**Prevention:** Use a broader regex (`/[\x00-\x1F\x7F-\x9F]+/g`) to strip or replace all control characters, ensuring safe log output in all environments.
