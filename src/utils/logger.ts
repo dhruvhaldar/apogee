@@ -16,10 +16,10 @@ export const logError = (error: unknown, context: string = 'App'): void => {
     // Instead, log a sanitized message.
     let message = error instanceof Error ? error.message : 'An unexpected error occurred';
     // Defense-in-depth: Sanitize the message to prevent CRLF injection and terminal escape sequence injection
-    // Replace all control characters (0x00-0x1F, 0x7F) with spaces to prevent log forging
-    message = message.replace(/[\x00-\x1F\x7F]+/g, ' ');
+    // Replace all control characters (0x00-0x1F, 0x7F-0x9F) with spaces to prevent log forging
+    message = message.replace(/[\x00-\x1F\x7F-\x9F]+/g, ' ');
     // Also sanitize context
-    const sanitizedContext = context.replace(/[\x00-\x1F\x7F]+/g, ' ');
+    const sanitizedContext = context.replace(/[\x00-\x1F\x7F-\x9F]+/g, ' ');
     console.error(`[${sanitizedContext}] Error: ${message}`);
   }
 };
