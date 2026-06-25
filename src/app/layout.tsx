@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="motion-safe:scroll-smooth">
       <body className="antialiased">
         {/* ⚡ Performance: Removed unused next/font/google imports (Geist, Geist_Mono) since the app relies on system fonts in globals.css. This prevents Next.js from injecting redundant @font-face styles and preload tags, reducing HTML payload and network requests to improve FCP/LCP. */}
         <header className="sr-only focus-within:not-sr-only">
