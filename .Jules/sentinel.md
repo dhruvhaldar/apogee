@@ -128,3 +128,7 @@
 **Vulnerability:** The logging utility (`src/utils/logger.ts`) sanitized C0 control characters and DEL (`[\x00-\x1F\x7F]+`) but left C1 control characters (`[\x80-\x9F]+`) intact. If an attacker inputs these sequences, they could execute terminal escape sequence injection when logs are viewed in some terminal emulators.
 **Learning:** Terminal escape sequences can alter log output, hide information, or even execute commands depending on the terminal emulator. Sanitization must cover all control characters, including C1.
 **Prevention:** Use a broader regex (`/[\x00-\x1F\x7F-\x9F]+/g`) to strip or replace all control characters, ensuring safe log output in all environments.
+## 2025-02-27 - Bounded Dependency Overrides
+**Vulnerability:** Unbounded lower bounds (e.g., `<3.1.3`) or automatically generated open upper limits (e.g., `>=3.1.3`) in `pnpm.overrides` for resolving transitive dependency vulnerabilities.
+**Learning:** Automatically generated version ranges for overrides (like those from `pnpm audit --fix`) can force unexpected, incompatible major version upgrades (like pulling in `brace-expansion@2.x` when overriding `<1.1.13`), breaking dependent parent packages and causing crashes like `TypeError: ... is not a function`.
+**Prevention:** Always manually configure `pnpm.overrides` with strictly bounded scopes to cover affected branches without pulling incompatible breaking changes (e.g., `"minimatch@>=3.0.0 <3.1.3": "^3.1.3"` instead of `"minimatch@<3.1.3": ">=3.1.3"`).
