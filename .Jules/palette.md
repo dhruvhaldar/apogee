@@ -84,3 +84,7 @@
 ## 2026-06-25 - [UX] Respect Reduced Motion for Smooth Scrolling
 **Learning:** Hardcoding `html { scroll-behavior: smooth; }` in global CSS overrides user accessibility preferences. For users with motion sensitivities or vestibular disorders, forced smooth scrolling can cause nausea or dizziness. WCAG guidelines require honoring the `prefers-reduced-motion` media query. Note that Tailwind's `scroll-smooth` utility does *not* automatically wrap the rule in a media query.
 **Action:** Use Tailwind's `motion-safe:scroll-smooth` class on the `<html>` element instead of raw CSS. The `motion-safe:` modifier explicitly adds the `@media (prefers-reduced-motion: no-preference)` check, providing smooth scrolling for most users while safely defaulting to instant scrolling for those who need it.
+
+## 2026-07-07 - [UX] Fluid Morphing Transitions for State Toggles
+**Learning:** Instantly swapping DOM elements (like icons) during state changes (e.g., from 'Copy' to 'Copied') creates a jarring, unpolished visual experience. It lacks the continuous feedback loop expected in modern UI design.
+**Action:** For binary state toggles (like icons), render both states simultaneously using absolute positioning within a relative container. Apply inverse `opacity` and `scale` transitions (e.g., `opacity-0 scale-50` to `opacity-100 scale-100`) based on the active state to create a fluid, morphing cross-fade effect that adds a significant touch of delight.
